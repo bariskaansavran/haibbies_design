@@ -6,9 +6,10 @@ echo.
 echo Dosyalar GitHub'a (Buluta) yukleniyor...
 git add .
 git commit -m "Katalog Guncellemesi"
-git push
+git push -u origin main
 echo.
 echo ===================================================
-echo ISLEM TAMAMLANDI! Web sitesi 1-2 dakika icinde guncellenecek.
+echo ISLEM TAMAMLANDI VEYA GUVENLIK EKRANI ACILACAK! 
+echo Eger hata varsa yukaridaki mesaji kopyalayip Baris'a gonder.
 echo ===================================================
 pause
