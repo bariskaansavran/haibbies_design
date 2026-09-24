@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haibbies Design | Özgün 3D Tasarımlar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { brand: { 500: '#10b981', 600: '#059669' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0b0f19; color: #f8fafc; }
+        .glass-card {
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body class="min-h-screen p-6 md:p-12">
+    <header class="mb-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 tracking-tight">Haibbies Design</h1>
+        <p class="text-slate-400 mt-3 text-lg max-w-2xl mx-auto">Evinize sıcak bir ambiyans katan, 3D baskı ve yapay zeka ile kişiselleştirilmiş özgün tasarım stüdyosu.</p>
+    </header>
+
+    <div class="max-w-6xl mx-auto">
+        <div id="catalog-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Ürünler buraya JSON'dan dinamik yüklenecek -->
+            <div class="col-span-full text-center text-slate-500 py-12">Yükleniyor...</div>
+        </div>
+    </div>
+    
+    <footer class="mt-20 text-center text-slate-600 text-sm pb-8">
+        &copy; 2026 Haibbies Design. Tüm Hakları Saklıdır.
+    </footer>
+
+    <script>
+        // GitHub Pages veya yerel sunucudan JSON dosyasını çek
+        fetch('katalog_guncel.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('catalog-container');
+                container.innerHTML = ''; // Temizle
+                
+                if(data.length === 0) {
+                    container.innerHTML = '<div class="col-span-full text-center text-slate-500">Henüz ürün eklenmedi.</div>';
+                    return;
+                }
+
+                data.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'glass-card rounded-2xl overflow-hidden flex flex-col';
+                    card.innerHTML = `
+                        <div class="relative h-64 overflow-hidden bg-slate-800">
+                            <img src="${item.image_url}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                            <div class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-emerald-400 border border-emerald-500/30">
+                                ${item.category}
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h2 class="text-xl font-bold text-white mb-2 leading-tight">${item.title}</h2>
+                            <p class="text-slate-400 text-sm mb-6 flex-grow">${item.desc}</p>
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-2xl font-black text-white">${item.price} ₺</span>
+                                <a href="${item.shopier_link}" target="_blank" class="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-bold py-2.5 px-6 rounded-xl transition-all shadow-lg shadow-emerald-500/30">
+                                    Satın Al
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            })
+            .catch(err => {
+                document.getElementById('catalog-container').innerHTML = '<div class="col-span-full text-center text-red-500">Katalog yüklenirken hata oluştu.</div>';
+                console.error('JSON yükleme hatası:', err);
+            });
+    </script>
+</body>
+</html>
