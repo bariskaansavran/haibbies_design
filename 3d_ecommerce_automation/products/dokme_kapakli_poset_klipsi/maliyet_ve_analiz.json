@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "dokme_kapakli_poset_klipsi",
+    "slug": "dokme_kapakli_poset_klipsi",
+    "title": "Vidalı Dökme Ağızlı Kilitli Poşet Klipsi (3'lü Paket)",
+    "agent_type": "nis",
+    "agent_name": "Ajan 1 (Niş & Özgün)",
+    "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)",
+    "category": "ev",
+    "category_name": "Ev & Mutfak",
+    "emoji": "🧂",
+    "filament_grams": 45,
+    "print_hours": 0.9,
+    "market_price_tl": 170.0,
+    "our_selling_price_tl": 129.0,
+    "extra_costs": 2.0,
+    "source_url": "https://makerworld.com/en/models/25890",
+    "short_desc": "Gıda, bakliyat ve deterjan poşetlerine takılarak vidalı kapakla kolay döküm sağlayan sızdırmaz klips.",
+    "dolap_title": "Dökme Kapaklı Kilitli Poşet Klipsi 3'lü Set - Bakliyat & Deterjan Dökme Musluğu",
+    "dolap_competition": "Düşük (Mutfak İnovasyonu Boş Pazar)",
+    "competition_level": "low",
+    "competition_note": "Normal mandallar her yerde var fakat poşeti kapatırken aynı zamanda vidalı dökme musluğu olan 3D aparat Dolap'ta neredeyse hiç yok.",
+    "pros": [
+      "Mutfak düzeni ve bebek maması/evcil hayvan maması saklayan kadın alıcıların anında ilgisini çeker.",
+      "Pirinç, un, deterjan dökülmelerini kesin olarak önler.",
+      "3'lü paket 129 TL fiyatıyla çok hızlı sepet doldurur.",
+      "Vidalı kapak geometrisi Bambu Lab'da pürüzsüz oturur."
+    ],
+    "cons": [
+      "Vidalı kapağın rahat dönmesi için Bambu Studio'da X-Y delik toleransı 0.05mm gerekebilir.",
+      "Gıda temasına uygun organik PLA ile basıldığı açıklamada belirtilmelidir."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "60°C",
+      "nozzle_temp": "220°C (PLA Food-Safe)",
+      "layer_height": "0.20 mm",
+      "wall_loops": "3 Hat",
+      "infill_density": "%20",
+      "infill_pattern": "Gyroid",
+      "print_speed": "180 mm/s",
+      "supports": "KAPALI",
+      "bambu_time": "50 dakika (3'lü Paket)",
+      "pro_tip": "Gövdeyi beyaz, vidalı kapağı ise Kırmızı/Mavi/Sarı canlı renklerde basarak paketi çekici hale getirin."
+    },
+    "photo_prompts": [
+      "3d printed bag clip with screw-on pour spout attached to open cereal bag pouring grains cleanly into ceramic bowl",
+      "Tidy kitchen pantry countertop with 3 bagged ingredients sealed by colorful 3d printed pour spout clamps",
+      "Macro shot of the interlocking clamp teeth and ergonomic screw cap threads on kitchen counter"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 18.0,
+    "electricity_cost_tl": 0.54,
+    "packaging_cost_tl": 7.0,
+    "total_production_cost_tl": 25.54,
+    "market_price_tl": 170.0,
+    "our_selling_price_tl": 129.0,
+    "dolap_commission_tl": 19.35,
+    "net_profit_tl": 84.11,
+    "profit_margin_percent": 65.2,
+    "price_advantage_tl": 41.0
+  },
+  "agent": {
+    "type": "nis",
+    "name": "Ajan 1 (Niş & Özgün)",
+    "badge": "🟢 Niş Ürün (Dolap'ta Yok)"
+  },
+  "pros": [
+    "Mutfak düzeni ve bebek maması/evcil hayvan maması saklayan kadın alıcıların anında ilgisini çeker.",
+    "Pirinç, un, deterjan dökülmelerini kesin olarak önler.",
+    "3'lü paket 129 TL fiyatıyla çok hızlı sepet doldurur.",
+    "Vidalı kapak geometrisi Bambu Lab'da pürüzsüz oturur."
+  ],
+  "cons": [
+    "Vidalı kapağın rahat dönmesi için Bambu Studio'da X-Y delik toleransı 0.05mm gerekebilir.",
+    "Gıda temasına uygun organik PLA ile basıldığı açıklamada belirtilmelidir."
+  ]
+}

@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: Ergonomik Kedi Patisi / Kanatlı Parmak Kitap Sayfa Tutucu
+Kategori: Kişisel & Hediye (📖)
+Araştıran Ajan: Ajan 1 (Niş & Özgün)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://www.printables.com/model/178550
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 60°C
+• Nozzle Sıcaklığı: 215°C
+• Katman Kalınlığı: 0.20 mm
+• Duvar Hatları (Wall Loops): 4 Hat
+• Doluluk Oranı: %30
+• Doluluk Deseni: Gyroid
+• Baskı Hızı: 200 mm/s
+• Destek (Support): KAPALI
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 14 dakika | 12'li Seri Tabla: 1 saat 40 dk
+• Filament Tüketimi: ~12 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 89.0 TL
+• Piyasa / Rakip Fiyatı: 120.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+Pastel Mor, Adaçayı Yeşili ve Krem renklerde basıp yanında şık bir kraft kartonla paketleyin.

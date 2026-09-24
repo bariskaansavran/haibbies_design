@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "masa_alti_ciftli_kulaklik_gamepad_askisi",
+    "slug": "masa_alti_ciftli_kulaklik_gamepad_askisi",
+    "title": "Masa Altı Çiftli Kulaklık ve Gamepad Askısı (Delmesiz)",
+    "agent_type": "populer",
+    "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "agent_badge": "🔥 Popüler & Fiyat Kırıcı",
+    "category": "masa",
+    "category_name": "Masa Düzeni & Tech",
+    "emoji": "🎧",
+    "filament_grams": 56,
+    "print_hours": 1.7,
+    "market_price_tl": 220.0,
+    "our_selling_price_tl": 159.0,
+    "extra_costs": 3.0,
+    "source_url": "https://makerworld.com/en/models/19320",
+    "short_desc": "Masa altına vidasız yapışan, aynı anda hem büyük oyuncu kulaklığını hem PS5/Xbox kolunu taşıyan çiftli askılık.",
+    "dolap_title": "Masa Altı Çiftli Kulaklık & Gamepad Askısı - Vidasız Delmesiz Güçlü Montaj",
+    "dolap_competition": "Orta (Tekliler Çok, Çiftli Az)",
+    "competition_level": "medium",
+    "competition_note": "Rakipler sadece tek kulaklık tutan askıları 160-180 TL'ye satıyor. Biz hem kulaklık hem oyun kolu tutan çiftli askıyı 159 TL'ye vererek öne geçiyoruz.",
+    "pros": [
+      "Gamer ve evden çalışan kitlenin masasında devasa alan açar.",
+      "Kutu içerisine hazır yapıştırılmış kırmızı koruyucu bantlı ağır hizmet bandı koyuyoruz.",
+      "Desteksiz basım geometrisi; 3 duvarla 5 kg yüke kadar kırılmaz.",
+      "Net kâr: +107 TL (%67.4 kâr marjı)."
+    ],
+    "cons": [
+      "Ucuz ince köpük bant kullanılırsa kolun ağırlığıyla düşebilir; mutlaka kaliteli 3M tipi bant kullanılmalıdır.",
+      "Katman yönü yatay basılmalıdır ki çekme kuvveti katmanları ayırmasın."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "60°C",
+      "nozzle_temp": "220°C",
+      "layer_height": "0.20 mm",
+      "wall_loops": "3 Hat",
+      "infill_density": "%20",
+      "infill_pattern": "Gyroid",
+      "print_speed": "180 mm/s",
+      "supports": "KAPALI (Yana yatık basılır)",
+      "bambu_time": "1 saat 35 dk",
+      "pro_tip": "Askılık sırtına kırmızı koruyucu şeritli bandı önceden yapıştırıp gönderin; 'Kutudan çıkar çıkmaz 5 saniyede montaj' yazın."
+    },
+    "photo_prompts": [
+      "Dual under desk 3d printed hanger holding gaming headset and wireless gamepad controller cleanly under desk",
+      "Underneath perspective showing strong adhesive mounting under wooden oak computer gaming workstation",
+      "Matte black dual headset and controller hanger isolated on clean studio background showing structural ribs"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 22.4,
+    "electricity_cost_tl": 1.02,
+    "packaging_cost_tl": 8.0,
+    "total_production_cost_tl": 31.42,
+    "market_price_tl": 220.0,
+    "our_selling_price_tl": 159.0,
+    "dolap_commission_tl": 23.85,
+    "net_profit_tl": 103.73,
+    "profit_margin_percent": 65.2,
+    "price_advantage_tl": 61.0
+  },
+  "agent": {
+    "type": "populer",
+    "name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "badge": "🔥 Popüler & Fiyat Kırıcı"
+  },
+  "pros": [
+    "Gamer ve evden çalışan kitlenin masasında devasa alan açar.",
+    "Kutu içerisine hazır yapıştırılmış kırmızı koruyucu bantlı ağır hizmet bandı koyuyoruz.",
+    "Desteksiz basım geometrisi; 3 duvarla 5 kg yüke kadar kırılmaz.",
+    "Net kâr: +107 TL (%67.4 kâr marjı)."
+  ],
+  "cons": [
+    "Ucuz ince köpük bant kullanılırsa kolun ağırlığıyla düşebilir; mutlaka kaliteli 3M tipi bant kullanılmalıdır.",
+    "Katman yönü yatay basılmalıdır ki çekme kuvveti katmanları ayırmasın."
+  ]
+}

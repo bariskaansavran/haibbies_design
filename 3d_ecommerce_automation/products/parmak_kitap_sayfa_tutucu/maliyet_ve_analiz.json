@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "parmak_kitap_sayfa_tutucu",
+    "slug": "parmak_kitap_sayfa_tutucu",
+    "title": "Ergonomik Kedi Patisi / Kanatlı Parmak Kitap Sayfa Tutucu",
+    "agent_type": "nis",
+    "agent_name": "Ajan 1 (Niş & Özgün)",
+    "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)",
+    "category": "hediye",
+    "category_name": "Kişisel & Hediye",
+    "emoji": "📖",
+    "filament_grams": 12,
+    "print_hours": 0.25,
+    "market_price_tl": 120.0,
+    "our_selling_price_tl": 89.0,
+    "extra_costs": 1.0,
+    "source_url": "https://www.printables.com/model/178550",
+    "short_desc": "Tek elle kitap okurken sayfaların kendiliğinden kapanmasını engelleyen ergonomik parmak geçmeli tutucu aparat.",
+    "dolap_title": "Tek Elle Kitap Okuma Aparatı Parmak Sayfa Tutucu - 3D Ergonomik Kitap Ayracı",
+    "dolap_competition": "Düşük (3D Renkli Model Çok Az)",
+    "competition_level": "low",
+    "competition_note": "Kitapçılarda ahşap modeller 120-150 TL. Dolap'ta pastel renkli, kedi patili 3D kitap tutucu satan neredeyse yok.",
+    "pros": [
+      "89 TL fiyatıyla mükemmel bir sepet tamamlama ve dürtüsel alışveriş ürünü.",
+      "Tek elle yatakta, otobüste, kafede kitap okuyan herkesin doğrudan konforunu artırır.",
+      "12 gram filament ve 14 dakika basım. Bambu Lab tablasına tek seferde 15 adet dizilebilir.",
+      "Diğer ürünlerin yanında promosyon hediye olarak verilerek mağaza puanını 5 yıldıza taşır."
+    ],
+    "cons": [
+      "Tekil kargo ücreti ürün fiyatına yakın olduğu için '2 Alana 1 Bedava' veya 'Sepete Ek Ürün' olarak pazarlanmalıdır.",
+      "Parmak deliğinin çapaklı kalmaması için iç duvar kalibrasyonu düzgün olmalıdır."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "60°C",
+      "nozzle_temp": "215°C",
+      "layer_height": "0.20 mm",
+      "wall_loops": "4 Hat",
+      "infill_density": "%30",
+      "infill_pattern": "Gyroid",
+      "print_speed": "200 mm/s",
+      "supports": "KAPALI",
+      "bambu_time": "14 dakika | 12'li Seri Tabla: 1 saat 40 dk",
+      "pro_tip": "Pastel Mor, Adaçayı Yeşili ve Krem renklerde basıp yanında şık bir kraft kartonla paketleyin."
+    },
+    "photo_prompts": [
+      "Ergonomic 3d printed thumb book page holder keeping novel pages open effortlessly in one hand, cozy reading scene",
+      "Wing shaped 3d printed page holder resting on open paperback book beside a warm ceramic mug of tea",
+      "Trio of pastel colored thumb page holders arranged elegantly on a stack of hardcover books"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 4.8,
+    "electricity_cost_tl": 0.15,
+    "packaging_cost_tl": 6.0,
+    "total_production_cost_tl": 10.95,
+    "market_price_tl": 120.0,
+    "our_selling_price_tl": 89.0,
+    "dolap_commission_tl": 13.35,
+    "net_profit_tl": 64.7,
+    "profit_margin_percent": 72.7,
+    "price_advantage_tl": 31.0
+  },
+  "agent": {
+    "type": "nis",
+    "name": "Ajan 1 (Niş & Özgün)",
+    "badge": "🟢 Niş Ürün (Dolap'ta Yok)"
+  },
+  "pros": [
+    "89 TL fiyatıyla mükemmel bir sepet tamamlama ve dürtüsel alışveriş ürünü.",
+    "Tek elle yatakta, otobüste, kafede kitap okuyan herkesin doğrudan konforunu artırır.",
+    "12 gram filament ve 14 dakika basım. Bambu Lab tablasına tek seferde 15 adet dizilebilir.",
+    "Diğer ürünlerin yanında promosyon hediye olarak verilerek mağaza puanını 5 yıldıza taşır."
+  ],
+  "cons": [
+    "Tekil kargo ücreti ürün fiyatına yakın olduğu için '2 Alana 1 Bedava' veya 'Sepete Ek Ürün' olarak pazarlanmalıdır.",
+    "Parmak deliğinin çapaklı kalmaması için iç duvar kalibrasyonu düzgün olmalıdır."
+  ]
+}

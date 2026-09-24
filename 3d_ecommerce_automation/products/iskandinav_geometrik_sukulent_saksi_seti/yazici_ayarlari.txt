@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: 3'lü Modern İskandinav Sukulent Saksı Seti (Drenaj Tabaklı)
+Kategori: Ev & Dekorasyon (🪴)
+Araştıran Ajan: Ajan 2 (Popüler & Fiyat Kırıcı)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://www.printables.com/model/11250
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 60°C
+• Nozzle Sıcaklığı: 220°C (Pastel Mat PLA)
+• Katman Kalınlığı: 0.24 mm
+• Duvar Hatları (Wall Loops): 2 Hat (Vazo Modu Uyumlu)
+• Doluluk Oranı: %0 (Vazo) veya %15
+• Doluluk Deseni: Gyroid
+• Baskı Hızı: 200 mm/s
+• Destek (Support): KAPALI
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 1 saat 15 dk (3'lü Takım)
+• Filament Tüketimi: ~72 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 229.0 TL
+• Piyasa / Rakip Fiyatı: 290.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+3 saksıyı tek tek değil, 3 farklı pastel renkte bir takım olarak listeleyin; 'Modern 3'lü Set' aramalarında ilk sıraya çıkar.

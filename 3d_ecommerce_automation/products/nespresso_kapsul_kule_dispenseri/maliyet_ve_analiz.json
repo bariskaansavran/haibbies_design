@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "nespresso_kapsul_kule_dispenseri",
+    "slug": "nespresso_kapsul_kule_dispenseri",
+    "title": "Nespresso Uyumlu Kahve Kapsül Kulesi Dispenseri (10'lu)",
+    "agent_type": "nis",
+    "agent_name": "Ajan 1 (Niş & Özgün)",
+    "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)",
+    "category": "ev",
+    "category_name": "Ev & Kahve",
+    "emoji": "☕",
+    "filament_grams": 78,
+    "print_hours": 1.8,
+    "market_price_tl": 250.0,
+    "our_selling_price_tl": 199.0,
+    "extra_costs": 3.0,
+    "source_url": "https://www.thingiverse.com/thing:2427670",
+    "short_desc": "Mutfak tezgahında kahve kapsüllerini şık tutan, alttan tek tek yerçekimiyle çekilebilen minimalist kule.",
+    "dolap_title": "Nespresso Uyumlu Kahve Kapsül Standı Kulesi - Mutfak Masaüstü Düzenleyici 3D",
+    "dolap_competition": "Düşük (3D Kompakt Kule Az)",
+    "competition_level": "low",
+    "competition_note": "Piyasada 450 TL'ye satılan metal kahve standları yerine 199 TL'ye modern mat siyah 3D kule Dolap'ta rakipsiz.",
+    "pros": [
+      "Kahve köşesi (Coffee Corner) dekorasyonu yapan kitle için çok caziptir.",
+      "Alttan bir kapsül çekildiğinde üstteki kapsüller yerçekimiyle otomatik aşağı kayar.",
+      "Dikey desteksiz tek parça basılır; 199 TL fiyata 136 TL net kâr bırakır.",
+      "Tezgahta sadece 8x8 cm yer kaplar."
+    ],
+    "cons": [
+      "Dikey yüksek yapıda olduğu için tabladan ayrılmaması adına tabana 4mm brim açılmalıdır.",
+      "Mat Siyah PLA tercih edilmelidir; parlak filament mutfakta ucuz plastik hissi verebilir."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "65°C / 60°C",
+      "nozzle_temp": "220°C (Mat Siyah PLA)",
+      "layer_height": "0.24 mm",
+      "wall_loops": "3 Hat",
+      "infill_density": "%15",
+      "infill_pattern": "Gyroid",
+      "print_speed": "180 mm/s",
+      "supports": "KAPALI",
+      "bambu_time": "1 saat 40 dk",
+      "pro_tip": "Tabana 4 adet şeffaf silikon kaydırmaz ped yapıştırın; tezgahı çizmez ve kapsül çekerken devrilmez."
+    },
+    "photo_prompts": [
+      "Sleek matte black 3d printed Nespresso capsule dispenser tower next to modern espresso machine on kitchen marble",
+      "Human hand drawing a golden coffee pod smoothly from bottom slot of the vertical gravity dispenser",
+      "Two matching capsule towers displaying colorful coffee pods in organized modern luxury kitchen coffee station"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 31.2,
+    "electricity_cost_tl": 1.08,
+    "packaging_cost_tl": 8.0,
+    "total_production_cost_tl": 40.28,
+    "market_price_tl": 250.0,
+    "our_selling_price_tl": 199.0,
+    "dolap_commission_tl": 29.85,
+    "net_profit_tl": 128.87,
+    "profit_margin_percent": 64.8,
+    "price_advantage_tl": 51.0
+  },
+  "agent": {
+    "type": "nis",
+    "name": "Ajan 1 (Niş & Özgün)",
+    "badge": "🟢 Niş Ürün (Dolap'ta Yok)"
+  },
+  "pros": [
+    "Kahve köşesi (Coffee Corner) dekorasyonu yapan kitle için çok caziptir.",
+    "Alttan bir kapsül çekildiğinde üstteki kapsüller yerçekimiyle otomatik aşağı kayar.",
+    "Dikey desteksiz tek parça basılır; 199 TL fiyata 136 TL net kâr bırakır.",
+    "Tezgahta sadece 8x8 cm yer kaplar."
+  ],
+  "cons": [
+    "Dikey yüksek yapıda olduğu için tabladan ayrılmaması adına tabana 4mm brim açılmalıdır.",
+    "Mat Siyah PLA tercih edilmelidir; parlak filament mutfakta ucuz plastik hissi verebilir."
+  ]
+}

@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: Kristal Eklemli İpek Parlak Ejderha (Dual-Color Silk)
+Kategori: Oyuncak & Sanat (🐉)
+Araştıran Ajan: Ajan 2 (Popüler & Fiyat Kırıcı)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://www.printables.com/model/139369
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 65°C
+• Nozzle Sıcaklığı: 228°C (Silk parlaklığı için)
+• Katman Kalınlığı: 0.20 mm
+• Duvar Hatları (Wall Loops): 3 Hat
+• Doluluk Oranı: %15
+• Doluluk Deseni: Gyroid
+• Baskı Hızı: Dış Duvar: 70 mm/s, İç: 180 mm/s
+• Destek (Support): KAPALI (Print-in-Place)
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 2 saat 40 dk
+• Filament Tüketimi: ~75 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 239.0 TL
+• Piyasa / Rakip Fiyatı: 290.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+Işık altında kıvrılırken kısa bir video çekip ilana yükleyin; ejderhanın akıcı hareketi alıcıyı anında büyüler.

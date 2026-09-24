@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: Dönen Dişli Mekanik Sonsuz Takvim (Perpetual Gear Calendar)
+Kategori: Prestij & Ofis (⚙️)
+Araştıran Ajan: Ajan 2 (Popüler & Fiyat Kırıcı)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://makerworld.com/en/models/15234
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 65°C / 60°C
+• Nozzle Sıcaklığı: 225°C (Metalik Silk Filament)
+• Katman Kalınlığı: 0.16 mm (Hassas diş profili)
+• Duvar Hatları (Wall Loops): 3 Hat
+• Doluluk Oranı: %20
+• Doluluk Deseni: Gyroid
+• Baskı Hızı: 140 mm/s
+• Destek (Support): KAPALI (Düz basılır)
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 2 saat 40 dk
+• Filament Tüketimi: ~110 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 299.0 TL
+• Piyasa / Rakip Fiyatı: 420.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+Dişlileri döndürürken çıkan tatmin edici tık tık sesini gösteren kısa bir video ekleyin; takvim arayan herkes satın alır.

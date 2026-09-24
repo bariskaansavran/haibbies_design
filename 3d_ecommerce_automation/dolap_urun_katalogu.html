@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haibbies Design — Modern 3D E-Ticaret Kataloğu & Dolap Pazar Analizi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+            },
+            surface: {
+              50: '#0b0f19',
+              100: '#111827',
+              200: '#1f2937',
+              300: '#374151',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+    body {
+      background: #07090e;
+      color: #f3f4f6;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+    .glass-nav {
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card {
+      background: linear-gradient(180deg, rgba(17, 24, 39, 0.7) 0%, rgba(11, 15, 25, 0.9) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(99, 102, 241, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(99, 102, 241, 0.15);
+    }
+    .glow-selected {
+      border-color: #10b981 !important;
+      box-shadow: 0 0 30px -5px rgba(16, 185, 129, 0.35), 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+    }
+    .tab-pill {
+      transition: all 0.2s ease;
+    }
+    .tab-pill.active {
+      background: #3b82f6;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #1f2937;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-100 flex flex-col justify-between">
+
+  <!-- Üst Navigasyon & Marka Barı -->
+  <header class="sticky top-0 z-50 glass-nav px-6 py-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- Marka & Durum -->
+      <div class="flex items-center gap-3 w-full md:w-auto">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-emerald-400 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-500/25 ring-1 ring-white/20">
+          H
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-lg font-extrabold tracking-tight text-white">HAIBBIES DESIGN</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+              3 AJAN AKTİF
+            </span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/30">
+              Bambu Lab V2
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 font-medium">Dolap Rekabet, Artı-Eksi Analizi & İnteraktif Üretim Kataloğu</p>
+        </div>
+      </div>
+
+      <!-- Canlı KPI İstatistikleri -->
+      <div class="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-start md:justify-end">
+        
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 text-center">
+          <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Toplam Portföy</div>
+          <div class="text-base font-black text-white" id="statActiveCount">16 Ürün</div>
+        </div>
+
+        <div class="bg-emerald-950/40 border border-emerald-500/40 rounded-xl px-4 py-2 text-center ring-1 ring-emerald-500/30">
+          <div class="text-[10px] text-emerald-300 font-bold uppercase tracking-wider flex items-center gap-1 justify-center">
+            <i class="fa-solid fa-calculator"></i> Seçilen Kârı
+          </div>
+          <div class="text-base font-black text-emerald-400" id="statSelectedProfit">0.00 TL</div>
+        </div>
+
+        <div class="bg-blue-950/30 border border-blue-800/40 rounded-xl px-3.5 py-2 text-center">
+          <div class="text-[10px] text-blue-300 font-bold uppercase tracking-wider">Seçilen Sayısı</div>
+          <div class="text-base font-black text-blue-400" id="statSelectedCount">0 Ürün</div>
+        </div>
+
+        <div class="bg-rose-950/30 border border-rose-900/40 rounded-xl px-3 py-2 text-center cursor-pointer hover:bg-rose-900/30 transition" onclick="toggleShowDeleted()" title="Silinenleri Yönet">
+          <div class="text-[10px] text-rose-300 font-bold uppercase tracking-wider">Silinen</div>
+          <div class="text-base font-black text-rose-400" id="statDeletedCount">0</div>
+        </div>
+
+        <!-- Butonlar -->
+        <div class="flex items-center gap-2 ml-1">
+          <button onclick="exportSelected()" class="px-3.5 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-600/30 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-file-arrow-down"></i> Seçilenleri Aktar
+          </button>
+          <button onclick="restoreAllDeleted()" id="btnRestoreAll" class="hidden px-3 py-2 bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5">
+            <i class="fa-solid fa-rotate-left"></i> Geri Getir
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Filtre & Arama Bölümü -->
+    <div class="max-w-7xl mx-auto mt-4 pt-3 border-t border-slate-800/80 flex flex-col lg:flex-row items-center justify-between gap-3">
+      
+      <!-- Ajan Filtreleri & Kategoriler -->
+      <div class="flex flex-wrap items-center gap-1.5 w-full lg:w-auto">
+        <button onclick="setTab('all')" class="tab-pill active px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white" data-tab="all">
+          Tümü (16)
+        </button>
+        <button onclick="setTab('nis')" class="tab-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-emerald-400 border border-emerald-500/30 hover:bg-slate-800" data-tab="nis">
+          🟢 Ajan 1: Niş Ürünler (8)
+        </button>
+        <button onclick="setTab('populer')" class="tab-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-amber-300 border border-amber-500/30 hover:bg-slate-800" data-tab="populer">
+          🔥 Ajan 2: Popüler & Fiyat Kırıcı (8)
+        </button>
+        <button onclick="setTab('selected')" class="tab-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-blue-400 border border-blue-500/30 hover:bg-slate-800" data-tab="selected">
+          ⭐ Seçilenler (<span id="badgeSelectedNum">0</span>)
+        </button>
+      </div>
+
+      <!-- Arama ve Sıralama -->
+      <div class="flex items-center gap-2.5 w-full lg:w-auto justify-end">
+        <div class="relative w-full sm:w-60">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-2.5 text-xs text-slate-500"></i>
+          <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Ürün, kategori veya özellik ara..." class="w-full bg-slate-900/90 border border-slate-800 rounded-xl pl-9 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition">
+        </div>
+        <select id="sortSelect" onchange="handleSort()" class="bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-indigo-500">
+          <option value="default">Varsayılan Sıralama</option>
+          <option value="profit-desc">En Yüksek Net Kâr</option>
+          <option value="margin-desc">En Yüksek Kâr Marjı (%)</option>
+          <option value="price-diff">En Büyük Fiyat Avantajı</option>
+          <option value="time-asc">En Hızlı Basılan</option>
+        </select>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Ana Kartlar Alanı (Product Grid) -->
+  <main class="max-w-7xl mx-auto px-4 md:px-8 py-8 w-full flex-1">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="productsGrid">
+      <!-- Dinamik Kartlar JS ile Yüklenecek -->
+    </div>
+  </main>
+
+  <!-- Alt Toast Bildirimi (Undo / Geri Al) -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 bg-slate-900 border border-slate-700 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+    <span id="toastMessage" class="text-xs font-semibold">İşlem başarıyla yapıldı.</span>
+    <button id="toastUndoBtn" class="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-bold transition ml-2">
+      Geri Al
+    </button>
+  </div>
+
+  <!-- Bambu Lab Reçete Modalı -->
+  <div id="bambuModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+        <div class="flex items-center gap-2.5">
+          <span class="text-2xl">🖨️</span>
+          <div>
+            <h3 class="text-base font-extrabold text-white" id="modalTitle">Bambu Lab Üretim Reçetesi</h3>
+            <p class="text-xs text-slate-400" id="modalSubtitle">Bambu Studio & OrcaSlicer Hazır Parametreleri</p>
+          </div>
+        </div>
+        <button onclick="closeBambuModal()" class="text-slate-400 hover:text-white p-1.5 rounded-xl hover:bg-slate-800 transition">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-xs" id="modalBody">
+        <!-- Reçete Verisi -->
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end gap-2">
+        <button onclick="copyModalCode()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition flex items-center gap-2 text-xs">
+          <i class="fa-solid fa-copy"></i> Reçeteyi Kopyala
+        </button>
+        <button onclick="closeBambuModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl transition text-xs">
+          Kapat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 py-6 px-6 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div>© 2026 <strong>Haibbies Design</strong> — Otonom 3D E-Ticaret & Dolap Üretim Kataloğu</div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <span>Bambu Lab P1S/X1C/A1</span>
+        <span>•</span>
+        <span>MakerWorld & Printables</span>
+        <span>•</span>
+        <span>Dolap Pazarı</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- İnteraktif Scriptler -->
+  <script>
+    const PRODUCTS = [{"product": {"id": "otomatik_damla_sulama_aparati", "slug": "otomatik_damla_sulama_aparati", "title": "Pet Şişe Vidalı Otomatik Damla Sulama Çivisi (4'lü Set)", "agent_type": "nis", "agent_name": "Ajan 1 (Niş & Özgün)", "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)", "category": "ev", "category_name": "Ev, Bahçe & Bitki", "emoji": "🌱", "filament_grams": 48, "print_hours": 1.1, "market_price_tl": 180.0, "our_selling_price_tl": 139.0, "extra_costs": 2.0, "source_url": "https://makerworld.com/en/models/45821", "short_desc": "Standart pet su ve meşrubat şişelerine vidalanan, bitki köklerine ayarlı yavaş su damlatan tatile gidiş kurtarıcısı.", "dolap_title": "Pet Şişe Otomatik Bitki Damla Sulama Aparatı 4'lü Set - Çiçek Tatil Sulayıcı", "dolap_competition": "Düşük (Pazar Boş)", "competition_level": "low", "competition_note": "Dolap'ta ev bitkisi ve sukulent alan devasa kitle var; fakat pet şişe vidalanan 3D damla sulama aparatı satan neredeyse sıfır. İlk giren mağaza aramaları tekeline alır.", "pros": ["Tatile gidenler, unutkanlar ve ofis bitkisi besleyenler için kesin problem çözer.", "4'lü set olarak 139 TL tam dürtüsel alışveriş baremindedir.", "0 desi kargo avantajı; kırılma veya bozulma riski yoktur.", "Bambu Lab'da 4 adet aparat tek seferde 1 saat 5 dakikada desteksiz basılır."], "cons": ["Pet şişe diş toleransının sızdırmaz olması için 0.20mm standart katman kalınlığı ile basılmalıdır.", "Baskı sonrası nozülün tıkanmaması için tabla soğuduktan sonra nazikçe alınmalıdır."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm Paslanmaz / Sertleştirilmiş Çelik", "build_plate": "Textured PEI Plate", "bed_temp": "65°C / 60°C", "nozzle_temp": "220°C (PLA Basic)", "layer_height": "0.20 mm", "wall_loops": "3 Hat", "infill_density": "%20", "infill_pattern": "Gyroid", "print_speed": "200 mm/s", "supports": "KAPALI (Desteksiz)", "bambu_time": "1 sa 05 dk (4'lü Set)", "pro_tip": "4 aparatı farklı renklerde (Toprak Kahvesi, Yaprak Yeşili, Krem, Turuncu) basıp 'Pastel Renkli Doğa Seti' olarak satın."}, "photo_prompts": ["Macro studio shot of a sleek 3d printed conical plant watering spike with precise bottle screw threads, studio lighting, clean background", "A 3d printed watering spike attached to a glass bottle upside down inside a lush green Monstera potted plant in modern living room", "Close up detail showing water droplet forming at the tip of the tapered 3d printed irrigation spike in soil"]}, "fin": {"filament_cost_tl": 19.2, "electricity_cost_tl": 0.66, "packaging_cost_tl": 7.0, "total_production_cost_tl": 26.86, "market_price_tl": 180.0, "our_selling_price_tl": 139.0, "dolap_commission_tl": 20.85, "net_profit_tl": 91.29, "profit_margin_percent": 65.7, "price_advantage_tl": 41.0}, "photos": ["products/otomatik_damla_sulama_aparati/photos/foto_1.jpg", "products/otomatik_damla_sulama_aparati/photos/foto_2.jpg", "products/otomatik_damla_sulama_aparati/photos/foto_3.jpg"]}, {"product": {"id": "klavye_switch_fidget_clicker", "slug": "klavye_switch_fidget_clicker", "title": "Mekanik Klavye Switch Fidget ASMR Stres Anahtarlığı", "agent_type": "nis", "agent_name": "Ajan 1 (Niş & Özgün)", "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)", "category": "oyuncak", "category_name": "Oyuncak & Fidget", "emoji": "⌨️", "filament_grams": 8, "print_hours": 0.25, "market_price_tl": 160.0, "our_selling_price_tl": 119.0, "extra_costs": 5.0, "source_url": "https://makerworld.com/en/models/80854", "short_desc": "ASMR mekanik klavye sesine ve hissiyatına sahip, tıklanabilir dokunsal stres atıcı cep anahtarlığı.", "dolap_title": "Mekanik Klavye Switch Fidget Clicker Stres Anahtarlık - ASMR Sesli 3D", "dolap_competition": "Düşük (Piyasada Hazır Monteli Yok)", "competition_level": "low", "competition_note": "Tiktok ve Instagram'da mekanik klavye sesleri milyonlar izleniyor; ancak Dolap'ta içine kaliteli switch takılı, metal halkalı hazır anahtarlık satan yok.", "pros": ["Sadece 8 gram filament harcar, 15 dakikada basılır.", "119 TL fiyatla gençler ve öğrenciler tarafından düşünmeden sepete atılır.", "Bambu Lab tablasına tek seferde 20 adet sığar; seri üretime inanılmaz uygundur.", "Yüksek kâr marjı: 119 TL satışta 85 TL net kâr bırakır."], "cons": ["İçine toptan temin edilmiş mekanik switch (Outemu Blue/Clicky) takılması gerekir.", "Keycap kapağının switch tırnağına tam oturması için tolerans kalibrasyonu önemlidir."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "60°C", "nozzle_temp": "215°C", "layer_height": "0.20 mm", "wall_loops": "3 Hat", "infill_density": "%20", "infill_pattern": "Gyroid", "print_speed": "200 mm/s", "supports": "KAPALI", "bambu_time": "14 dakika | 20'li Seri Tabla: 2 saat 15 dk", "pro_tip": "Toptan mavi clicky switch kullanın. 'Tok sesli ASMR anahtarlık' başlığıyla öğrencilerin dikkatini çekin."}, "photo_prompts": ["Human hand clicking a colorful 3d printed mechanical keyboard switch keychain, tactile keycap, studio photography", "Array of pastel color 3d printed switch keychains with metallic split rings laid out on wooden office desk", "Macro photography showing mechanical blue switch mechanism fitted inside precision 3d printed chassis"]}, "fin": {"filament_cost_tl": 3.2, "electricity_cost_tl": 0.15, "packaging_cost_tl": 10.0, "total_production_cost_tl": 13.35, "market_price_tl": 160.0, "our_selling_price_tl": 119.0, "dolap_commission_tl": 17.85, "net_profit_tl": 87.8, "profit_margin_percent": 73.8, "price_advantage_tl": 41.0}, "photos": ["products/klavye_switch_fidget_clicker/photos/foto_1.jpg", "products/klavye_switch_fidget_clicker/photos/foto_2.jpg", "products/klavye_switch_fidget_clicker/photos/foto_3.jpg"]}, {"product": {"id": "cuzdan_boy_kart_telefon_standi", "slug": "cuzdan_boy_kart_telefon_standi", "title": "Cüzdan Boy Kredi Kartı Katlanabilir Telefon Standı (2'li Set)", "agent_type": "nis", "agent_name": "Ajan 1 (Niş & Özgün)", "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)", "category": "masa", "category_name": "Masa & Tech", "emoji": "💳", "filament_grams": 16, "print_hours": 0.35, "market_price_tl": 180.0, "our_selling_price_tl": 139.0, "extra_costs": 2.0, "source_url": "https://www.printables.com/model/13765", "short_desc": "Kredi kartı kalınlığında cüzdana sığan, açıldığında telefonu yatay ve dikey sabit tutan ultra ince katlanır stand.", "dolap_title": "Cüzdana Sığan Katlanabilir Kart Telefon Standı (2'li Set) - Ultra İnce Cep Standı", "dolap_competition": "Düşük (Cüzdana Sığan Model Yok)", "competition_level": "low", "competition_note": "Dolap'ta hantal masaüstü plastik standlar var ancak cüzdana kart yuvasına giren ultra ince katlanır kart model yok. İnovatif olduğu için dikkat çeker.", "pros": ["Her akıllı telefon kullanıcısının her an çantasında/cüzdanında taşıyabileceği pratiklik.", "2'li set satıldığı için 'Biri size, biri arkadaşınıza hediye' kurgusu çok tutar.", "16 gram filament tüketimiyle neredeyse sıfır hammadde maliyeti.", "0 desi mektup zarfında gönderilebilir, kargo maliyeti minimumdur."], "cons": ["Ultra ince olduğu için tabla yapışması kritik; tabladan soğumadan zorla çekilirse bükülebilir.", "Katlanma menteşe yerlerinde kaliteli PLA filament tercih edilmelidir."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "65°C / 60°C", "nozzle_temp": "220°C", "layer_height": "0.20 mm", "wall_loops": "4 Hat (Menteşe dayanıklılığı için)", "infill_density": "%100 (Dolu gövde)", "infill_pattern": "Düz Çizgiler", "print_speed": "150 mm/s", "supports": "KAPALI", "bambu_time": "20 dakika (Çift)", "pro_tip": "Tabladan çıkarmadan önce tablanın 35°C altına soğumasını bekleyin; böylece kart dümdüz ve pürüzsüz kalır."}, "photo_prompts": ["Ultra slim 3d printed credit card phone stand propping up a smartphone in landscape video mode on cafe table", "Hand sliding the thin 3d printed card stand directly into leather cardholder pocket, lifestyle shot", "Close up showing the origami style folding hinges of the 3d printed portable plastic stand"]}, "fin": {"filament_cost_tl": 6.4, "electricity_cost_tl": 0.21, "packaging_cost_tl": 7.0, "total_production_cost_tl": 13.61, "market_price_tl": 180.0, "our_selling_price_tl": 139.0, "dolap_commission_tl": 20.85, "net_profit_tl": 104.54, "profit_margin_percent": 75.2, "price_advantage_tl": 41.0}, "photos": ["products/cuzdan_boy_kart_telefon_standi/photos/foto_1.jpg", "products/cuzdan_boy_kart_telefon_standi/photos/foto_2.jpg", "products/cuzdan_boy_kart_telefon_standi/photos/foto_3.jpg"]}, {"product": {"id": "dokme_kapakli_poset_klipsi", "slug": "dokme_kapakli_poset_klipsi", "title": "Vidalı Dökme Ağızlı Kilitli Poşet Klipsi (3'lü Paket)", "agent_type": "nis", "agent_name": "Ajan 1 (Niş & Özgün)", "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)", "category": "ev", "category_name": "Ev & Mutfak", "emoji": "🧂", "filament_grams": 45, "print_hours": 0.9, "market_price_tl": 170.0, "our_selling_price_tl": 129.0, "extra_costs": 2.0, "source_url": "https://makerworld.com/en/models/25890", "short_desc": "Gıda, bakliyat ve deterjan poşetlerine takılarak vidalı kapakla kolay döküm sağlayan sızdırmaz klips.", "dolap_title": "Dökme Kapaklı Kilitli Poşet Klipsi 3'lü Set - Bakliyat & Deterjan Dökme Musluğu", "dolap_competition": "Düşük (Mutfak İnovasyonu Boş Pazar)", "competition_level": "low", "competition_note": "Normal mandallar her yerde var fakat poşeti kapatırken aynı zamanda vidalı dökme musluğu olan 3D aparat Dolap'ta neredeyse hiç yok.", "pros": ["Mutfak düzeni ve bebek maması/evcil hayvan maması saklayan kadın alıcıların anında ilgisini çeker.", "Pirinç, un, deterjan dökülmelerini kesin olarak önler.", "3'lü paket 129 TL fiyatıyla çok hızlı sepet doldurur.", "Vidalı kapak geometrisi Bambu Lab'da pürüzsüz oturur."], "cons": ["Vidalı kapağın rahat dönmesi için Bambu Studio'da X-Y delik toleransı 0.05mm gerekebilir.", "Gıda temasına uygun organik PLA ile basıldığı açıklamada belirtilmelidir."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "60°C", "nozzle_temp": "220°C (PLA Food-Safe)", "layer_height": "0.20 mm", "wall_loops": "3 Hat", "infill_density": "%20", "infill_pattern": "Gyroid", "print_speed": "180 mm/s", "supports": "KAPALI", "bambu_time": "50 dakika (3'lü Paket)", "pro_tip": "Gövdeyi beyaz, vidalı kapağı ise Kırmızı/Mavi/Sarı canlı renklerde basarak paketi çekici hale getirin."}, "photo_prompts": ["3d printed bag clip with screw-on pour spout attached to open cereal bag pouring grains cleanly into ceramic bowl", "Tidy kitchen pantry countertop with 3 bagged ingredients sealed by colorful 3d printed pour spout clamps", "Macro shot of the interlocking clamp teeth and ergonomic screw cap threads on kitchen counter"]}, "fin": {"filament_cost_tl": 18.0, "electricity_cost_tl": 0.54, "packaging_cost_tl": 7.0, "total_production_cost_tl": 25.54, "market_price_tl": 170.0, "our_selling_price_tl": 129.0, "dolap_commission_tl": 19.35, "net_profit_tl": 84.11, "profit_margin_percent": 65.2, "price_advantage_tl": 41.0}, "photos": ["products/dokme_kapakli_poset_klipsi/photos/foto_1.jpg", "products/dokme_kapakli_poset_klipsi/photos/foto_2.jpg", "products/dokme_kapakli_poset_klipsi/photos/foto_3.jpg"]}, {"product": {"id": "laptop_mini_yukseltici_ayaklar", "slug": "laptop_mini_yukseltici_ayaklar", "title": "Ergonomik Manyetik Laptop Mini Yükseltici Ayaklar (2'li Takım)", "agent_type": "nis", "agent_name": "Ajan 1 (Niş & Özgün)", "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)", "category": "masa", "category_name": "Masa & Tech", "emoji": "💻", "filament_grams": 26, "print_hours": 0.5, "market_price_tl": 160.0, "our_selling_price_tl": 129.0, "extra_costs": 2.0, "source_url": "https://www.printables.com/model/106360", "short_desc": "Laptopun altına hava akışı sağlayarak ısınmayı önleyen ve ergonomik yazma açısı sunan cebe sığan takoz ayaklar.", "dolap_title": "MacBook & Laptop Taşınabilir Soğutucu Yükseltici Ayaklar (2'li Takım) - Cep Boy Stand", "dolap_competition": "Düşük (Taşınabilir Mini Model Yok)", "competition_level": "low", "competition_note": "Dolap'ta 400 TL'ye hantal masa standları var ama çantaya, cebe atılan iki minik manyetik yükseltici takoz yok.", "pros": ["Laptopun altını 3 cm yükselterek fanların rahat nefes almasını sağlar, ısınmayı engeller.", "Bilek açısını rahatlatır; yazılımcı, öğrenci ve ofis çalışanlarının doğrudan ihtiyacı.", "26 gram filament ve 28 dakika basım süresiyle %73 net kâr marjı sunar.", "İki ayak birbirine manyetik veya tırnakla kenetlenerek tek parça halinde taşınabilir."], "cons": ["Ağır laptopların ağırlığı altında esnememesi için en az 4 duvar hattı ile basılmalıdır.", "Alt tabana kaymayı önlemek için silikon ped yapıştırılması önerilir."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "60°C", "nozzle_temp": "220°C", "layer_height": "0.20 mm", "wall_loops": "4 Hat (Ağır yüke dayanıklı)", "infill_density": "%25", "infill_pattern": "Gyroid", "print_speed": "200 mm/s", "supports": "KAPALI", "bambu_time": "28 dakika (Çift)", "pro_tip": "Tabanına 2 adet mini kaydırmaz silikon şeffaf yapışkan ped hediye ekleyerek Dolap'ta 'Kaydırmaz Tabanlı' ibaresi kullanın."}, "photo_prompts": ["Minimalist 3d printed laptop riser feet propping up a sleek aluminum MacBook keyboard at comfortable typing angle on wooden desk", "Two compact geometric laptop feet magnetically snapped together held inside human hand palm", "Side profile view showing cooling ventilation air gap underneath laptop on work desk"]}, "fin": {"filament_cost_tl": 10.4, "electricity_cost_tl": 0.3, "packaging_cost_tl": 7.0, "total_production_cost_tl": 17.7, "market_price_tl": 160.0, "our_selling_price_tl": 129.0, "dolap_commission_tl": 19.35, "net_profit_tl": 91.95, "profit_margin_percent": 71.3, "price_advantage_tl": 31.0}, "photos": ["products/laptop_mini_yukseltici_ayaklar/photos/foto_1.jpg", "products/laptop_mini_yukseltici_ayaklar/photos/foto_2.jpg", "products/laptop_mini_yukseltici_ayaklar/photos/foto_3.jpg"]}, {"product": {"id": "parmak_kitap_sayfa_tutucu", "slug": "parmak_kitap_sayfa_tutucu", "title": "Ergonomik Kedi Patisi / Kanatlı Parmak Kitap Sayfa Tutucu", "agent_type": "nis", "agent_name": "Ajan 1 (Niş & Özgün)", "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)", "category": "hediye", "category_name": "Kişisel & Hediye", "emoji": "📖", "filament_grams": 12, "print_hours": 0.25, "market_price_tl": 120.0, "our_selling_price_tl": 89.0, "extra_costs": 1.0, "source_url": "https://www.printables.com/model/178550", "short_desc": "Tek elle kitap okurken sayfaların kendiliğinden kapanmasını engelleyen ergonomik parmak geçmeli tutucu aparat.", "dolap_title": "Tek Elle Kitap Okuma Aparatı Parmak Sayfa Tutucu - 3D Ergonomik Kitap Ayracı", "dolap_competition": "Düşük (3D Renkli Model Çok Az)", "competition_level": "low", "competition_note": "Kitapçılarda ahşap modeller 120-150 TL. Dolap'ta pastel renkli, kedi patili 3D kitap tutucu satan neredeyse yok.", "pros": ["89 TL fiyatıyla mükemmel bir sepet tamamlama ve dürtüsel alışveriş ürünü.", "Tek elle yatakta, otobüste, kafede kitap okuyan herkesin doğrudan konforunu artırır.", "12 gram filament ve 14 dakika basım. Bambu Lab tablasına tek seferde 15 adet dizilebilir.", "Diğer ürünlerin yanında promosyon hediye olarak verilerek mağaza puanını 5 yıldıza taşır."], "cons": ["Tekil kargo ücreti ürün fiyatına yakın olduğu için '2 Alana 1 Bedava' veya 'Sepete Ek Ürün' olarak pazarlanmalıdır.", "Parmak deliğinin çapaklı kalmaması için iç duvar kalibrasyonu düzgün olmalıdır."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "60°C", "nozzle_temp": "215°C", "layer_height": "0.20 mm", "wall_loops": "4 Hat", "infill_density": "%30", "infill_pattern": "Gyroid", "print_speed": "200 mm/s", "supports": "KAPALI", "bambu_time": "14 dakika | 12'li Seri Tabla: 1 saat 40 dk", "pro_tip": "Pastel Mor, Adaçayı Yeşili ve Krem renklerde basıp yanında şık bir kraft kartonla paketleyin."}, "photo_prompts": ["Ergonomic 3d printed thumb book page holder keeping novel pages open effortlessly in one hand, cozy reading scene", "Wing shaped 3d printed page holder resting on open paperback book beside a warm ceramic mug of tea", "Trio of pastel colored thumb page holders arranged elegantly on a stack of hardcover books"]}, "fin": {"filament_cost_tl": 4.8, "electricity_cost_tl": 0.15, "packaging_cost_tl": 6.0, "total_production_cost_tl": 10.95, "market_price_tl": 120.0, "our_selling_price_tl": 89.0, "dolap_commission_tl": 13.35, "net_profit_tl": 64.7, "profit_margin_percent": 72.7, "price_advantage_tl": 31.0}, "photos": ["products/parmak_kitap_sayfa_tutucu/photos/foto_1.jpg", "products/parmak_kitap_sayfa_tutucu/photos/foto_2.jpg", "products/parmak_kitap_sayfa_tutucu/photos/foto_3.jpg"]}, {"product": {"id": "manyetik_gozlu_baykus_anahtarlik", "slug": "manyetik_gozlu_baykus_anahtarlik", "title": "Gözleri Açılan Manyetik Baykuş Duvar Anahtarlığı", "agent_type": "nis", "agent_name": "Ajan 1 (Niş & Özgün)", "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)", "category": "ev", "category_name": "Ev & Hediye", "emoji": "🦉", "filament_grams": 42, "print_hours": 1.2, "market_price_tl": 190.0, "our_selling_price_tl": 159.0, "extra_costs": 5.0, "source_url": "https://makerworld.com/en/models/30918", "short_desc": "Anahtarı asınca gözlerini açan, anahtar alınınca uykuya geçen eğlenceli manyetik mekanik duvar askısı.", "dolap_title": "Gözleri Açılan Manyetik Baykuş Anahtarlık Duvar Askısı - 3D Hareketli Ev Hediyesi", "dolap_competition": "Düşük (Düzenli Satan Yok)", "competition_level": "low", "competition_note": "TikTok ve Reels'te çok sevilen viral model; Dolap'ta düzenli stokla hazır mıknatıslı satan profil yok.", "pros": ["Mekanik sürpriz faktörü sayesinde hem çocuklar hem yetişkinler için büyüleyici yeni ev hediyesi.", "159 TL fiyat baremi Dolap'ta hediye kategorisinde anında alıcı bulur.", "Gövdesi ve hareketli göz kapakları montajsız veya 10 saniyede kolayca geçer.", "Arka yüzeyinde çift taraflı montaj bandıyla duvar delmeden kullanılır."], "cons": ["2 adet 10x2 mm veya 8x2 mm neodimyum mıknatıs gerektirir.", "Mıknatıs yuvalarının toleransı tam olmalı, japon yapıştırıcıyla sabitlenmelidir."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "65°C / 60°C", "nozzle_temp": "220°C", "layer_height": "0.20 mm", "wall_loops": "3 Hat", "infill_density": "%20", "infill_pattern": "Gyroid", "print_speed": "180 mm/s", "supports": "KAPALI", "bambu_time": "1 saat 10 dk", "pro_tip": "Gözleri açılıp kapanırken çekilmiş 5 saniyelik videoyu Dolap ilanına eklemek siparişleri 3 katına çıkarır."}, "photo_prompts": ["Cute 3d printed owl wall key holder with wide awake open eyes holding heavy keychain on modern wall", "Side by side view of owl sleeping with closed eyes and owl waking up with bright eyes when keys are hung", "Two owl key holders in matte black and cream white mounted by front entryway door"]}, "fin": {"filament_cost_tl": 16.8, "electricity_cost_tl": 0.72, "packaging_cost_tl": 10.0, "total_production_cost_tl": 27.52, "market_price_tl": 190.0, "our_selling_price_tl": 159.0, "dolap_commission_tl": 23.85, "net_profit_tl": 107.63, "profit_margin_percent": 67.7, "price_advantage_tl": 31.0}, "photos": ["products/manyetik_gozlu_baykus_anahtarlik/photos/foto_1.jpg", "products/manyetik_gozlu_baykus_anahtarlik/photos/foto_2.jpg", "products/manyetik_gozlu_baykus_anahtarlik/photos/foto_3.jpg"]}, {"product": {"id": "nespresso_kapsul_kule_dispenseri", "slug": "nespresso_kapsul_kule_dispenseri", "title": "Nespresso Uyumlu Kahve Kapsül Kulesi Dispenseri (10'lu)", "agent_type": "nis", "agent_name": "Ajan 1 (Niş & Özgün)", "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)", "category": "ev", "category_name": "Ev & Kahve", "emoji": "☕", "filament_grams": 78, "print_hours": 1.8, "market_price_tl": 250.0, "our_selling_price_tl": 199.0, "extra_costs": 3.0, "source_url": "https://www.thingiverse.com/thing:2427670", "short_desc": "Mutfak tezgahında kahve kapsüllerini şık tutan, alttan tek tek yerçekimiyle çekilebilen minimalist kule.", "dolap_title": "Nespresso Uyumlu Kahve Kapsül Standı Kulesi - Mutfak Masaüstü Düzenleyici 3D", "dolap_competition": "Düşük (3D Kompakt Kule Az)", "competition_level": "low", "competition_note": "Piyasada 450 TL'ye satılan metal kahve standları yerine 199 TL'ye modern mat siyah 3D kule Dolap'ta rakipsiz.", "pros": ["Kahve köşesi (Coffee Corner) dekorasyonu yapan kitle için çok caziptir.", "Alttan bir kapsül çekildiğinde üstteki kapsüller yerçekimiyle otomatik aşağı kayar.", "Dikey desteksiz tek parça basılır; 199 TL fiyata 136 TL net kâr bırakır.", "Tezgahta sadece 8x8 cm yer kaplar."], "cons": ["Dikey yüksek yapıda olduğu için tabladan ayrılmaması adına tabana 4mm brim açılmalıdır.", "Mat Siyah PLA tercih edilmelidir; parlak filament mutfakta ucuz plastik hissi verebilir."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "65°C / 60°C", "nozzle_temp": "220°C (Mat Siyah PLA)", "layer_height": "0.24 mm", "wall_loops": "3 Hat", "infill_density": "%15", "infill_pattern": "Gyroid", "print_speed": "180 mm/s", "supports": "KAPALI", "bambu_time": "1 saat 40 dk", "pro_tip": "Tabana 4 adet şeffaf silikon kaydırmaz ped yapıştırın; tezgahı çizmez ve kapsül çekerken devrilmez."}, "photo_prompts": ["Sleek matte black 3d printed Nespresso capsule dispenser tower next to modern espresso machine on kitchen marble", "Human hand drawing a golden coffee pod smoothly from bottom slot of the vertical gravity dispenser", "Two matching capsule towers displaying colorful coffee pods in organized modern luxury kitchen coffee station"]}, "fin": {"filament_cost_tl": 31.2, "electricity_cost_tl": 1.08, "packaging_cost_tl": 8.0, "total_production_cost_tl": 40.28, "market_price_tl": 250.0, "our_selling_price_tl": 199.0, "dolap_commission_tl": 29.85, "net_profit_tl": 128.87, "profit_margin_percent": 64.8, "price_advantage_tl": 51.0}, "photos": ["products/nespresso_kapsul_kule_dispenseri/photos/foto_1.jpg", "products/nespresso_kapsul_kule_dispenseri/photos/foto_2.jpg", "products/nespresso_kapsul_kule_dispenseri/photos/foto_3.jpg"]}, {"product": {"id": "hot_wheels_moduler_garaj_5li", "slug": "hot_wheels_moduler_garaj_5li", "title": "Hot Wheels Modüler Altıgen Garaj Standı (5'li Set)", "agent_type": "populer", "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)", "agent_badge": "🔥 Popüler & Fiyat Kırıcı", "category": "koleksiyon", "category_name": "Koleksiyon & Hobi", "emoji": "🏎️", "filament_grams": 175, "print_hours": 5.2, "market_price_tl": 450.0, "our_selling_price_tl": 289.0, "extra_costs": 4.0, "source_url": "https://www.thingiverse.com/thing:3044005", "short_desc": "Hot Wheels araçları için birbirine kenetlenen altıgen modüler petek garaj ve delmesiz duvar rafı.", "dolap_title": "Hot Wheels Modüler Garaj Standı 5'li Set - 3D Baskı Duvar Rafı Koleksiyon", "dolap_competition": "Orta (Ahşap Rakipler Var, 3D Petek Yok)", "competition_level": "medium", "competition_note": "Dolap'ta hantal ahşap lazer raflar 450-600 TL istiyor. Biz modern 5'li 3D petek garajı 289 TL'ye sunup duvara delmeden yapışma avantajıyla öne geçiyoruz.", "pros": ["Rakipler 450 TL isterken 289 TL fiyatla piyasayı domine ederiz.", "Diecast koleksiyonerleri ilk alımdan sonra sürekli 5'li ek modül siparişi verir.", "Tamamen desteksiz, 0.28mm katmanla hızlı basılır.", "Net kâr: +164 TL (%56.9 kâr marjı)."], "cons": ["5 modül toplam 175g filament tüketir ve 5 saat sürer; tablayı dolu tutmak gerekir.", "Duvara montaj için kutu içerisine kaliteli çift taraflı köpük bant hediye konulmalıdır."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "65°C / 60°C", "nozzle_temp": "220°C", "layer_height": "0.28 mm Hızlı Taslak", "wall_loops": "2 Hat", "infill_density": "%10", "infill_pattern": "Gyroid", "print_speed": "220 mm/s", "supports": "KAPALI", "bambu_time": "5 saat (5'li Set)", "pro_tip": "Dokulu PEI tabla arka yüze harika bir matlık verir; çift taraflı bant arkaya sımsıkı tutunur."}, "photo_prompts": ["Modern hexagon modular 3d printed garage display holding collectible diecast toy cars mounted on wall", "Close up shot showing precision interlocking dovetail joints clicking two black hexagon modules together", "Full collection wall display in boy's bedroom showcasing colorful model cars parked neatly inside honeycombs"]}, "fin": {"filament_cost_tl": 70.0, "electricity_cost_tl": 3.12, "packaging_cost_tl": 9.0, "total_production_cost_tl": 82.12, "market_price_tl": 450.0, "our_selling_price_tl": 289.0, "dolap_commission_tl": 43.35, "net_profit_tl": 163.53, "profit_margin_percent": 56.6, "price_advantage_tl": 161.0}, "photos": ["products/hot_wheels_moduler_garaj_5li/photos/foto_1.jpg", "products/hot_wheels_moduler_garaj_5li/photos/foto_2.jpg", "products/hot_wheels_moduler_garaj_5li/photos/foto_3.jpg"]}, {"product": {"id": "dummy_13_eklemli_aksiyon_figuru", "slug": "dummy_13_eklemli_aksiyon_figuru", "title": "Dummy 13 Eklemli Aksiyon Figürü (Silahlı Savaşçı Versiyonu)", "agent_type": "populer", "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)", "agent_badge": "🔥 Popüler & Fiyat Kırıcı", "category": "oyuncak", "category_name": "Oyuncak & Viral", "emoji": "🤖", "filament_grams": 32, "print_hours": 1.4, "market_price_tl": 200.0, "our_selling_price_tl": 179.0, "extra_costs": 2.0, "source_url": "https://www.printables.com/model/593185", "short_desc": "Tüm eklemleri hareket edebilen, poz verdirilebilen TikTok fenomeni mafsallı figür + 2 adet mini kılıç ve kalkan.", "dolap_title": "Dummy 13 Eklemli Aksiyon Figürü + Silah Seti Hediyeli - 3D Poz Verilebilir", "dolap_competition": "Yüksek (Viral Model, Bundle ile Kazanılır)", "competition_level": "high", "competition_note": "Dolap'ta sadece çıplak figürü 180-200 TL'ye satan çok satıcı var. Biz 179 TL'ye satıp yanına 2 mini kılıç + kalkan ekleyerek 'Silahlı Paket' ile ezici üstünlük kuruyoruz.", "pros": ["TikTok ve Instagram Reels sayesinde çocuk ve genç kitlesi hazır bekliyor.", "Rakipler çıplak verirken bizim hediyeli kılıçlı modelimiz anında tercih sebebi olur.", "32 gram filamentle 138 TL net kâr (%77 kâr marjı).", "Gövde parçaları düz tablada desteksiz basılır."], "cons": ["Bilye eklemleri zamanla gevşemesin diye iç iskelet PETG ile basılmalıdır.", "Küçük bilye parçaları için Bambu Studio'da mouse-ear brim açılması önerilir."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "65°C / 60°C", "nozzle_temp": "220°C (İskelet PETG, Zırh PLA)", "layer_height": "0.16 mm Optimal", "wall_loops": "3 Hat", "infill_density": "%20", "infill_pattern": "Gyroid", "print_speed": "120 mm/s (Hassas tolerans)", "supports": "KAPALI", "bambu_time": "1 saat 20 dk", "pro_tip": "İç iskeleti Siyah PETG, dış zırhı Neon Turuncu veya Kırmızı basarak çift renk kontrast yaratın."}, "photo_prompts": ["Articulated 3d printed Dummy 13 action figure posed dynamically in martial arts stance with miniature sword", "Dummy 13 figure holding detailed 3d printed tactical shield on modern office desk under rim lighting", "Three Dummy 13 action figures in metallic silver, stealth black and ruby red standing side by side"]}, "fin": {"filament_cost_tl": 12.8, "electricity_cost_tl": 0.84, "packaging_cost_tl": 7.0, "total_production_cost_tl": 20.64, "market_price_tl": 200.0, "our_selling_price_tl": 179.0, "dolap_commission_tl": 26.85, "net_profit_tl": 131.51, "profit_margin_percent": 73.5, "price_advantage_tl": 21.0}, "photos": ["products/dummy_13_eklemli_aksiyon_figuru/photos/foto_1.jpg", "products/dummy_13_eklemli_aksiyon_figuru/photos/foto_2.jpg", "products/dummy_13_eklemli_aksiyon_figuru/photos/foto_3.jpg"]}, {"product": {"id": "kristal_eklemli_ipek_ejderha", "slug": "kristal_eklemli_ipek_ejderha", "title": "Kristal Eklemli İpek Parlak Ejderha (Dual-Color Silk)", "agent_type": "populer", "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)", "agent_badge": "🔥 Popüler & Fiyat Kırıcı", "category": "oyuncak", "category_name": "Oyuncak & Sanat", "emoji": "🐉", "filament_grams": 75, "print_hours": 2.7, "market_price_tl": 290.0, "our_selling_price_tl": 239.0, "extra_costs": 2.0, "source_url": "https://www.printables.com/model/139369", "short_desc": "Tek parça montajsız hareketli basılan, ışıkta yanardöner parıldayan ipek dokulu kristal ejderha.", "dolap_title": "Eklemli Kristal Ejderha Hareketli Fidget Masaj Oyuncağı - İpek Parlak Sedefli", "dolap_competition": "Orta (Mat Basan Çok, Kaliteli İpek Az)", "competition_level": "medium", "competition_note": "Dolap'ta sıradan mat filamentle basanlar 250-290 TL istiyor. Biz iki renkli yanardöner Silk filament ve 239 TL fiyatla vitrinin yıldızı oluyoruz.", "pros": ["Fotoğrafta ışığı yansıtıp parladığı için Dolap vitrininde en çok tıklanan ürün.", "Print-in-place: Tek parça tabladan kalkar, sıfır montaj, sıfır destek.", "Kadın, öğrenci ve masa dekoru meraklılarının 1 numaralı hediyelik seçeneği.", "Net kâr: +164 TL (%68.6 kâr marjı)."], "cons": ["Silk filament 250 mm/s hızda basılırsa matlaşır; dış duvar hızı 70 mm/s ve 228°C nozül yapılmalıdır.", "Tabla yapışması için ilk katmanda tabla 65°C olmalıdır."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "65°C", "nozzle_temp": "228°C (Silk parlaklığı için)", "layer_height": "0.20 mm", "wall_loops": "3 Hat", "infill_density": "%15", "infill_pattern": "Gyroid", "print_speed": "Dış Duvar: 70 mm/s, İç: 180 mm/s", "supports": "KAPALI (Print-in-Place)", "bambu_time": "2 saat 40 dk", "pro_tip": "Işık altında kıvrılırken kısa bir video çekip ilana yükleyin; ejderhanın akıcı hareketi alıcıyı anında büyüler."}, "photo_prompts": ["Shimmering emerald green and gold silk 3d printed articulated crystal dragon coiling dynamically on dark slate", "Flexible articulated crystal dragon wrapping around human wrist comfortably like mythical creature", "Macro photography showing glistening crystal scales reflecting warm studio rim lighting"]}, "fin": {"filament_cost_tl": 30.0, "electricity_cost_tl": 1.62, "packaging_cost_tl": 7.0, "total_production_cost_tl": 38.62, "market_price_tl": 290.0, "our_selling_price_tl": 239.0, "dolap_commission_tl": 35.85, "net_profit_tl": 164.53, "profit_margin_percent": 68.8, "price_advantage_tl": 51.0}, "photos": ["products/kristal_eklemli_ipek_ejderha/photos/foto_1.jpg", "products/kristal_eklemli_ipek_ejderha/photos/foto_2.jpg", "products/kristal_eklemli_ipek_ejderha/photos/foto_3.jpg"]}, {"product": {"id": "masa_alti_ciftli_kulaklik_gamepad_askisi", "slug": "masa_alti_ciftli_kulaklik_gamepad_askisi", "title": "Masa Altı Çiftli Kulaklık ve Gamepad Askısı (Delmesiz)", "agent_type": "populer", "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)", "agent_badge": "🔥 Popüler & Fiyat Kırıcı", "category": "masa", "category_name": "Masa Düzeni & Tech", "emoji": "🎧", "filament_grams": 56, "print_hours": 1.7, "market_price_tl": 220.0, "our_selling_price_tl": 159.0, "extra_costs": 3.0, "source_url": "https://makerworld.com/en/models/19320", "short_desc": "Masa altına vidasız yapışan, aynı anda hem büyük oyuncu kulaklığını hem PS5/Xbox kolunu taşıyan çiftli askılık.", "dolap_title": "Masa Altı Çiftli Kulaklık & Gamepad Askısı - Vidasız Delmesiz Güçlü Montaj", "dolap_competition": "Orta (Tekliler Çok, Çiftli Az)", "competition_level": "medium", "competition_note": "Rakipler sadece tek kulaklık tutan askıları 160-180 TL'ye satıyor. Biz hem kulaklık hem oyun kolu tutan çiftli askıyı 159 TL'ye vererek öne geçiyoruz.", "pros": ["Gamer ve evden çalışan kitlenin masasında devasa alan açar.", "Kutu içerisine hazır yapıştırılmış kırmızı koruyucu bantlı ağır hizmet bandı koyuyoruz.", "Desteksiz basım geometrisi; 3 duvarla 5 kg yüke kadar kırılmaz.", "Net kâr: +107 TL (%67.4 kâr marjı)."], "cons": ["Ucuz ince köpük bant kullanılırsa kolun ağırlığıyla düşebilir; mutlaka kaliteli 3M tipi bant kullanılmalıdır.", "Katman yönü yatay basılmalıdır ki çekme kuvveti katmanları ayırmasın."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "60°C", "nozzle_temp": "220°C", "layer_height": "0.20 mm", "wall_loops": "3 Hat", "infill_density": "%20", "infill_pattern": "Gyroid", "print_speed": "180 mm/s", "supports": "KAPALI (Yana yatık basılır)", "bambu_time": "1 saat 35 dk", "pro_tip": "Askılık sırtına kırmızı koruyucu şeritli bandı önceden yapıştırıp gönderin; 'Kutudan çıkar çıkmaz 5 saniyede montaj' yazın."}, "photo_prompts": ["Dual under desk 3d printed hanger holding gaming headset and wireless gamepad controller cleanly under desk", "Underneath perspective showing strong adhesive mounting under wooden oak computer gaming workstation", "Matte black dual headset and controller hanger isolated on clean studio background showing structural ribs"]}, "fin": {"filament_cost_tl": 22.4, "electricity_cost_tl": 1.02, "packaging_cost_tl": 8.0, "total_production_cost_tl": 31.42, "market_price_tl": 220.0, "our_selling_price_tl": 159.0, "dolap_commission_tl": 23.85, "net_profit_tl": 103.73, "profit_margin_percent": 65.2, "price_advantage_tl": 61.0}, "photos": ["products/masa_alti_ciftli_kulaklik_gamepad_askisi/photos/foto_1.jpg", "products/masa_alti_ciftli_kulaklik_gamepad_askisi/photos/foto_2.jpg", "products/masa_alti_ciftli_kulaklik_gamepad_askisi/photos/foto_3.jpg"]}, {"product": {"id": "apple_watch_iphone_sarj_dock", "slug": "apple_watch_iphone_sarj_dock", "title": "Apple Watch & iPhone StandBy Masaüstü Komodin Dock", "agent_type": "populer", "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)", "agent_badge": "🔥 Popüler & Fiyat Kırıcı", "category": "masa", "category_name": "Masa Düzeni & Tech", "emoji": "⌚", "filament_grams": 52, "print_hours": 1.5, "market_price_tl": 280.0, "our_selling_price_tl": 179.0, "extra_costs": 2.0, "source_url": "https://makerworld.com/en/models/28400", "short_desc": "iPhone ve Apple Watch manyetik şarj aletlerini tek gövdede birleştiren, kablo kanalları gizli minimalist komodin standı.", "dolap_title": "Apple Watch ve iPhone Uyumlu Masaüstü Şarj Dock Standı - Gizli Kablo Kanallı", "dolap_competition": "Orta (Piyasa Canlı, 179 TL ile Rakipsiz)", "competition_level": "medium", "competition_note": "Dolap'ta Apple şarj standları 250-320 TL arasında satılıyor. Biz mat dokulu ve kablo kanalları gizli modeli 179 TL'ye vererek fiyatta ve estetikte lider oluyoruz.", "pros": ["Apple kitlesinin satın alma gücü yüksektir ve komodinde şık aksesuarları sever.", "iOS 17/18 StandBy modu ile iPhone yatay gece saati olarak kusursuz konumlanır.", "Tek parça gövde, desteksiz basılır.", "Net kâr: +123 TL (%69.1 kâr marjı)."], "cons": ["Apple Watch şarj diskinin yuvası milimetrik tolerans ister; çok sıkı veya gevşek olmamalıdır.", "Beyaz ve Mat Siyah renklerde üretilmeli, pastel renkler Apple kitlesine hitap etmeyebilir."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "60°C", "nozzle_temp": "220°C (Mat Beyaz / Siyah PLA)", "layer_height": "0.20 mm", "wall_loops": "3 Hat", "infill_density": "%20", "infill_pattern": "Gyroid", "print_speed": "180 mm/s", "supports": "KAPALI", "bambu_time": "1 saat 25 dk", "pro_tip": "Orijinal şarj kablosunun yuvasına tık diye oturduğunu gösteren bir fotoğrafı ilanın 2. sırasına koyun."}, "photo_prompts": ["Minimalist white 3d printed dual charging stand docking iPhone displaying StandBy night clock mode and Apple Watch", "Underneath view of charging stand showing recessed routing channels cleanly hiding white charging cables", "Warm cozy bedroom nightstand scene with the 3d printed phone and watch charging dock illuminated gently"]}, "fin": {"filament_cost_tl": 20.8, "electricity_cost_tl": 0.9, "packaging_cost_tl": 7.0, "total_production_cost_tl": 28.7, "market_price_tl": 280.0, "our_selling_price_tl": 179.0, "dolap_commission_tl": 26.85, "net_profit_tl": 123.45, "profit_margin_percent": 69.0, "price_advantage_tl": 101.0}, "photos": ["products/apple_watch_iphone_sarj_dock/photos/foto_1.jpg", "products/apple_watch_iphone_sarj_dock/photos/foto_2.jpg", "products/apple_watch_iphone_sarj_dock/photos/foto_3.jpg"]}, {"product": {"id": "spotify_kodlu_plaket_standi", "slug": "spotify_kodlu_plaket_standi", "title": "Kişiye Özel Spotify Kodlu Şarkı Plaket Standı (Çift Renk)", "agent_type": "populer", "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)", "agent_badge": "🔥 Popüler & Fiyat Kırıcı", "category": "hediye", "category_name": "Kişisel & Hediye", "emoji": "🎵", "filament_grams": 46, "print_hours": 1.3, "market_price_tl": 290.0, "our_selling_price_tl": 199.0, "extra_costs": 3.0, "source_url": "https://makerworld.com/en/models/35210", "short_desc": "Müşterinin istediği şarkının taranabilir Spotify ses dalgası kodunu ve özel notunu taşıyan modern masa standı.", "dolap_title": "Kişiye Özel Spotify Kodlu Şarkı Plaketi Standı - Sevgiliye Yıldönümü Doğum Günü Hediyesi", "dolap_competition": "Yüksek (Duygusal Hediye Lideri)", "competition_level": "high", "competition_note": "Dolap'ta Spotify hediyeleri çok popüler (250-320 TL). Biz 'Aynı Gün 24 Saatte Kargoda' garantisi ve 199 TL cazip fiyatla rekabeti kırıyoruz.", "pros": ["Yıldönümü, doğum günü ve sevgililer günü dönemlerinde sipariş patlaması yaşanır.", "Duygusal bağ yüksek olduğu için müşteri yorumları çoğunlukla 5 yıldızlıdır.", "Bambu Lab AMS ile çift renkli kod kabartması 15 dakikada tertemiz çıkar.", "Net kâr: +141 TL (%71.3 kâr marjı)."], "cons": ["Müşterinin gönderdiği şarkı linkinden kod oluşturulup baskıya entegre edilmesi gerekir (sipariş başı 3 dk işlem).", "Spotify kodunun telefon kamerasıyla rahat taranabilmesi için siyah-beyaz kontrast net olmalıdır."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "60°C", "nozzle_temp": "220°C", "layer_height": "0.16 mm Optimal (Kod çizgilerinin netliği için)", "wall_loops": "3 Hat", "infill_density": "%20", "infill_pattern": "Gyroid", "print_speed": "140 mm/s", "supports": "KAPALI", "bambu_time": "1 saat 15 dk", "pro_tip": "'Sipariş verdikten sonra istediğiniz şarkıyı ve altına yazılacak özel tarihi mesaj atın' ibaresini büyük yazın."}, "photo_prompts": ["Romantic 3d printed acrylic plaque stand displaying scannable Spotify soundwave code on aesthetic ambient desk", "Smartphone camera scanning the 3d embossed Spotify wave code on modern desk stand opening music player", "Gift packaging presentation showing kraft gift box, tissue paper wrapping and personalized music stand"]}, "fin": {"filament_cost_tl": 18.4, "electricity_cost_tl": 0.78, "packaging_cost_tl": 8.0, "total_production_cost_tl": 27.18, "market_price_tl": 290.0, "our_selling_price_tl": 199.0, "dolap_commission_tl": 29.85, "net_profit_tl": 141.97, "profit_margin_percent": 71.3, "price_advantage_tl": 91.0}, "photos": ["products/spotify_kodlu_plaket_standi/photos/foto_1.jpg", "products/spotify_kodlu_plaket_standi/photos/foto_2.jpg", "products/spotify_kodlu_plaket_standi/photos/foto_3.jpg"]}, {"product": {"id": "iskandinav_geometrik_sukulent_saksi_seti", "slug": "iskandinav_geometrik_sukulent_saksi_seti", "title": "3'lü Modern İskandinav Sukulent Saksı Seti (Drenaj Tabaklı)", "agent_type": "populer", "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)", "agent_badge": "🔥 Popüler & Fiyat Kırıcı", "category": "ev", "category_name": "Ev & Dekorasyon", "emoji": "🪴", "filament_grams": 72, "print_hours": 1.3, "market_price_tl": 290.0, "our_selling_price_tl": 229.0, "extra_costs": 3.0, "source_url": "https://www.printables.com/model/11250", "short_desc": "Çokgen geometrik hatlara sahip, kök çürümesini önleyen alt drenaj tabaklı 3'lü modern sukulent saksı takımı.", "dolap_title": "3'lü Modern İskandinav Sukulent Saksı Seti Drenaj Tabaklı - 3D Çiçeklik Masa Dekoru", "dolap_competition": "Orta (Drenajlı 3'lü Set Fark Yaratır)", "competition_level": "medium", "competition_note": "Piyasada tek tek beton veya plastik saksılar var. Biz alt tabaklı ve birbirini tamamlayan 3'lü seti 229 TL'ye vererek kadın alıcıların sepetine giriyoruz.", "pros": ["Dolap'ın en büyük alıcı kitlesi olan kadın dekorasyon severlere hitap eder.", "Vazo modunda veya 2 duvarla çok az filamentle inanılmaz hızlı üretilir.", "Kök çürümesini engelleyen drenaj haznesi gerçek bitki severler için büyük artıdır.", "Net kâr: +160 TL (%70.1 kâr marjı)."], "cons": ["Su sızdırmazlığı için vazo modunda katman genişliği 0.6mm yapılmalı veya 3 taban katmanı atılmalıdır.", "Pastel renklerde (Taş Beji, Adaçayı Yeşili, Mat Beyaz) üretilmelidir."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "60°C", "nozzle_temp": "220°C (Pastel Mat PLA)", "layer_height": "0.24 mm", "wall_loops": "2 Hat (Vazo Modu Uyumlu)", "infill_density": "%0 (Vazo) veya %15", "print_speed": "200 mm/s", "supports": "KAPALI", "bambu_time": "1 saat 15 dk (3'lü Takım)", "pro_tip": "3 saksıyı tek tek değil, 3 farklı pastel renkte bir takım olarak listeleyin; 'Modern 3'lü Set' aramalarında ilk sıraya çıkar."}, "photo_prompts": ["Set of 3 modern Scandinavian geometric faceted succulent planters with mini plants on sunny wooden windowsill", "Disassembled view showing smart bottom drainage holes and matching drip catchment saucer trays", "Aesthetic home decor styling with three pastel planters arranged on sunlit marble kitchen island"]}, "fin": {"filament_cost_tl": 28.8, "electricity_cost_tl": 0.78, "packaging_cost_tl": 8.0, "total_production_cost_tl": 37.58, "market_price_tl": 290.0, "our_selling_price_tl": 229.0, "dolap_commission_tl": 34.35, "net_profit_tl": 157.07, "profit_margin_percent": 68.6, "price_advantage_tl": 61.0}, "photos": ["products/iskandinav_geometrik_sukulent_saksi_seti/photos/foto_1.jpg", "products/iskandinav_geometrik_sukulent_saksi_seti/photos/foto_2.jpg", "products/iskandinav_geometrik_sukulent_saksi_seti/photos/foto_3.jpg"]}, {"product": {"id": "donen_disli_sonsuz_takvim", "slug": "donen_disli_sonsuz_takvim", "title": "Dönen Dişli Mekanik Sonsuz Takvim (Perpetual Gear Calendar)", "agent_type": "populer", "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)", "agent_badge": "🔥 Popüler & Fiyat Kırıcı", "category": "hediye", "category_name": "Prestij & Ofis", "emoji": "⚙️", "filament_grams": 110, "print_hours": 2.8, "market_price_tl": 420.0, "our_selling_price_tl": 299.0, "extra_costs": 4.0, "source_url": "https://makerworld.com/en/models/15234", "short_desc": "Gün, ay ve haftanın gününü dişli çarkların dönüşüyle gösteren, pilsiz ömür boyu çalışan mekanik masa takvimi.", "dolap_title": "Dönen Dişli Çarklı Sonsuz Takvim - Mekanik Masaüstü Takvim Ömür Boyu Ofis Hediyesi", "dolap_competition": "Düşük/Orta (İşçiliği Yüksek Görünen Ürün)", "competition_level": "low", "competition_note": "Dolap'ta mekanik çalışan kaliteli masa objesi yok denecek kadar az. Alıcılar bunu karmaşık bir mühendislik ürünü gördüğü için 299 TL'ye anında alır.", "pros": ["Avukat, doktor, yönetici ve mühendislere 'alınabilecek en havalı ömür boyu hediye'.", "Pilsiz, mekanik tıkırtılı dişli yapısıyla bağımlılık yapıcı dokunsal hissiyat.", "Rakipler 420 TL isterken 299 TL'ye satarak 200 TL net kâr (%67 kâr marjı) elde ederiz.", "Bambu Lab'ın 0.08mm hassasiyeti sayesinde zımparalamadan dişliler tıkır tıkır döner."], "cons": ["Dişliler arasında tolerans olduğu için ilk baskıda akış kalibrasyonunun tam yapılması gerekir.", "Metalik İpek Bronz veya Bakır-Siyah filamentle basılmalıdır, sıradan beyaz PLA basılırsa oyuncak gibi görünür."], "bambu_profile": {"printer": "Bambu Lab P1S / X1C / A1 / A1 Mini", "nozzle": "0.4 mm", "build_plate": "Textured PEI Plate", "bed_temp": "65°C / 60°C", "nozzle_temp": "225°C (Metalik Silk Filament)", "layer_height": "0.16 mm (Hassas diş profili)", "wall_loops": "3 Hat", "infill_density": "%20", "infill_pattern": "Gyroid", "print_speed": "140 mm/s", "supports": "KAPALI (Düz basılır)", "bambu_time": "2 saat 40 dk", "pro_tip": "Dişlileri döndürürken çıkan tatmin edici tık tık sesini gösteren kısa bir video ekleyin; takvim arayan herkes satın alır."}, "photo_prompts": ["Steampunk style perpetual gear calendar showing date, month and day with interlocking mechanical gears on executive desk", "Human hands turning the tactile gear rings adjusting date, close up on intricate mechanism and numbers", "Executive office desk setup with perpetual mechanical calendar beside fountain pen and leather journal"]}, "fin": {"filament_cost_tl": 44.0, "electricity_cost_tl": 1.68, "packaging_cost_tl": 9.0, "total_production_cost_tl": 54.68, "market_price_tl": 420.0, "our_selling_price_tl": 299.0, "dolap_commission_tl": 44.85, "net_profit_tl": 199.47, "profit_margin_percent": 66.7, "price_advantage_tl": 121.0}, "photos": ["products/donen_disli_sonsuz_takvim/photos/foto_1.jpg", "products/donen_disli_sonsuz_takvim/photos/foto_2.jpg", "products/donen_disli_sonsuz_takvim/photos/foto_3.jpg"]}];
+    const STORAGE_KEY_SELECTED = "haibbies_selected_slugs_v3";
+    const STORAGE_KEY_DELETED = "haibbies_deleted_slugs_v3";
+
+    let selectedSlugs = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_SELECTED) || "[]"));
+    let deletedSlugs = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_DELETED) || "[]"));
+    let currentTab = "all";
+    let searchQuery = "";
+    let sortMethod = "default";
+    let lastDeletedSlug = null;
+    let currentModalSlug = null;
+
+    function switchPhoto(slug, photoIndex) {
+      const mainImg = document.getElementById(`mainImg_${slug}`);
+      const thumbBtns = document.querySelectorAll(`.thumb-btn-${slug}`);
+      if (mainImg) {
+        mainImg.src = `products/${slug}/photos/foto_${photoIndex}.jpg`;
+        mainImg.classList.add("opacity-60");
+        setTimeout(() => mainImg.classList.remove("opacity-60"), 120);
+      }
+      thumbBtns.forEach((btn, idx) => {
+        if (idx === photoIndex - 1) {
+          btn.classList.add("ring-2", "ring-indigo-500", "border-indigo-400", "bg-indigo-600/30");
+          btn.classList.remove("opacity-60");
+        } else {
+          btn.classList.remove("ring-2", "ring-indigo-500", "border-indigo-400", "bg-indigo-600/30");
+          btn.classList.add("opacity-60");
+        }
+      });
+    }
+
+    function toggleSelect(slug) {
+      if (selectedSlugs.has(slug)) {
+        selectedSlugs.delete(slug);
+      } else {
+        selectedSlugs.add(slug);
+      }
+      localStorage.setItem(STORAGE_KEY_SELECTED, JSON.stringify([...selectedSlugs]));
+      render();
+    }
+
+    function deleteProduct(slug, title) {
+      deletedSlugs.add(slug);
+      lastDeletedSlug = slug;
+      localStorage.setItem(STORAGE_KEY_DELETED, JSON.stringify([...deletedSlugs]));
+      showToast(`"${title}" katalogdan çıkarıldı.`, true);
+      render();
+    }
+
+    function undoDelete() {
+      if (lastDeletedSlug) {
+        deletedSlugs.delete(lastDeletedSlug);
+        localStorage.setItem(STORAGE_KEY_DELETED, JSON.stringify([...deletedSlugs]));
+        lastDeletedSlug = null;
+        hideToast();
+        render();
+      }
+    }
+
+    function restoreAllDeleted() {
+      deletedSlugs.clear();
+      localStorage.setItem(STORAGE_KEY_DELETED, JSON.stringify([]));
+      showToast("Silinen tüm ürünler geri getirildi.");
+      render();
+    }
+
+    function showToast(msg, showUndo = false) {
+      const toast = document.getElementById("toastNotification");
+      const text = document.getElementById("toastMessage");
+      const undoBtn = document.getElementById("toastUndoBtn");
+      text.textContent = msg;
+      undoBtn.style.display = showUndo ? "inline-block" : "none";
+      toast.classList.remove("translate-y-24", "opacity-0");
+      setTimeout(() => hideToast(), 4500);
+    }
+
+    function hideToast() {
+      document.getElementById("toastNotification").classList.add("translate-y-24", "opacity-0");
+    }
+    document.getElementById("toastUndoBtn").onclick = undoDelete;
+
+    function setTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll(".tab-pill").forEach(btn => {
+        if (btn.dataset.tab === tab) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+      render();
+    }
+
+    function handleSearch() {
+      searchQuery = document.getElementById("searchInput").value.toLowerCase().trim();
+      render();
+    }
+
+    function handleSort() {
+      sortMethod = document.getElementById("sortSelect").value;
+      render();
+    }
+
+    function exportSelected() {
+      const selectedItems = PRODUCTS.filter(x => selectedSlugs.has(x.product.slug));
+      if (selectedItems.length === 0) {
+        alert("Lütfen önce listeden üretime eklemek istediğiniz en az 1 ürün seçin.");
+        return;
+      }
+      let txt = `HAIBBIES DESIGN — SEÇİLEN ÜRÜNLER ÜRETİM & DOLAP LİSTESİ\n`;
+      txt += `Tarih: ${new Date().toLocaleString("tr-TR")}\n`;
+      txt += `Seçilen Toplam Ürün: ${selectedItems.length}\n`;
+      const totProf = selectedItems.reduce((acc, x) => acc + x.fin.net_profit_tl, 0);
+      txt += `Seçilenlerin Toplam Net Kârı: ${totProf.toFixed(2)} TL\n\n`;
+      txt += `================================================================\n\n`;
+
+      selectedItems.forEach((x, i) => {
+        const p = x.product;
+        const f = x.fin;
+        txt += `[${i + 1}] ${p.title.toUpperCase()}\n`;
+        txt += `Ajan: ${p.agent_name} | Kategori: ${p.category_name}\n`;
+        txt += `Dolap Satış Fiyatı: ${f.our_selling_price_tl} TL | Net Kâr: ${f.net_profit_tl} TL (%${f.profit_margin_percent})\n`;
+        txt += `Piyasa / Rakip Fiyatı: ${f.market_price_tl} TL (Fiyat Avantajımız: ${f.price_advantage_tl} TL)\n`;
+        txt += `Bambu Süresi: ${p.bambu_profile.bambu_time} | Filament: ${p.filament_grams}g PLA\n`;
+        txt += `STL Dosyası: products/${p.slug}/${p.slug}.stl\n\n`;
+      });
+
+      const blob = new Blob([txt], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `haibbies_uretim_listesi_${Date.now()}.txt`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function copyDolapText(slug) {
+      const item = PRODUCTS.find(x => x.product.slug === slug);
+      if (!item) return;
+      const p = item.product;
+      const text = `🔥 ${p.dolap_title.toUpperCase()} 🔥\n\n` +
+        `💯 Haibbies Design Atölyemizde Bambu Lab 3D yazıcılarla, 1. sınıf organik dayanıklı PLA malzeme ile üretilmiştir.\n\n` +
+        `✨ ÜRÜN DETAYLARI:\n- ${p.short_desc}\n` +
+        `- Pürüzsüz katman kalitesi ve sağlam gövde yapısı.\n` +
+        `- Renk Seçenekleri: Mat Siyah, Beyaz, Gri ve Pastel Renkler.\n\n` +
+        `📦 PAKETLEME: Özel koruyucu kutuda 24 saat içinde hızlı kargoya verilir.\n\n` +
+        `#3dbaskı #haibbiesdesign #dolap #trend #hediyelik #${p.category}`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`"${p.title}" Dolap ilan metni kopyalandı!`);
+      });
+    }
+
+    function openBambuModal(slug) {
+      const item = PRODUCTS.find(x => x.product.slug === slug);
+      if (!item) return;
+      currentModalSlug = slug;
+      const p = item.product;
+      const bp = p.bambu_profile;
+
+      document.getElementById("modalTitle").textContent = `${p.title} — Bambu Lab Reçetesi`;
+      document.getElementById("modalSubtitle").textContent = `${p.category_name} • STL: products/${p.slug}/${p.slug}.stl`;
+
+      document.getElementById("modalBody").innerHTML = `
+        <div class="grid grid-cols-2 gap-3 bg-slate-950 p-4 rounded-2xl border border-slate-800">
+          <div><span class="text-slate-500">Yazıcı Modelleri:</span> <div class="font-bold text-white">${bp.printer}</div></div>
+          <div><span class="text-slate-500">Baskı Tablası:</span> <div class="font-bold text-emerald-400">${bp.build_plate}</div></div>
+          <div><span class="text-slate-500">Tabla Sıcaklığı:</span> <div class="font-bold text-white">${bp.bed_temp}</div></div>
+          <div><span class="text-slate-500">Nozzle Sıcaklığı:</span> <div class="font-bold text-white">${bp.nozzle_temp}</div></div>
+          <div><span class="text-slate-500">Katman Kalınlığı:</span> <div class="font-bold text-blue-400">${bp.layer_height}</div></div>
+          <div><span class="text-slate-500">Duvar Hatları:</span> <div class="font-bold text-white">${bp.wall_loops}</div></div>
+          <div><span class="text-slate-500">Doluluk Oranı / Desen:</span> <div class="font-bold text-indigo-400">${bp.infill_density} • ${bp.infill_pattern}</div></div>
+          <div><span class="text-slate-500">Destek (Support):</span> <div class="font-bold text-emerald-400">${bp.supports}</div></div>
+        </div>
+
+        <div class="bg-blue-950/30 border border-blue-800/40 rounded-2xl p-4">
+          <div class="font-bold text-blue-400 mb-1 flex items-center gap-1.5">
+            <i class="fa-solid fa-clock"></i> Üretim Süresi & Filament Tüketimi:
+          </div>
+          <p class="text-slate-300">Bambu Baskı Süresi: <strong>${bp.bambu_time}</strong> | Filament: <strong>~${p.filament_grams}g PLA</strong></p>
+        </div>
+
+        <div class="bg-amber-950/25 border border-amber-500/30 rounded-2xl p-4">
+          <div class="font-bold text-amber-400 mb-1 flex items-center gap-1.5">
+            <i class="fa-solid fa-lightbulb"></i> Atölye & Seri Üretim Tüyosu:
+          </div>
+          <p class="text-slate-300 leading-relaxed">${bp.pro_tip}</p>
+        </div>
+      `;
+
+      const modal = document.getElementById("bambuModal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeBambuModal() {
+      const modal = document.getElementById("bambuModal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function copyModalCode() {
+      if (!currentModalSlug) return;
+      const item = PRODUCTS.find(x => x.product.slug === currentModalSlug);
+      if (!item) return;
+      const bp = item.product.bambu_profile;
+      const t = `BAMBU LAB PARAMETRELERİ — ${item.product.title}\n` +
+        `Yazıcı: ${bp.printer}\n` +
+        `Tabla: ${bp.build_plate} (${bp.bed_temp})\n` +
+        `Nozzle: ${bp.nozzle} (${bp.nozzle_temp})\n` +
+        `Katman: ${bp.layer_height} | Duvar: ${bp.wall_loops}\n` +
+        `Dolgu: ${bp.infill_density} ${bp.infill_pattern} | Destek: ${bp.supports}\n` +
+        `Süre: ${bp.bambu_time} | Filament: ${item.product.filament_grams}g\n` +
+        `Tüyo: ${bp.pro_tip}`;
+      navigator.clipboard.writeText(t).then(() => {
+        showToast("Bambu Lab ayarları panoya kopyalandı!");
+        closeBambuModal();
+      });
+    }
+
+    function getFilteredProducts() {
+      return PRODUCTS.filter(x => {
+        const p = x.product;
+        const slug = p.slug;
+
+        if (deletedSlugs.has(slug)) return false;
+
+        if (currentTab === "nis" && p.agent_type !== "nis") return false;
+        if (currentTab === "populer" && p.agent_type !== "populer") return false;
+        if (currentTab === "selected" && !selectedSlugs.has(slug)) return false;
+
+        if (searchQuery) {
+          const blob = `${p.title} ${p.category_name} ${p.short_desc} ${p.dolap_title} ${p.pros.join(' ')} ${p.cons.join(' ')}`.toLowerCase();
+          if (!blob.includes(searchQuery)) return false;
+        }
+
+        return true;
+      }).sort((a, b) => {
+        if (sortMethod === "profit-desc") return b.fin.net_profit_tl - a.fin.net_profit_tl;
+        if (sortMethod === "margin-desc") return b.fin.profit_margin_percent - a.fin.profit_margin_percent;
+        if (sortMethod === "price-diff") return b.fin.price_advantage_tl - a.fin.price_advantage_tl;
+        if (sortMethod === "time-asc") return a.product.print_hours - b.product.print_hours;
+        return 0;
+      });
+    }
+
+    function render() {
+      const grid = document.getElementById("productsGrid");
+      const visible = getFilteredProducts();
+
+      // İstatistik Güncellemeleri
+      const activeCount = PRODUCTS.length - deletedSlugs.size;
+      document.getElementById("statActiveCount").textContent = `${activeCount} / ${PRODUCTS.length}`;
+
+      const selectedItems = PRODUCTS.filter(x => selectedSlugs.has(x.product.slug) && !deletedSlugs.has(x.product.slug));
+      const totalSelectedProfit = selectedItems.reduce((acc, x) => acc + x.fin.net_profit_tl, 0);
+
+      document.getElementById("statSelectedProfit").textContent = `${totalSelectedProfit.toFixed(2)} TL`;
+      document.getElementById("statSelectedCount").textContent = `${selectedItems.length} Ürün`;
+      document.getElementById("statDeletedCount").textContent = `${deletedSlugs.size}`;
+      document.getElementById("badgeSelectedNum").textContent = `${selectedItems.length}`;
+
+      const restoreBtn = document.getElementById("btnRestoreAll");
+      if (deletedSlugs.size > 0) {
+        restoreBtn.classList.remove("hidden");
+      } else {
+        restoreBtn.classList.add("hidden");
+      }
+
+      if (visible.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-20 text-center glass-card rounded-3xl p-8">
+            <i class="fa-solid fa-boxes-stacked text-5xl text-slate-600 mb-4"></i>
+            <h3 class="text-base font-bold text-slate-300">Bu filtrede gösterilecek ürün bulunamadı</h3>
+            <p class="text-xs text-slate-500 mt-1">Arama terimini değiştirebilir veya diğer sekmelere bakabilirsiniz.</p>
+            <button onclick="setTab('all')" class="mt-4 px-4 py-2 bg-indigo-600 text-white text-xs font-bold rounded-xl">Tüm Ürünleri Göster</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = visible.map(item => {
+        const p = item.product;
+        const f = item.fin;
+        const isSelected = selectedSlugs.has(p.slug);
+        const isNis = p.agent_type === "nis";
+
+        return `
+          <div class="glass-card rounded-3xl p-5 flex flex-col justify-between ${isSelected ? 'glow-selected' : ''}" id="card_${p.slug}">
+            
+            <div>
+              <!-- 1. GÖRSEL GALERİSİ & FOTOĞRAF SEÇİCİ -->
+              <div class="relative mb-4 overflow-hidden rounded-2xl bg-slate-950 border border-slate-800">
+                <img id="mainImg_${p.slug}" src="products/${p.slug}/photos/foto_1.jpg" alt="${p.title}" class="w-full h-56 object-cover transition duration-300">
+                
+                <!-- Ajan Rozeti & Kategori -->
+                <div class="absolute top-3 left-3 flex items-center gap-1.5">
+                  <span class="px-2.5 py-1 rounded-lg text-[10px] font-black ${isNis ? 'bg-emerald-500/90 text-slate-950' : 'bg-amber-500/90 text-slate-950'} shadow-lg">
+                    ${p.agent_badge}
+                  </span>
+                </div>
+
+                <div class="absolute top-3 right-3">
+                  <span class="px-2.5 py-1 rounded-lg text-[10px] font-black bg-slate-900/90 text-white backdrop-blur-md border border-slate-700/70 shadow-lg">
+                    ${p.emoji} ${p.category_name}
+                  </span>
+                </div>
+
+                <!-- 3'lü Önizleme Butonları (Stüdyo, Kullanım, Detay) -->
+                <div class="absolute bottom-2.5 inset-x-2.5 flex items-center justify-center gap-2 bg-slate-950/85 backdrop-blur-md py-1.5 px-3 rounded-xl border border-slate-800">
+                  <button onclick="switchPhoto('${p.slug}', 1)" class="thumb-btn-${p.slug} ring-2 ring-indigo-500 border-indigo-400 bg-indigo-600/30 text-[10px] font-bold px-2 py-0.5 rounded-lg text-white transition hover:scale-105">
+                    📸 1. Stüdyo
+                  </button>
+                  <button onclick="switchPhoto('${p.slug}', 2)" class="thumb-btn-${p.slug} opacity-60 text-[10px] font-bold px-2 py-0.5 rounded-lg text-slate-300 transition hover:scale-105 hover:opacity-100">
+                    📸 2. Kullanım
+                  </button>
+                  <button onclick="switchPhoto('${p.slug}', 3)" class="thumb-btn-${p.slug} opacity-60 text-[10px] font-bold px-2 py-0.5 rounded-lg text-slate-300 transition hover:scale-105 hover:opacity-100">
+                    📸 3. Detay
+                  </button>
+                </div>
+              </div>
+
+              <!-- 2. BAŞLIK VE KONTROLLER -->
+              <div class="mb-3">
+                <h3 class="text-base font-extrabold text-white leading-snug">${p.title}</h3>
+                <p class="text-[11px] text-slate-400 mt-1 line-clamp-2 leading-relaxed">${p.short_desc}</p>
+              </div>
+
+              <!-- 3. EYLEM BUTONLARI (SEÇ VE SİL) -->
+              <div class="grid grid-cols-2 gap-2 mb-4">
+                <button onclick="toggleSelect('${p.slug}')" class="w-full py-2.5 px-3 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 ${isSelected ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/40' : 'bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-emerald-500/30'}">
+                  <i class="fa-solid ${isSelected ? 'fa-check-double' : 'fa-plus'}"></i>
+                  ${isSelected ? 'Üretime Seçildi' : 'Üretime Ekle'}
+                </button>
+                <button onclick="deleteProduct('${p.slug}', '${p.title.replace(/'/g, "\\'")}')" class="w-full py-2.5 px-3 rounded-xl text-xs font-semibold bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-800/40 transition flex items-center justify-center gap-1.5" title="Katalogdan Gizle">
+                  <i class="fa-solid fa-trash-can"></i> Sil / Çıkar
+                </button>
+              </div>
+
+              <!-- 4. FİYAT KARŞILAŞTIRMASI & KÂR PANELİ -->
+              <div class="bg-slate-950/80 border border-slate-800/80 rounded-2xl p-3.5 mb-3.5 space-y-2">
+                <div class="flex items-center justify-between text-xs pb-2 border-b border-slate-800/70">
+                  <div>
+                    <span class="text-[10px] text-slate-500 uppercase block font-semibold">Piyasa / Rakip</span>
+                    <span class="font-bold text-slate-400 line-through">${f.market_price_tl} TL</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-[10px] text-emerald-400 uppercase block font-bold">Bizim Fiyatımız</span>
+                    <span class="font-extrabold text-blue-400 text-sm">${f.our_selling_price_tl} TL</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-[10px] text-emerald-400 uppercase block font-bold">Net Kârımız</span>
+                    <span class="font-black text-emerald-400 text-sm">+${f.net_profit_tl} TL</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                  <span>Maliyet: <strong class="text-rose-400 font-bold">${f.total_production_cost_tl} TL</strong></span>
+                  <span>Kâr Marjı: <strong class="text-emerald-400 font-bold">%${f.profit_margin_percent}</strong></span>
+                  <span>Fiyat Avantajı: <strong class="text-indigo-400 font-bold">-${f.price_advantage_tl} TL</strong></span>
+                </div>
+              </div>
+
+              <!-- 5. ARTI VE EKSİ YÖNLERİ (PROS & CONS) -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] mb-3.5">
+                <!-- Artı Yönler -->
+                <div class="bg-emerald-950/20 border border-emerald-500/20 rounded-xl p-2.5">
+                  <div class="font-bold text-emerald-400 mb-1 flex items-center gap-1">
+                    <i class="fa-solid fa-circle-check text-[10px]"></i> Artı Yönleri:
+                  </div>
+                  <ul class="space-y-1 text-slate-300 leading-tight">
+                    ${p.pros.slice(0, 2).map(x => `<li>• ${x}</li>`).join('')}
+                  </ul>
+                </div>
+
+                <!-- Eksi Yönler / Dikkat -->
+                <div class="bg-rose-950/20 border border-rose-500/20 rounded-xl p-2.5">
+                  <div class="font-bold text-rose-400 mb-1 flex items-center gap-1">
+                    <i class="fa-solid fa-triangle-exclamation text-[10px]"></i> Eksi Yönler & Risk:
+                  </div>
+                  <ul class="space-y-1 text-slate-300 leading-tight">
+                    ${p.cons.slice(0, 2).map(x => `<li>• ${x}</li>`).join('')}
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 6. DOLAP REKABET ANALİZİ -->
+              <div class="bg-slate-950/60 border border-slate-800/60 rounded-xl p-2.5 text-[11px] mb-3.5">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="font-bold text-slate-300">Dolap Rekabet Durumu:</span>
+                  <span class="font-extrabold px-2 py-0.5 rounded text-[10px] ${p.competition_level === 'low' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : (p.competition_level === 'medium' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' : 'bg-rose-500/20 text-rose-300 border border-rose-500/30')}">
+                    ${p.dolap_competition}
+                  </span>
+                </div>
+                <p class="text-slate-400 leading-relaxed">${p.competition_note}</p>
+              </div>
+
+            </div>
+
+            <!-- 7. ALT AKSİYONLAR (STL, İLAN, BAMBU REÇETESİ) -->
+            <div class="pt-3 border-t border-slate-800/80 space-y-2">
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="copyDolapText('${p.slug}')" class="py-2 px-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow-md shadow-indigo-600/25">
+                  <i class="fa-solid fa-copy"></i> İlan Metni
+                </button>
+                <button onclick="openBambuModal('${p.slug}')" class="py-2 px-2 bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-emerald-500/30 font-bold rounded-xl text-xs transition flex items-center justify-center gap-1.5">
+                  <i class="fa-solid fa-sliders"></i> Slicer Reçetesi
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between text-[11px] text-slate-500 px-1 pt-1">
+                <a href="products/${p.slug}/${p.slug}.stl" download class="text-emerald-400 hover:underline font-bold flex items-center gap-1">
+                  <i class="fa-solid fa-cube"></i> STL İndir
+                </a>
+                <a href="${p.source_url}" target="_blank" class="text-indigo-400 hover:underline flex items-center gap-1">
+                  Model Kaynağı <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      render();
+    });
+  </script>
+</body>
+</html>

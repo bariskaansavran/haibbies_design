@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: Masa Altı Çiftli Kulaklık ve Gamepad Askısı (Delmesiz)
+Kategori: Masa Düzeni & Tech (🎧)
+Araştıran Ajan: Ajan 2 (Popüler & Fiyat Kırıcı)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://makerworld.com/en/models/19320
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 60°C
+• Nozzle Sıcaklığı: 220°C
+• Katman Kalınlığı: 0.20 mm
+• Duvar Hatları (Wall Loops): 3 Hat
+• Doluluk Oranı: %20
+• Doluluk Deseni: Gyroid
+• Baskı Hızı: 180 mm/s
+• Destek (Support): KAPALI (Yana yatık basılır)
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 1 saat 35 dk
+• Filament Tüketimi: ~56 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 159.0 TL
+• Piyasa / Rakip Fiyatı: 220.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+Askılık sırtına kırmızı koruyucu şeritli bandı önceden yapıştırıp gönderin; 'Kutudan çıkar çıkmaz 5 saniyede montaj' yazın.

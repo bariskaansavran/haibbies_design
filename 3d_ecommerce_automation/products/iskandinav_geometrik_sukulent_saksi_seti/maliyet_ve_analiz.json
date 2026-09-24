@@ -1,0 +1,80 @@
+{
+  "product": {
+    "id": "iskandinav_geometrik_sukulent_saksi_seti",
+    "slug": "iskandinav_geometrik_sukulent_saksi_seti",
+    "title": "3'lü Modern İskandinav Sukulent Saksı Seti (Drenaj Tabaklı)",
+    "agent_type": "populer",
+    "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "agent_badge": "🔥 Popüler & Fiyat Kırıcı",
+    "category": "ev",
+    "category_name": "Ev & Dekorasyon",
+    "emoji": "🪴",
+    "filament_grams": 72,
+    "print_hours": 1.3,
+    "market_price_tl": 290.0,
+    "our_selling_price_tl": 229.0,
+    "extra_costs": 3.0,
+    "source_url": "https://www.printables.com/model/11250",
+    "short_desc": "Çokgen geometrik hatlara sahip, kök çürümesini önleyen alt drenaj tabaklı 3'lü modern sukulent saksı takımı.",
+    "dolap_title": "3'lü Modern İskandinav Sukulent Saksı Seti Drenaj Tabaklı - 3D Çiçeklik Masa Dekoru",
+    "dolap_competition": "Orta (Drenajlı 3'lü Set Fark Yaratır)",
+    "competition_level": "medium",
+    "competition_note": "Piyasada tek tek beton veya plastik saksılar var. Biz alt tabaklı ve birbirini tamamlayan 3'lü seti 229 TL'ye vererek kadın alıcıların sepetine giriyoruz.",
+    "pros": [
+      "Dolap'ın en büyük alıcı kitlesi olan kadın dekorasyon severlere hitap eder.",
+      "Vazo modunda veya 2 duvarla çok az filamentle inanılmaz hızlı üretilir.",
+      "Kök çürümesini engelleyen drenaj haznesi gerçek bitki severler için büyük artıdır.",
+      "Net kâr: +160 TL (%70.1 kâr marjı)."
+    ],
+    "cons": [
+      "Su sızdırmazlığı için vazo modunda katman genişliği 0.6mm yapılmalı veya 3 taban katmanı atılmalıdır.",
+      "Pastel renklerde (Taş Beji, Adaçayı Yeşili, Mat Beyaz) üretilmelidir."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "60°C",
+      "nozzle_temp": "220°C (Pastel Mat PLA)",
+      "layer_height": "0.24 mm",
+      "wall_loops": "2 Hat (Vazo Modu Uyumlu)",
+      "infill_density": "%0 (Vazo) veya %15",
+      "print_speed": "200 mm/s",
+      "supports": "KAPALI",
+      "bambu_time": "1 saat 15 dk (3'lü Takım)",
+      "pro_tip": "3 saksıyı tek tek değil, 3 farklı pastel renkte bir takım olarak listeleyin; 'Modern 3'lü Set' aramalarında ilk sıraya çıkar."
+    },
+    "photo_prompts": [
+      "Set of 3 modern Scandinavian geometric faceted succulent planters with mini plants on sunny wooden windowsill",
+      "Disassembled view showing smart bottom drainage holes and matching drip catchment saucer trays",
+      "Aesthetic home decor styling with three pastel planters arranged on sunlit marble kitchen island"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 28.8,
+    "electricity_cost_tl": 0.78,
+    "packaging_cost_tl": 8.0,
+    "total_production_cost_tl": 37.58,
+    "market_price_tl": 290.0,
+    "our_selling_price_tl": 229.0,
+    "dolap_commission_tl": 34.35,
+    "net_profit_tl": 157.07,
+    "profit_margin_percent": 68.6,
+    "price_advantage_tl": 61.0
+  },
+  "agent": {
+    "type": "populer",
+    "name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "badge": "🔥 Popüler & Fiyat Kırıcı"
+  },
+  "pros": [
+    "Dolap'ın en büyük alıcı kitlesi olan kadın dekorasyon severlere hitap eder.",
+    "Vazo modunda veya 2 duvarla çok az filamentle inanılmaz hızlı üretilir.",
+    "Kök çürümesini engelleyen drenaj haznesi gerçek bitki severler için büyük artıdır.",
+    "Net kâr: +160 TL (%70.1 kâr marjı)."
+  ],
+  "cons": [
+    "Su sızdırmazlığı için vazo modunda katman genişliği 0.6mm yapılmalı veya 3 taban katmanı atılmalıdır.",
+    "Pastel renklerde (Taş Beji, Adaçayı Yeşili, Mat Beyaz) üretilmelidir."
+  ]
+}

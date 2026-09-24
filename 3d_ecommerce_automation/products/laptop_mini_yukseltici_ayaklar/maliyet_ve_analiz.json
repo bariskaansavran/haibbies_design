@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "laptop_mini_yukseltici_ayaklar",
+    "slug": "laptop_mini_yukseltici_ayaklar",
+    "title": "Ergonomik Manyetik Laptop Mini Yükseltici Ayaklar (2'li Takım)",
+    "agent_type": "nis",
+    "agent_name": "Ajan 1 (Niş & Özgün)",
+    "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)",
+    "category": "masa",
+    "category_name": "Masa & Tech",
+    "emoji": "💻",
+    "filament_grams": 26,
+    "print_hours": 0.5,
+    "market_price_tl": 160.0,
+    "our_selling_price_tl": 129.0,
+    "extra_costs": 2.0,
+    "source_url": "https://www.printables.com/model/106360",
+    "short_desc": "Laptopun altına hava akışı sağlayarak ısınmayı önleyen ve ergonomik yazma açısı sunan cebe sığan takoz ayaklar.",
+    "dolap_title": "MacBook & Laptop Taşınabilir Soğutucu Yükseltici Ayaklar (2'li Takım) - Cep Boy Stand",
+    "dolap_competition": "Düşük (Taşınabilir Mini Model Yok)",
+    "competition_level": "low",
+    "competition_note": "Dolap'ta 400 TL'ye hantal masa standları var ama çantaya, cebe atılan iki minik manyetik yükseltici takoz yok.",
+    "pros": [
+      "Laptopun altını 3 cm yükselterek fanların rahat nefes almasını sağlar, ısınmayı engeller.",
+      "Bilek açısını rahatlatır; yazılımcı, öğrenci ve ofis çalışanlarının doğrudan ihtiyacı.",
+      "26 gram filament ve 28 dakika basım süresiyle %73 net kâr marjı sunar.",
+      "İki ayak birbirine manyetik veya tırnakla kenetlenerek tek parça halinde taşınabilir."
+    ],
+    "cons": [
+      "Ağır laptopların ağırlığı altında esnememesi için en az 4 duvar hattı ile basılmalıdır.",
+      "Alt tabana kaymayı önlemek için silikon ped yapıştırılması önerilir."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "60°C",
+      "nozzle_temp": "220°C",
+      "layer_height": "0.20 mm",
+      "wall_loops": "4 Hat (Ağır yüke dayanıklı)",
+      "infill_density": "%25",
+      "infill_pattern": "Gyroid",
+      "print_speed": "200 mm/s",
+      "supports": "KAPALI",
+      "bambu_time": "28 dakika (Çift)",
+      "pro_tip": "Tabanına 2 adet mini kaydırmaz silikon şeffaf yapışkan ped hediye ekleyerek Dolap'ta 'Kaydırmaz Tabanlı' ibaresi kullanın."
+    },
+    "photo_prompts": [
+      "Minimalist 3d printed laptop riser feet propping up a sleek aluminum MacBook keyboard at comfortable typing angle on wooden desk",
+      "Two compact geometric laptop feet magnetically snapped together held inside human hand palm",
+      "Side profile view showing cooling ventilation air gap underneath laptop on work desk"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 10.4,
+    "electricity_cost_tl": 0.3,
+    "packaging_cost_tl": 7.0,
+    "total_production_cost_tl": 17.7,
+    "market_price_tl": 160.0,
+    "our_selling_price_tl": 129.0,
+    "dolap_commission_tl": 19.35,
+    "net_profit_tl": 91.95,
+    "profit_margin_percent": 71.3,
+    "price_advantage_tl": 31.0
+  },
+  "agent": {
+    "type": "nis",
+    "name": "Ajan 1 (Niş & Özgün)",
+    "badge": "🟢 Niş Ürün (Dolap'ta Yok)"
+  },
+  "pros": [
+    "Laptopun altını 3 cm yükselterek fanların rahat nefes almasını sağlar, ısınmayı engeller.",
+    "Bilek açısını rahatlatır; yazılımcı, öğrenci ve ofis çalışanlarının doğrudan ihtiyacı.",
+    "26 gram filament ve 28 dakika basım süresiyle %73 net kâr marjı sunar.",
+    "İki ayak birbirine manyetik veya tırnakla kenetlenerek tek parça halinde taşınabilir."
+  ],
+  "cons": [
+    "Ağır laptopların ağırlığı altında esnememesi için en az 4 duvar hattı ile basılmalıdır.",
+    "Alt tabana kaymayı önlemek için silikon ped yapıştırılması önerilir."
+  ]
+}

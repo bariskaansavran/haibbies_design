@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: Gözleri Açılan Manyetik Baykuş Duvar Anahtarlığı
+Kategori: Ev & Hediye (🦉)
+Araştıran Ajan: Ajan 1 (Niş & Özgün)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://makerworld.com/en/models/30918
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 65°C / 60°C
+• Nozzle Sıcaklığı: 220°C
+• Katman Kalınlığı: 0.20 mm
+• Duvar Hatları (Wall Loops): 3 Hat
+• Doluluk Oranı: %20
+• Doluluk Deseni: Gyroid
+• Baskı Hızı: 180 mm/s
+• Destek (Support): KAPALI
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 1 saat 10 dk
+• Filament Tüketimi: ~42 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 159.0 TL
+• Piyasa / Rakip Fiyatı: 190.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+Gözleri açılıp kapanırken çekilmiş 5 saniyelik videoyu Dolap ilanına eklemek siparişleri 3 katına çıkarır.

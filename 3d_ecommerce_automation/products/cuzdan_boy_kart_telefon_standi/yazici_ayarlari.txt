@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: Cüzdan Boy Kredi Kartı Katlanabilir Telefon Standı (2'li Set)
+Kategori: Masa & Tech (💳)
+Araştıran Ajan: Ajan 1 (Niş & Özgün)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://www.printables.com/model/13765
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 65°C / 60°C
+• Nozzle Sıcaklığı: 220°C
+• Katman Kalınlığı: 0.20 mm
+• Duvar Hatları (Wall Loops): 4 Hat (Menteşe dayanıklılığı için)
+• Doluluk Oranı: %100 (Dolu gövde)
+• Doluluk Deseni: Düz Çizgiler
+• Baskı Hızı: 150 mm/s
+• Destek (Support): KAPALI
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 20 dakika (Çift)
+• Filament Tüketimi: ~16 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 139.0 TL
+• Piyasa / Rakip Fiyatı: 180.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+Tabladan çıkarmadan önce tablanın 35°C altına soğumasını bekleyin; böylece kart dümdüz ve pürüzsüz kalır.

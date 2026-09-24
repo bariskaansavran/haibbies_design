@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: Pet Şişe Vidalı Otomatik Damla Sulama Çivisi (4'lü Set)
+Kategori: Ev, Bahçe & Bitki (🌱)
+Araştıran Ajan: Ajan 1 (Niş & Özgün)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://makerworld.com/en/models/45821
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm Paslanmaz / Sertleştirilmiş Çelik
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 65°C / 60°C
+• Nozzle Sıcaklığı: 220°C (PLA Basic)
+• Katman Kalınlığı: 0.20 mm
+• Duvar Hatları (Wall Loops): 3 Hat
+• Doluluk Oranı: %20
+• Doluluk Deseni: Gyroid
+• Baskı Hızı: 200 mm/s
+• Destek (Support): KAPALI (Desteksiz)
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 1 sa 05 dk (4'lü Set)
+• Filament Tüketimi: ~48 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 139.0 TL
+• Piyasa / Rakip Fiyatı: 180.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+4 aparatı farklı renklerde (Toprak Kahvesi, Yaprak Yeşili, Krem, Turuncu) basıp 'Pastel Renkli Doğa Seti' olarak satın.

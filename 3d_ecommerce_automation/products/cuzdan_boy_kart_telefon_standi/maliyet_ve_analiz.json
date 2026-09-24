@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "cuzdan_boy_kart_telefon_standi",
+    "slug": "cuzdan_boy_kart_telefon_standi",
+    "title": "Cüzdan Boy Kredi Kartı Katlanabilir Telefon Standı (2'li Set)",
+    "agent_type": "nis",
+    "agent_name": "Ajan 1 (Niş & Özgün)",
+    "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)",
+    "category": "masa",
+    "category_name": "Masa & Tech",
+    "emoji": "💳",
+    "filament_grams": 16,
+    "print_hours": 0.35,
+    "market_price_tl": 180.0,
+    "our_selling_price_tl": 139.0,
+    "extra_costs": 2.0,
+    "source_url": "https://www.printables.com/model/13765",
+    "short_desc": "Kredi kartı kalınlığında cüzdana sığan, açıldığında telefonu yatay ve dikey sabit tutan ultra ince katlanır stand.",
+    "dolap_title": "Cüzdana Sığan Katlanabilir Kart Telefon Standı (2'li Set) - Ultra İnce Cep Standı",
+    "dolap_competition": "Düşük (Cüzdana Sığan Model Yok)",
+    "competition_level": "low",
+    "competition_note": "Dolap'ta hantal masaüstü plastik standlar var ancak cüzdana kart yuvasına giren ultra ince katlanır kart model yok. İnovatif olduğu için dikkat çeker.",
+    "pros": [
+      "Her akıllı telefon kullanıcısının her an çantasında/cüzdanında taşıyabileceği pratiklik.",
+      "2'li set satıldığı için 'Biri size, biri arkadaşınıza hediye' kurgusu çok tutar.",
+      "16 gram filament tüketimiyle neredeyse sıfır hammadde maliyeti.",
+      "0 desi mektup zarfında gönderilebilir, kargo maliyeti minimumdur."
+    ],
+    "cons": [
+      "Ultra ince olduğu için tabla yapışması kritik; tabladan soğumadan zorla çekilirse bükülebilir.",
+      "Katlanma menteşe yerlerinde kaliteli PLA filament tercih edilmelidir."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "65°C / 60°C",
+      "nozzle_temp": "220°C",
+      "layer_height": "0.20 mm",
+      "wall_loops": "4 Hat (Menteşe dayanıklılığı için)",
+      "infill_density": "%100 (Dolu gövde)",
+      "infill_pattern": "Düz Çizgiler",
+      "print_speed": "150 mm/s",
+      "supports": "KAPALI",
+      "bambu_time": "20 dakika (Çift)",
+      "pro_tip": "Tabladan çıkarmadan önce tablanın 35°C altına soğumasını bekleyin; böylece kart dümdüz ve pürüzsüz kalır."
+    },
+    "photo_prompts": [
+      "Ultra slim 3d printed credit card phone stand propping up a smartphone in landscape video mode on cafe table",
+      "Hand sliding the thin 3d printed card stand directly into leather cardholder pocket, lifestyle shot",
+      "Close up showing the origami style folding hinges of the 3d printed portable plastic stand"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 6.4,
+    "electricity_cost_tl": 0.21,
+    "packaging_cost_tl": 7.0,
+    "total_production_cost_tl": 13.61,
+    "market_price_tl": 180.0,
+    "our_selling_price_tl": 139.0,
+    "dolap_commission_tl": 20.85,
+    "net_profit_tl": 104.54,
+    "profit_margin_percent": 75.2,
+    "price_advantage_tl": 41.0
+  },
+  "agent": {
+    "type": "nis",
+    "name": "Ajan 1 (Niş & Özgün)",
+    "badge": "🟢 Niş Ürün (Dolap'ta Yok)"
+  },
+  "pros": [
+    "Her akıllı telefon kullanıcısının her an çantasında/cüzdanında taşıyabileceği pratiklik.",
+    "2'li set satıldığı için 'Biri size, biri arkadaşınıza hediye' kurgusu çok tutar.",
+    "16 gram filament tüketimiyle neredeyse sıfır hammadde maliyeti.",
+    "0 desi mektup zarfında gönderilebilir, kargo maliyeti minimumdur."
+  ],
+  "cons": [
+    "Ultra ince olduğu için tabla yapışması kritik; tabladan soğumadan zorla çekilirse bükülebilir.",
+    "Katlanma menteşe yerlerinde kaliteli PLA filament tercih edilmelidir."
+  ]
+}

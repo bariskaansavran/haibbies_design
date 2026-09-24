@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "klavye_switch_fidget_clicker",
+    "slug": "klavye_switch_fidget_clicker",
+    "title": "Mekanik Klavye Switch Fidget ASMR Stres Anahtarlığı",
+    "agent_type": "nis",
+    "agent_name": "Ajan 1 (Niş & Özgün)",
+    "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)",
+    "category": "oyuncak",
+    "category_name": "Oyuncak & Fidget",
+    "emoji": "⌨️",
+    "filament_grams": 8,
+    "print_hours": 0.25,
+    "market_price_tl": 160.0,
+    "our_selling_price_tl": 119.0,
+    "extra_costs": 5.0,
+    "source_url": "https://makerworld.com/en/models/80854",
+    "short_desc": "ASMR mekanik klavye sesine ve hissiyatına sahip, tıklanabilir dokunsal stres atıcı cep anahtarlığı.",
+    "dolap_title": "Mekanik Klavye Switch Fidget Clicker Stres Anahtarlık - ASMR Sesli 3D",
+    "dolap_competition": "Düşük (Piyasada Hazır Monteli Yok)",
+    "competition_level": "low",
+    "competition_note": "Tiktok ve Instagram'da mekanik klavye sesleri milyonlar izleniyor; ancak Dolap'ta içine kaliteli switch takılı, metal halkalı hazır anahtarlık satan yok.",
+    "pros": [
+      "Sadece 8 gram filament harcar, 15 dakikada basılır.",
+      "119 TL fiyatla gençler ve öğrenciler tarafından düşünmeden sepete atılır.",
+      "Bambu Lab tablasına tek seferde 20 adet sığar; seri üretime inanılmaz uygundur.",
+      "Yüksek kâr marjı: 119 TL satışta 85 TL net kâr bırakır."
+    ],
+    "cons": [
+      "İçine toptan temin edilmiş mekanik switch (Outemu Blue/Clicky) takılması gerekir.",
+      "Keycap kapağının switch tırnağına tam oturması için tolerans kalibrasyonu önemlidir."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "60°C",
+      "nozzle_temp": "215°C",
+      "layer_height": "0.20 mm",
+      "wall_loops": "3 Hat",
+      "infill_density": "%20",
+      "infill_pattern": "Gyroid",
+      "print_speed": "200 mm/s",
+      "supports": "KAPALI",
+      "bambu_time": "14 dakika | 20'li Seri Tabla: 2 saat 15 dk",
+      "pro_tip": "Toptan mavi clicky switch kullanın. 'Tok sesli ASMR anahtarlık' başlığıyla öğrencilerin dikkatini çekin."
+    },
+    "photo_prompts": [
+      "Human hand clicking a colorful 3d printed mechanical keyboard switch keychain, tactile keycap, studio photography",
+      "Array of pastel color 3d printed switch keychains with metallic split rings laid out on wooden office desk",
+      "Macro photography showing mechanical blue switch mechanism fitted inside precision 3d printed chassis"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 3.2,
+    "electricity_cost_tl": 0.15,
+    "packaging_cost_tl": 10.0,
+    "total_production_cost_tl": 13.35,
+    "market_price_tl": 160.0,
+    "our_selling_price_tl": 119.0,
+    "dolap_commission_tl": 17.85,
+    "net_profit_tl": 87.8,
+    "profit_margin_percent": 73.8,
+    "price_advantage_tl": 41.0
+  },
+  "agent": {
+    "type": "nis",
+    "name": "Ajan 1 (Niş & Özgün)",
+    "badge": "🟢 Niş Ürün (Dolap'ta Yok)"
+  },
+  "pros": [
+    "Sadece 8 gram filament harcar, 15 dakikada basılır.",
+    "119 TL fiyatla gençler ve öğrenciler tarafından düşünmeden sepete atılır.",
+    "Bambu Lab tablasına tek seferde 20 adet sığar; seri üretime inanılmaz uygundur.",
+    "Yüksek kâr marjı: 119 TL satışta 85 TL net kâr bırakır."
+  ],
+  "cons": [
+    "İçine toptan temin edilmiş mekanik switch (Outemu Blue/Clicky) takılması gerekir.",
+    "Keycap kapağının switch tırnağına tam oturması için tolerans kalibrasyonu önemlidir."
+  ]
+}

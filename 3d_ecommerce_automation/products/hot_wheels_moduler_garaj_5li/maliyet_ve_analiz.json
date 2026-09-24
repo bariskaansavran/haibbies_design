@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "hot_wheels_moduler_garaj_5li",
+    "slug": "hot_wheels_moduler_garaj_5li",
+    "title": "Hot Wheels Modüler Altıgen Garaj Standı (5'li Set)",
+    "agent_type": "populer",
+    "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "agent_badge": "🔥 Popüler & Fiyat Kırıcı",
+    "category": "koleksiyon",
+    "category_name": "Koleksiyon & Hobi",
+    "emoji": "🏎️",
+    "filament_grams": 175,
+    "print_hours": 5.2,
+    "market_price_tl": 450.0,
+    "our_selling_price_tl": 289.0,
+    "extra_costs": 4.0,
+    "source_url": "https://www.thingiverse.com/thing:3044005",
+    "short_desc": "Hot Wheels araçları için birbirine kenetlenen altıgen modüler petek garaj ve delmesiz duvar rafı.",
+    "dolap_title": "Hot Wheels Modüler Garaj Standı 5'li Set - 3D Baskı Duvar Rafı Koleksiyon",
+    "dolap_competition": "Orta (Ahşap Rakipler Var, 3D Petek Yok)",
+    "competition_level": "medium",
+    "competition_note": "Dolap'ta hantal ahşap lazer raflar 450-600 TL istiyor. Biz modern 5'li 3D petek garajı 289 TL'ye sunup duvara delmeden yapışma avantajıyla öne geçiyoruz.",
+    "pros": [
+      "Rakipler 450 TL isterken 289 TL fiyatla piyasayı domine ederiz.",
+      "Diecast koleksiyonerleri ilk alımdan sonra sürekli 5'li ek modül siparişi verir.",
+      "Tamamen desteksiz, 0.28mm katmanla hızlı basılır.",
+      "Net kâr: +164 TL (%56.9 kâr marjı)."
+    ],
+    "cons": [
+      "5 modül toplam 175g filament tüketir ve 5 saat sürer; tablayı dolu tutmak gerekir.",
+      "Duvara montaj için kutu içerisine kaliteli çift taraflı köpük bant hediye konulmalıdır."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "65°C / 60°C",
+      "nozzle_temp": "220°C",
+      "layer_height": "0.28 mm Hızlı Taslak",
+      "wall_loops": "2 Hat",
+      "infill_density": "%10",
+      "infill_pattern": "Gyroid",
+      "print_speed": "220 mm/s",
+      "supports": "KAPALI",
+      "bambu_time": "5 saat (5'li Set)",
+      "pro_tip": "Dokulu PEI tabla arka yüze harika bir matlık verir; çift taraflı bant arkaya sımsıkı tutunur."
+    },
+    "photo_prompts": [
+      "Modern hexagon modular 3d printed garage display holding collectible diecast toy cars mounted on wall",
+      "Close up shot showing precision interlocking dovetail joints clicking two black hexagon modules together",
+      "Full collection wall display in boy's bedroom showcasing colorful model cars parked neatly inside honeycombs"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 70.0,
+    "electricity_cost_tl": 3.12,
+    "packaging_cost_tl": 9.0,
+    "total_production_cost_tl": 82.12,
+    "market_price_tl": 450.0,
+    "our_selling_price_tl": 289.0,
+    "dolap_commission_tl": 43.35,
+    "net_profit_tl": 163.53,
+    "profit_margin_percent": 56.6,
+    "price_advantage_tl": 161.0
+  },
+  "agent": {
+    "type": "populer",
+    "name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "badge": "🔥 Popüler & Fiyat Kırıcı"
+  },
+  "pros": [
+    "Rakipler 450 TL isterken 289 TL fiyatla piyasayı domine ederiz.",
+    "Diecast koleksiyonerleri ilk alımdan sonra sürekli 5'li ek modül siparişi verir.",
+    "Tamamen desteksiz, 0.28mm katmanla hızlı basılır.",
+    "Net kâr: +164 TL (%56.9 kâr marjı)."
+  ],
+  "cons": [
+    "5 modül toplam 175g filament tüketir ve 5 saat sürer; tablayı dolu tutmak gerekir.",
+    "Duvara montaj için kutu içerisine kaliteli çift taraflı köpük bant hediye konulmalıdır."
+  ]
+}

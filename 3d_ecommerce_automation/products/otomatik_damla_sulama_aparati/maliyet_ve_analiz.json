@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "otomatik_damla_sulama_aparati",
+    "slug": "otomatik_damla_sulama_aparati",
+    "title": "Pet Şişe Vidalı Otomatik Damla Sulama Çivisi (4'lü Set)",
+    "agent_type": "nis",
+    "agent_name": "Ajan 1 (Niş & Özgün)",
+    "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)",
+    "category": "ev",
+    "category_name": "Ev, Bahçe & Bitki",
+    "emoji": "🌱",
+    "filament_grams": 48,
+    "print_hours": 1.1,
+    "market_price_tl": 180.0,
+    "our_selling_price_tl": 139.0,
+    "extra_costs": 2.0,
+    "source_url": "https://makerworld.com/en/models/45821",
+    "short_desc": "Standart pet su ve meşrubat şişelerine vidalanan, bitki köklerine ayarlı yavaş su damlatan tatile gidiş kurtarıcısı.",
+    "dolap_title": "Pet Şişe Otomatik Bitki Damla Sulama Aparatı 4'lü Set - Çiçek Tatil Sulayıcı",
+    "dolap_competition": "Düşük (Pazar Boş)",
+    "competition_level": "low",
+    "competition_note": "Dolap'ta ev bitkisi ve sukulent alan devasa kitle var; fakat pet şişe vidalanan 3D damla sulama aparatı satan neredeyse sıfır. İlk giren mağaza aramaları tekeline alır.",
+    "pros": [
+      "Tatile gidenler, unutkanlar ve ofis bitkisi besleyenler için kesin problem çözer.",
+      "4'lü set olarak 139 TL tam dürtüsel alışveriş baremindedir.",
+      "0 desi kargo avantajı; kırılma veya bozulma riski yoktur.",
+      "Bambu Lab'da 4 adet aparat tek seferde 1 saat 5 dakikada desteksiz basılır."
+    ],
+    "cons": [
+      "Pet şişe diş toleransının sızdırmaz olması için 0.20mm standart katman kalınlığı ile basılmalıdır.",
+      "Baskı sonrası nozülün tıkanmaması için tabla soğuduktan sonra nazikçe alınmalıdır."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm Paslanmaz / Sertleştirilmiş Çelik",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "65°C / 60°C",
+      "nozzle_temp": "220°C (PLA Basic)",
+      "layer_height": "0.20 mm",
+      "wall_loops": "3 Hat",
+      "infill_density": "%20",
+      "infill_pattern": "Gyroid",
+      "print_speed": "200 mm/s",
+      "supports": "KAPALI (Desteksiz)",
+      "bambu_time": "1 sa 05 dk (4'lü Set)",
+      "pro_tip": "4 aparatı farklı renklerde (Toprak Kahvesi, Yaprak Yeşili, Krem, Turuncu) basıp 'Pastel Renkli Doğa Seti' olarak satın."
+    },
+    "photo_prompts": [
+      "Macro studio shot of a sleek 3d printed conical plant watering spike with precise bottle screw threads, studio lighting, clean background",
+      "A 3d printed watering spike attached to a glass bottle upside down inside a lush green Monstera potted plant in modern living room",
+      "Close up detail showing water droplet forming at the tip of the tapered 3d printed irrigation spike in soil"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 19.2,
+    "electricity_cost_tl": 0.66,
+    "packaging_cost_tl": 7.0,
+    "total_production_cost_tl": 26.86,
+    "market_price_tl": 180.0,
+    "our_selling_price_tl": 139.0,
+    "dolap_commission_tl": 20.85,
+    "net_profit_tl": 91.29,
+    "profit_margin_percent": 65.7,
+    "price_advantage_tl": 41.0
+  },
+  "agent": {
+    "type": "nis",
+    "name": "Ajan 1 (Niş & Özgün)",
+    "badge": "🟢 Niş Ürün (Dolap'ta Yok)"
+  },
+  "pros": [
+    "Tatile gidenler, unutkanlar ve ofis bitkisi besleyenler için kesin problem çözer.",
+    "4'lü set olarak 139 TL tam dürtüsel alışveriş baremindedir.",
+    "0 desi kargo avantajı; kırılma veya bozulma riski yoktur.",
+    "Bambu Lab'da 4 adet aparat tek seferde 1 saat 5 dakikada desteksiz basılır."
+  ],
+  "cons": [
+    "Pet şişe diş toleransının sızdırmaz olması için 0.20mm standart katman kalınlığı ile basılmalıdır.",
+    "Baskı sonrası nozülün tıkanmaması için tabla soğuduktan sonra nazikçe alınmalıdır."
+  ]
+}

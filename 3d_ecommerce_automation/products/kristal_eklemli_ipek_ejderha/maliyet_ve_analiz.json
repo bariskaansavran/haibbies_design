@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "kristal_eklemli_ipek_ejderha",
+    "slug": "kristal_eklemli_ipek_ejderha",
+    "title": "Kristal Eklemli İpek Parlak Ejderha (Dual-Color Silk)",
+    "agent_type": "populer",
+    "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "agent_badge": "🔥 Popüler & Fiyat Kırıcı",
+    "category": "oyuncak",
+    "category_name": "Oyuncak & Sanat",
+    "emoji": "🐉",
+    "filament_grams": 75,
+    "print_hours": 2.7,
+    "market_price_tl": 290.0,
+    "our_selling_price_tl": 239.0,
+    "extra_costs": 2.0,
+    "source_url": "https://www.printables.com/model/139369",
+    "short_desc": "Tek parça montajsız hareketli basılan, ışıkta yanardöner parıldayan ipek dokulu kristal ejderha.",
+    "dolap_title": "Eklemli Kristal Ejderha Hareketli Fidget Masaj Oyuncağı - İpek Parlak Sedefli",
+    "dolap_competition": "Orta (Mat Basan Çok, Kaliteli İpek Az)",
+    "competition_level": "medium",
+    "competition_note": "Dolap'ta sıradan mat filamentle basanlar 250-290 TL istiyor. Biz iki renkli yanardöner Silk filament ve 239 TL fiyatla vitrinin yıldızı oluyoruz.",
+    "pros": [
+      "Fotoğrafta ışığı yansıtıp parladığı için Dolap vitrininde en çok tıklanan ürün.",
+      "Print-in-place: Tek parça tabladan kalkar, sıfır montaj, sıfır destek.",
+      "Kadın, öğrenci ve masa dekoru meraklılarının 1 numaralı hediyelik seçeneği.",
+      "Net kâr: +164 TL (%68.6 kâr marjı)."
+    ],
+    "cons": [
+      "Silk filament 250 mm/s hızda basılırsa matlaşır; dış duvar hızı 70 mm/s ve 228°C nozül yapılmalıdır.",
+      "Tabla yapışması için ilk katmanda tabla 65°C olmalıdır."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "65°C",
+      "nozzle_temp": "228°C (Silk parlaklığı için)",
+      "layer_height": "0.20 mm",
+      "wall_loops": "3 Hat",
+      "infill_density": "%15",
+      "infill_pattern": "Gyroid",
+      "print_speed": "Dış Duvar: 70 mm/s, İç: 180 mm/s",
+      "supports": "KAPALI (Print-in-Place)",
+      "bambu_time": "2 saat 40 dk",
+      "pro_tip": "Işık altında kıvrılırken kısa bir video çekip ilana yükleyin; ejderhanın akıcı hareketi alıcıyı anında büyüler."
+    },
+    "photo_prompts": [
+      "Shimmering emerald green and gold silk 3d printed articulated crystal dragon coiling dynamically on dark slate",
+      "Flexible articulated crystal dragon wrapping around human wrist comfortably like mythical creature",
+      "Macro photography showing glistening crystal scales reflecting warm studio rim lighting"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 30.0,
+    "electricity_cost_tl": 1.62,
+    "packaging_cost_tl": 7.0,
+    "total_production_cost_tl": 38.62,
+    "market_price_tl": 290.0,
+    "our_selling_price_tl": 239.0,
+    "dolap_commission_tl": 35.85,
+    "net_profit_tl": 164.53,
+    "profit_margin_percent": 68.8,
+    "price_advantage_tl": 51.0
+  },
+  "agent": {
+    "type": "populer",
+    "name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "badge": "🔥 Popüler & Fiyat Kırıcı"
+  },
+  "pros": [
+    "Fotoğrafta ışığı yansıtıp parladığı için Dolap vitrininde en çok tıklanan ürün.",
+    "Print-in-place: Tek parça tabladan kalkar, sıfır montaj, sıfır destek.",
+    "Kadın, öğrenci ve masa dekoru meraklılarının 1 numaralı hediyelik seçeneği.",
+    "Net kâr: +164 TL (%68.6 kâr marjı)."
+  ],
+  "cons": [
+    "Silk filament 250 mm/s hızda basılırsa matlaşır; dış duvar hızı 70 mm/s ve 228°C nozül yapılmalıdır.",
+    "Tabla yapışması için ilk katmanda tabla 65°C olmalıdır."
+  ]
+}

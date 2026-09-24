@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: Kişiye Özel Spotify Kodlu Şarkı Plaket Standı (Çift Renk)
+Kategori: Kişisel & Hediye (🎵)
+Araştıran Ajan: Ajan 2 (Popüler & Fiyat Kırıcı)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://makerworld.com/en/models/35210
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 60°C
+• Nozzle Sıcaklığı: 220°C
+• Katman Kalınlığı: 0.16 mm Optimal (Kod çizgilerinin netliği için)
+• Duvar Hatları (Wall Loops): 3 Hat
+• Doluluk Oranı: %20
+• Doluluk Deseni: Gyroid
+• Baskı Hızı: 140 mm/s
+• Destek (Support): KAPALI
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 1 saat 15 dk
+• Filament Tüketimi: ~46 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 199.0 TL
+• Piyasa / Rakip Fiyatı: 290.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+'Sipariş verdikten sonra istediğiniz şarkıyı ve altına yazılacak özel tarihi mesaj atın' ibaresini büyük yazın.

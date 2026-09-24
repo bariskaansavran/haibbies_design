@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "apple_watch_iphone_sarj_dock",
+    "slug": "apple_watch_iphone_sarj_dock",
+    "title": "Apple Watch & iPhone StandBy Masaüstü Komodin Dock",
+    "agent_type": "populer",
+    "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "agent_badge": "🔥 Popüler & Fiyat Kırıcı",
+    "category": "masa",
+    "category_name": "Masa Düzeni & Tech",
+    "emoji": "⌚",
+    "filament_grams": 52,
+    "print_hours": 1.5,
+    "market_price_tl": 280.0,
+    "our_selling_price_tl": 179.0,
+    "extra_costs": 2.0,
+    "source_url": "https://makerworld.com/en/models/28400",
+    "short_desc": "iPhone ve Apple Watch manyetik şarj aletlerini tek gövdede birleştiren, kablo kanalları gizli minimalist komodin standı.",
+    "dolap_title": "Apple Watch ve iPhone Uyumlu Masaüstü Şarj Dock Standı - Gizli Kablo Kanallı",
+    "dolap_competition": "Orta (Piyasa Canlı, 179 TL ile Rakipsiz)",
+    "competition_level": "medium",
+    "competition_note": "Dolap'ta Apple şarj standları 250-320 TL arasında satılıyor. Biz mat dokulu ve kablo kanalları gizli modeli 179 TL'ye vererek fiyatta ve estetikte lider oluyoruz.",
+    "pros": [
+      "Apple kitlesinin satın alma gücü yüksektir ve komodinde şık aksesuarları sever.",
+      "iOS 17/18 StandBy modu ile iPhone yatay gece saati olarak kusursuz konumlanır.",
+      "Tek parça gövde, desteksiz basılır.",
+      "Net kâr: +123 TL (%69.1 kâr marjı)."
+    ],
+    "cons": [
+      "Apple Watch şarj diskinin yuvası milimetrik tolerans ister; çok sıkı veya gevşek olmamalıdır.",
+      "Beyaz ve Mat Siyah renklerde üretilmeli, pastel renkler Apple kitlesine hitap etmeyebilir."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "60°C",
+      "nozzle_temp": "220°C (Mat Beyaz / Siyah PLA)",
+      "layer_height": "0.20 mm",
+      "wall_loops": "3 Hat",
+      "infill_density": "%20",
+      "infill_pattern": "Gyroid",
+      "print_speed": "180 mm/s",
+      "supports": "KAPALI",
+      "bambu_time": "1 saat 25 dk",
+      "pro_tip": "Orijinal şarj kablosunun yuvasına tık diye oturduğunu gösteren bir fotoğrafı ilanın 2. sırasına koyun."
+    },
+    "photo_prompts": [
+      "Minimalist white 3d printed dual charging stand docking iPhone displaying StandBy night clock mode and Apple Watch",
+      "Underneath view of charging stand showing recessed routing channels cleanly hiding white charging cables",
+      "Warm cozy bedroom nightstand scene with the 3d printed phone and watch charging dock illuminated gently"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 20.8,
+    "electricity_cost_tl": 0.9,
+    "packaging_cost_tl": 7.0,
+    "total_production_cost_tl": 28.7,
+    "market_price_tl": 280.0,
+    "our_selling_price_tl": 179.0,
+    "dolap_commission_tl": 26.85,
+    "net_profit_tl": 123.45,
+    "profit_margin_percent": 69.0,
+    "price_advantage_tl": 101.0
+  },
+  "agent": {
+    "type": "populer",
+    "name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "badge": "🔥 Popüler & Fiyat Kırıcı"
+  },
+  "pros": [
+    "Apple kitlesinin satın alma gücü yüksektir ve komodinde şık aksesuarları sever.",
+    "iOS 17/18 StandBy modu ile iPhone yatay gece saati olarak kusursuz konumlanır.",
+    "Tek parça gövde, desteksiz basılır.",
+    "Net kâr: +123 TL (%69.1 kâr marjı)."
+  ],
+  "cons": [
+    "Apple Watch şarj diskinin yuvası milimetrik tolerans ister; çok sıkı veya gevşek olmamalıdır.",
+    "Beyaz ve Mat Siyah renklerde üretilmeli, pastel renkler Apple kitlesine hitap etmeyebilir."
+  ]
+}

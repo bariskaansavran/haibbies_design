@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: Hot Wheels Modüler Altıgen Garaj Standı (5'li Set)
+Kategori: Koleksiyon & Hobi (🏎️)
+Araştıran Ajan: Ajan 2 (Popüler & Fiyat Kırıcı)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://www.thingiverse.com/thing:3044005
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 65°C / 60°C
+• Nozzle Sıcaklığı: 220°C
+• Katman Kalınlığı: 0.28 mm Hızlı Taslak
+• Duvar Hatları (Wall Loops): 2 Hat
+• Doluluk Oranı: %10
+• Doluluk Deseni: Gyroid
+• Baskı Hızı: 220 mm/s
+• Destek (Support): KAPALI
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 5 saat (5'li Set)
+• Filament Tüketimi: ~175 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 289.0 TL
+• Piyasa / Rakip Fiyatı: 450.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+Dokulu PEI tabla arka yüze harika bir matlık verir; çift taraflı bant arkaya sımsıkı tutunur.

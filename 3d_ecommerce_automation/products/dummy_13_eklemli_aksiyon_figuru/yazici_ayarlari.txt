@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: Dummy 13 Eklemli Aksiyon Figürü (Silahlı Savaşçı Versiyonu)
+Kategori: Oyuncak & Viral (🤖)
+Araştıran Ajan: Ajan 2 (Popüler & Fiyat Kırıcı)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://www.printables.com/model/593185
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 65°C / 60°C
+• Nozzle Sıcaklığı: 220°C (İskelet PETG, Zırh PLA)
+• Katman Kalınlığı: 0.16 mm Optimal
+• Duvar Hatları (Wall Loops): 3 Hat
+• Doluluk Oranı: %20
+• Doluluk Deseni: Gyroid
+• Baskı Hızı: 120 mm/s (Hassas tolerans)
+• Destek (Support): KAPALI
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 1 saat 20 dk
+• Filament Tüketimi: ~32 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 179.0 TL
+• Piyasa / Rakip Fiyatı: 200.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+İç iskeleti Siyah PETG, dış zırhı Neon Turuncu veya Kırmızı basarak çift renk kontrast yaratın.

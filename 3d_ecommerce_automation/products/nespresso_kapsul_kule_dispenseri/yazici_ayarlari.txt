@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: Nespresso Uyumlu Kahve Kapsül Kulesi Dispenseri (10'lu)
+Kategori: Ev & Kahve (☕)
+Araştıran Ajan: Ajan 1 (Niş & Özgün)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://www.thingiverse.com/thing:2427670
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 65°C / 60°C
+• Nozzle Sıcaklığı: 220°C (Mat Siyah PLA)
+• Katman Kalınlığı: 0.24 mm
+• Duvar Hatları (Wall Loops): 3 Hat
+• Doluluk Oranı: %15
+• Doluluk Deseni: Gyroid
+• Baskı Hızı: 180 mm/s
+• Destek (Support): KAPALI
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 1 saat 40 dk
+• Filament Tüketimi: ~78 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 199.0 TL
+• Piyasa / Rakip Fiyatı: 250.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+Tabana 4 adet şeffaf silikon kaydırmaz ped yapıştırın; tezgahı çizmez ve kapsül çekerken devrilmez.

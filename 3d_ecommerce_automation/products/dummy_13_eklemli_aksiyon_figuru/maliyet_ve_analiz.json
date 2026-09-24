@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "dummy_13_eklemli_aksiyon_figuru",
+    "slug": "dummy_13_eklemli_aksiyon_figuru",
+    "title": "Dummy 13 Eklemli Aksiyon Figürü (Silahlı Savaşçı Versiyonu)",
+    "agent_type": "populer",
+    "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "agent_badge": "🔥 Popüler & Fiyat Kırıcı",
+    "category": "oyuncak",
+    "category_name": "Oyuncak & Viral",
+    "emoji": "🤖",
+    "filament_grams": 32,
+    "print_hours": 1.4,
+    "market_price_tl": 200.0,
+    "our_selling_price_tl": 179.0,
+    "extra_costs": 2.0,
+    "source_url": "https://www.printables.com/model/593185",
+    "short_desc": "Tüm eklemleri hareket edebilen, poz verdirilebilen TikTok fenomeni mafsallı figür + 2 adet mini kılıç ve kalkan.",
+    "dolap_title": "Dummy 13 Eklemli Aksiyon Figürü + Silah Seti Hediyeli - 3D Poz Verilebilir",
+    "dolap_competition": "Yüksek (Viral Model, Bundle ile Kazanılır)",
+    "competition_level": "high",
+    "competition_note": "Dolap'ta sadece çıplak figürü 180-200 TL'ye satan çok satıcı var. Biz 179 TL'ye satıp yanına 2 mini kılıç + kalkan ekleyerek 'Silahlı Paket' ile ezici üstünlük kuruyoruz.",
+    "pros": [
+      "TikTok ve Instagram Reels sayesinde çocuk ve genç kitlesi hazır bekliyor.",
+      "Rakipler çıplak verirken bizim hediyeli kılıçlı modelimiz anında tercih sebebi olur.",
+      "32 gram filamentle 138 TL net kâr (%77 kâr marjı).",
+      "Gövde parçaları düz tablada desteksiz basılır."
+    ],
+    "cons": [
+      "Bilye eklemleri zamanla gevşemesin diye iç iskelet PETG ile basılmalıdır.",
+      "Küçük bilye parçaları için Bambu Studio'da mouse-ear brim açılması önerilir."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "65°C / 60°C",
+      "nozzle_temp": "220°C (İskelet PETG, Zırh PLA)",
+      "layer_height": "0.16 mm Optimal",
+      "wall_loops": "3 Hat",
+      "infill_density": "%20",
+      "infill_pattern": "Gyroid",
+      "print_speed": "120 mm/s (Hassas tolerans)",
+      "supports": "KAPALI",
+      "bambu_time": "1 saat 20 dk",
+      "pro_tip": "İç iskeleti Siyah PETG, dış zırhı Neon Turuncu veya Kırmızı basarak çift renk kontrast yaratın."
+    },
+    "photo_prompts": [
+      "Articulated 3d printed Dummy 13 action figure posed dynamically in martial arts stance with miniature sword",
+      "Dummy 13 figure holding detailed 3d printed tactical shield on modern office desk under rim lighting",
+      "Three Dummy 13 action figures in metallic silver, stealth black and ruby red standing side by side"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 12.8,
+    "electricity_cost_tl": 0.84,
+    "packaging_cost_tl": 7.0,
+    "total_production_cost_tl": 20.64,
+    "market_price_tl": 200.0,
+    "our_selling_price_tl": 179.0,
+    "dolap_commission_tl": 26.85,
+    "net_profit_tl": 131.51,
+    "profit_margin_percent": 73.5,
+    "price_advantage_tl": 21.0
+  },
+  "agent": {
+    "type": "populer",
+    "name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "badge": "🔥 Popüler & Fiyat Kırıcı"
+  },
+  "pros": [
+    "TikTok ve Instagram Reels sayesinde çocuk ve genç kitlesi hazır bekliyor.",
+    "Rakipler çıplak verirken bizim hediyeli kılıçlı modelimiz anında tercih sebebi olur.",
+    "32 gram filamentle 138 TL net kâr (%77 kâr marjı).",
+    "Gövde parçaları düz tablada desteksiz basılır."
+  ],
+  "cons": [
+    "Bilye eklemleri zamanla gevşemesin diye iç iskelet PETG ile basılmalıdır.",
+    "Küçük bilye parçaları için Bambu Studio'da mouse-ear brim açılması önerilir."
+  ]
+}

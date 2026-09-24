@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "donen_disli_sonsuz_takvim",
+    "slug": "donen_disli_sonsuz_takvim",
+    "title": "Dönen Dişli Mekanik Sonsuz Takvim (Perpetual Gear Calendar)",
+    "agent_type": "populer",
+    "agent_name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "agent_badge": "🔥 Popüler & Fiyat Kırıcı",
+    "category": "hediye",
+    "category_name": "Prestij & Ofis",
+    "emoji": "⚙️",
+    "filament_grams": 110,
+    "print_hours": 2.8,
+    "market_price_tl": 420.0,
+    "our_selling_price_tl": 299.0,
+    "extra_costs": 4.0,
+    "source_url": "https://makerworld.com/en/models/15234",
+    "short_desc": "Gün, ay ve haftanın gününü dişli çarkların dönüşüyle gösteren, pilsiz ömür boyu çalışan mekanik masa takvimi.",
+    "dolap_title": "Dönen Dişli Çarklı Sonsuz Takvim - Mekanik Masaüstü Takvim Ömür Boyu Ofis Hediyesi",
+    "dolap_competition": "Düşük/Orta (İşçiliği Yüksek Görünen Ürün)",
+    "competition_level": "low",
+    "competition_note": "Dolap'ta mekanik çalışan kaliteli masa objesi yok denecek kadar az. Alıcılar bunu karmaşık bir mühendislik ürünü gördüğü için 299 TL'ye anında alır.",
+    "pros": [
+      "Avukat, doktor, yönetici ve mühendislere 'alınabilecek en havalı ömür boyu hediye'.",
+      "Pilsiz, mekanik tıkırtılı dişli yapısıyla bağımlılık yapıcı dokunsal hissiyat.",
+      "Rakipler 420 TL isterken 299 TL'ye satarak 200 TL net kâr (%67 kâr marjı) elde ederiz.",
+      "Bambu Lab'ın 0.08mm hassasiyeti sayesinde zımparalamadan dişliler tıkır tıkır döner."
+    ],
+    "cons": [
+      "Dişliler arasında tolerans olduğu için ilk baskıda akış kalibrasyonunun tam yapılması gerekir.",
+      "Metalik İpek Bronz veya Bakır-Siyah filamentle basılmalıdır, sıradan beyaz PLA basılırsa oyuncak gibi görünür."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "65°C / 60°C",
+      "nozzle_temp": "225°C (Metalik Silk Filament)",
+      "layer_height": "0.16 mm (Hassas diş profili)",
+      "wall_loops": "3 Hat",
+      "infill_density": "%20",
+      "infill_pattern": "Gyroid",
+      "print_speed": "140 mm/s",
+      "supports": "KAPALI (Düz basılır)",
+      "bambu_time": "2 saat 40 dk",
+      "pro_tip": "Dişlileri döndürürken çıkan tatmin edici tık tık sesini gösteren kısa bir video ekleyin; takvim arayan herkes satın alır."
+    },
+    "photo_prompts": [
+      "Steampunk style perpetual gear calendar showing date, month and day with interlocking mechanical gears on executive desk",
+      "Human hands turning the tactile gear rings adjusting date, close up on intricate mechanism and numbers",
+      "Executive office desk setup with perpetual mechanical calendar beside fountain pen and leather journal"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 44.0,
+    "electricity_cost_tl": 1.68,
+    "packaging_cost_tl": 9.0,
+    "total_production_cost_tl": 54.68,
+    "market_price_tl": 420.0,
+    "our_selling_price_tl": 299.0,
+    "dolap_commission_tl": 44.85,
+    "net_profit_tl": 199.47,
+    "profit_margin_percent": 66.7,
+    "price_advantage_tl": 121.0
+  },
+  "agent": {
+    "type": "populer",
+    "name": "Ajan 2 (Popüler & Fiyat Kırıcı)",
+    "badge": "🔥 Popüler & Fiyat Kırıcı"
+  },
+  "pros": [
+    "Avukat, doktor, yönetici ve mühendislere 'alınabilecek en havalı ömür boyu hediye'.",
+    "Pilsiz, mekanik tıkırtılı dişli yapısıyla bağımlılık yapıcı dokunsal hissiyat.",
+    "Rakipler 420 TL isterken 299 TL'ye satarak 200 TL net kâr (%67 kâr marjı) elde ederiz.",
+    "Bambu Lab'ın 0.08mm hassasiyeti sayesinde zımparalamadan dişliler tıkır tıkır döner."
+  ],
+  "cons": [
+    "Dişliler arasında tolerans olduğu için ilk baskıda akış kalibrasyonunun tam yapılması gerekir.",
+    "Metalik İpek Bronz veya Bakır-Siyah filamentle basılmalıdır, sıradan beyaz PLA basılırsa oyuncak gibi görünür."
+  ]
+}

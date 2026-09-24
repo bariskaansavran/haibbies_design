@@ -1,0 +1,81 @@
+{
+  "product": {
+    "id": "manyetik_gozlu_baykus_anahtarlik",
+    "slug": "manyetik_gozlu_baykus_anahtarlik",
+    "title": "Gözleri Açılan Manyetik Baykuş Duvar Anahtarlığı",
+    "agent_type": "nis",
+    "agent_name": "Ajan 1 (Niş & Özgün)",
+    "agent_badge": "🟢 Niş Ürün (Dolap'ta Yok)",
+    "category": "ev",
+    "category_name": "Ev & Hediye",
+    "emoji": "🦉",
+    "filament_grams": 42,
+    "print_hours": 1.2,
+    "market_price_tl": 190.0,
+    "our_selling_price_tl": 159.0,
+    "extra_costs": 5.0,
+    "source_url": "https://makerworld.com/en/models/30918",
+    "short_desc": "Anahtarı asınca gözlerini açan, anahtar alınınca uykuya geçen eğlenceli manyetik mekanik duvar askısı.",
+    "dolap_title": "Gözleri Açılan Manyetik Baykuş Anahtarlık Duvar Askısı - 3D Hareketli Ev Hediyesi",
+    "dolap_competition": "Düşük (Düzenli Satan Yok)",
+    "competition_level": "low",
+    "competition_note": "TikTok ve Reels'te çok sevilen viral model; Dolap'ta düzenli stokla hazır mıknatıslı satan profil yok.",
+    "pros": [
+      "Mekanik sürpriz faktörü sayesinde hem çocuklar hem yetişkinler için büyüleyici yeni ev hediyesi.",
+      "159 TL fiyat baremi Dolap'ta hediye kategorisinde anında alıcı bulur.",
+      "Gövdesi ve hareketli göz kapakları montajsız veya 10 saniyede kolayca geçer.",
+      "Arka yüzeyinde çift taraflı montaj bandıyla duvar delmeden kullanılır."
+    ],
+    "cons": [
+      "2 adet 10x2 mm veya 8x2 mm neodimyum mıknatıs gerektirir.",
+      "Mıknatıs yuvalarının toleransı tam olmalı, japon yapıştırıcıyla sabitlenmelidir."
+    ],
+    "bambu_profile": {
+      "printer": "Bambu Lab P1S / X1C / A1 / A1 Mini",
+      "nozzle": "0.4 mm",
+      "build_plate": "Textured PEI Plate",
+      "bed_temp": "65°C / 60°C",
+      "nozzle_temp": "220°C",
+      "layer_height": "0.20 mm",
+      "wall_loops": "3 Hat",
+      "infill_density": "%20",
+      "infill_pattern": "Gyroid",
+      "print_speed": "180 mm/s",
+      "supports": "KAPALI",
+      "bambu_time": "1 saat 10 dk",
+      "pro_tip": "Gözleri açılıp kapanırken çekilmiş 5 saniyelik videoyu Dolap ilanına eklemek siparişleri 3 katına çıkarır."
+    },
+    "photo_prompts": [
+      "Cute 3d printed owl wall key holder with wide awake open eyes holding heavy keychain on modern wall",
+      "Side by side view of owl sleeping with closed eyes and owl waking up with bright eyes when keys are hung",
+      "Two owl key holders in matte black and cream white mounted by front entryway door"
+    ]
+  },
+  "financials": {
+    "filament_cost_tl": 16.8,
+    "electricity_cost_tl": 0.72,
+    "packaging_cost_tl": 10.0,
+    "total_production_cost_tl": 27.52,
+    "market_price_tl": 190.0,
+    "our_selling_price_tl": 159.0,
+    "dolap_commission_tl": 23.85,
+    "net_profit_tl": 107.63,
+    "profit_margin_percent": 67.7,
+    "price_advantage_tl": 31.0
+  },
+  "agent": {
+    "type": "nis",
+    "name": "Ajan 1 (Niş & Özgün)",
+    "badge": "🟢 Niş Ürün (Dolap'ta Yok)"
+  },
+  "pros": [
+    "Mekanik sürpriz faktörü sayesinde hem çocuklar hem yetişkinler için büyüleyici yeni ev hediyesi.",
+    "159 TL fiyat baremi Dolap'ta hediye kategorisinde anında alıcı bulur.",
+    "Gövdesi ve hareketli göz kapakları montajsız veya 10 saniyede kolayca geçer.",
+    "Arka yüzeyinde çift taraflı montaj bandıyla duvar delmeden kullanılır."
+  ],
+  "cons": [
+    "2 adet 10x2 mm veya 8x2 mm neodimyum mıknatıs gerektirir.",
+    "Mıknatıs yuvalarının toleransı tam olmalı, japon yapıştırıcıyla sabitlenmelidir."
+  ]
+}

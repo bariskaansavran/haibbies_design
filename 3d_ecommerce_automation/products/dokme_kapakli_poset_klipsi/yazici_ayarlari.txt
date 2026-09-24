@@ -1,0 +1,32 @@
+BAMBU LAB (STUDIO & ORCASLICER) ÜRETİM REÇETESİ
+================================================================================
+Ürün: Vidalı Dökme Ağızlı Kilitli Poşet Klipsi (3'lü Paket)
+Kategori: Ev & Mutfak (🧂)
+Araştıran Ajan: Ajan 1 (Niş & Özgün)
+Hedef Platform: Dolap (Haibbies Design E-Ticaret)
+Kaynak Model Linki: https://makerworld.com/en/models/25890
+
+TEMEL SLICER AYARLARI:
+--------------------------------------------------------------------------------
+• Desteklenen Yazıcılar: Bambu Lab P1S / X1C / A1 / A1 Mini
+• Nozzle Çapı: 0.4 mm
+• Baskı Tablası: Textured PEI Plate
+• Tabla Sıcaklığı: 60°C
+• Nozzle Sıcaklığı: 220°C (PLA Food-Safe)
+• Katman Kalınlığı: 0.20 mm
+• Duvar Hatları (Wall Loops): 3 Hat
+• Doluluk Oranı: %20
+• Doluluk Deseni: Gyroid
+• Baskı Hızı: 180 mm/s
+• Destek (Support): KAPALI
+
+ÜRETİM & MALİYET VERİLERİ:
+--------------------------------------------------------------------------------
+• Tahmini Bambu Baskı Süresi: 50 dakika (3'lü Paket)
+• Filament Tüketimi: ~45 Gram PLA
+• Önerilen Dolap Satış Fiyatı: 129.0 TL
+• Piyasa / Rakip Fiyatı: 170.0 TL
+
+💡 ATÖLYE & SERİ ÜRETİM TÜYOSU:
+--------------------------------------------------------------------------------
+Gövdeyi beyaz, vidalı kapağı ise Kırmızı/Mavi/Sarı canlı renklerde basarak paketi çekici hale getirin.

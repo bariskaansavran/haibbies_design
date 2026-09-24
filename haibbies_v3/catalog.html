@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haibbies Design | Ürün Değerlendirme Kataloğu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { brand: { 500: '#3b82f6', 600: '#2563eb' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+        .img-carousel::-webkit-scrollbar { height: 6px; }
+        .img-carousel::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+    </style>
+</head>
+<body class="min-h-screen p-6 md:p-12">
+    <header class="mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-slate-800 pb-8">
+        <div>
+            <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 tracking-tight">Haibbies Design</h1>
+            <p class="text-slate-400 mt-2 text-lg">Otonom Pazar Araştırması & Ürün Değerlendirme Merkezi</p>
+        </div>
+        <div class="flex gap-4">
+            <div class="glass-card px-6 py-3 rounded-2xl text-center">
+                <div class="text-xs text-slate-400 font-semibold uppercase tracking-wider">İncelenen Ürün</div>
+                <div class="text-3xl font-black text-white">0</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+
+    </div>
+    
+    <script>
+        function deleteProduct(btn, slug) {
+            // Visual delete
+            const card = btn.closest('.glass-card');
+            card.style.display = 'none';
+            
+            // Show alert with command
+            const cmd = `python delete_product.py ${slug}`;
+            navigator.clipboard.writeText(cmd);
+            alert(`Kart gizlendi.\n\nKalıcı olarak silmek için terminalde şu komutu çalıştırın (Komut kopyalandı):\n\n${cmd}`);
+        }
+    </script>
+</body>
+</html>
