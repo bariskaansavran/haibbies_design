@@ -6,6 +6,7 @@ import logging
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, CommandHandler, filters, ContextTypes
 from google import genai
+import gspread
 
 # --- AYARLAR ---
 # (Github güvenlik taramasına takılmamak için şifreleri iki parça halinde yazıyoruz)
@@ -70,6 +71,12 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             
             Bu ürünün ne olduğunu tahmin ederek, Shopier için vurucu, SEO uyumlu, dikkat çekici bir 'SATIŞ AÇIKLAMASI' yaz.
             Ayrıca 3D yazıcı (PLA) için katman yüksekliği, dolgu oranı, destek gibi 'YAZICI AYARLARI' öner.
+            Bunun haricinde metnin EN SONUNA sadece hesaplama için, aynen şu formatta tahmini verileri ekle:
+            [STATS]
+            PLA: 0.15
+            SURE: 300
+            [/STATS]
+            PLA kg cinsinden (örneğin 150 gram için 0.15), SURE ise dakika cinsinden (örneğin 5 saat için 300) olmalıdır. Başka bir şey yazma.
             """
             
             interaction = client.interactions.create(
@@ -78,6 +85,43 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             
             result_text = interaction.output_text
+            
+            # Extract stats
+            pla_kg = 0.1
+            print_time = 120
+            if "[STATS]" in result_text and "[/STATS]" in result_text:
+                try:
+                    stats_block = result_text.split("[STATS]")[1].split("[/STATS]")[0]
+                    for line in stats_block.strip().split('\n'):
+                        if "PLA:" in line:
+                            pla_kg = float(line.split(":")[1].strip())
+                        if "SURE:" in line:
+                            print_time = int(line.split(":")[1].strip())
+                except:
+                    pass
+                    
+            # Update Google Sheets
+            try:
+                gc = gspread.service_account(filename=os.path.join(BASE_DIR, 'credentials.json'))
+                sh = gc.open_by_key('11c_nAzyrQfX2cMzyIAPgxTE57oMKLtKA1T-1lVciS8s')
+                tpl = sh.worksheet('ŞABLON')
+                safe_name = folder_name[:50]
+                
+                # Check if sheet exists
+                try:
+                    sh.worksheet(safe_name)
+                    sheet_exists = True
+                except:
+                    sheet_exists = False
+                    
+                if not sheet_exists:
+                    new_ws = sh.duplicate_sheet(tpl.id, new_sheet_name=safe_name)
+                    new_ws.update_acell('B2', pla_kg)
+                    new_ws.update_acell('B14', print_time)
+                    price = new_ws.acell('D22').value
+                    result_text += f"\n\n💰 MALIYET HESAPLANDI!\nSatış Fiyatı: {price}"
+            except Exception as sheet_err:
+                result_text += f"\n\n⚠️ Sheets Hatası: {sheet_err}"
             
             with open(os.path.join(product_path, "ai_rapor.txt"), "w", encoding="utf-8") as f:
                 f.write(result_text)
@@ -125,7 +169,13 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"⚙️ '{folder_name}' açıldı. İlk fotoğraf alındı, AI analizine başlanıyor...")
         try:
             sample_file = client.files.upload(file=photo_filepath)
-            prompt = "Sen profesyonel bir E-ticaret Satış Temsilcisi ve 3D Baskı Uzmanısın. Fotoğraftaki ürün için 'SATIŞ AÇIKLAMASI' ve PLA için 'YAZICI AYARLARI' yaz."
+            prompt = """Sen profesyonel bir E-ticaret Satış Temsilcisi ve 3D Baskı Uzmanısın. Fotoğraftaki ürün için 'SATIŞ AÇIKLAMASI' ve PLA için 'YAZICI AYARLARI' yaz.
+            Bunun haricinde metnin EN SONUNA sadece hesaplama için, aynen şu formatta tahmini verileri ekle:
+            [STATS]
+            PLA: 0.15
+            SURE: 300
+            [/STATS]
+            PLA kg cinsinden (örneğin 150 gram için 0.15), SURE ise dakika cinsinden (örneğin 5 saat için 300) olmalıdır. Başka bir şey yazma."""
             
             interaction = client.interactions.create(
                 model="gemini-3.5-flash-lite",
@@ -133,6 +183,43 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             
             result_text = interaction.output_text
+            
+            # Extract stats
+            pla_kg = 0.1
+            print_time = 120
+            if "[STATS]" in result_text and "[/STATS]" in result_text:
+                try:
+                    stats_block = result_text.split("[STATS]")[1].split("[/STATS]")[0]
+                    for line in stats_block.strip().split('\n'):
+                        if "PLA:" in line:
+                            pla_kg = float(line.split(":")[1].strip())
+                        if "SURE:" in line:
+                            print_time = int(line.split(":")[1].strip())
+                except:
+                    pass
+                    
+            # Update Google Sheets
+            try:
+                gc = gspread.service_account(filename=os.path.join(BASE_DIR, 'credentials.json'))
+                sh = gc.open_by_key('11c_nAzyrQfX2cMzyIAPgxTE57oMKLtKA1T-1lVciS8s')
+                tpl = sh.worksheet('ŞABLON')
+                safe_name = folder_name[:50]
+                
+                # Check if sheet exists
+                try:
+                    sh.worksheet(safe_name)
+                    sheet_exists = True
+                except:
+                    sheet_exists = False
+                    
+                if not sheet_exists:
+                    new_ws = sh.duplicate_sheet(tpl.id, new_sheet_name=safe_name)
+                    new_ws.update_acell('B2', pla_kg)
+                    new_ws.update_acell('B14', print_time)
+                    price = new_ws.acell('D22').value
+                    result_text += f"\n\n💰 MALIYET HESAPLANDI!\nSatış Fiyatı: {price}"
+            except Exception as sheet_err:
+                result_text += f"\n\n⚠️ Sheets Hatası: {sheet_err}"
             
             with open(os.path.join(product_path, "ai_rapor.txt"), "w", encoding="utf-8") as f:
                 f.write(result_text)
