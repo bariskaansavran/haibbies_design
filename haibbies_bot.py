@@ -398,6 +398,10 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"📸 {photo_num}. Fotoğraf '{folder_name}' klasörüne başarıyla eklendi!")
 
 if __name__ == '__main__':
+    # Flask sunucusunu başlat (Render.com için)
+    from keep_alive import keep_alive
+    keep_alive()
+
     app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
     app.add_handler(CommandHandler("guncelle", guncelle_command))
     app.add_handler(CommandHandler("rapor", rapor_command))
