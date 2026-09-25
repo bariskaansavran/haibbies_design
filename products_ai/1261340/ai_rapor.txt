@@ -1,0 +1,43 @@
+Harika bir ürün! Tasarımcısı PrinterMan, PlayStation 5 ekosistemine ve konsolun kendi dokusuna (texture) son derece uygun, estetik ve işlevsel çiftli bir kol standı tasarlamış. 
+
+Profesyonel bir e-ticaret satış temsilcisi ve 3D baskı uzmanı olarak, bu ürünü Trendyol, Hepsiburada veya Dolap gibi platformlarda rekor kıracak şekilde senin için hazırladım:
+
+---
+
+### 1. Çarpıcı, Dikkat Çekici Başlık
+**PlayStation 5 DualSense Uyumlu Çiftli Kol Standı | Özel Dokulu PS5 Tasarım Joystick Tutucu | Şık ve Düzenli Oyun Alanı**
+
+---
+
+### 2. Profesyonel Satış Metni (Trendyol/Dolap Tarzı)
+
+🎮 **Oyun Alanınıza Hak Ettiği Düzeni ve Karizmayı Katın!** 
+PlayStation 5’inizin şık tasarımına hayran mısınız? O halde kollarınız da bu estetiği hak ediyor! PS5 konsolunuzun orijinal doku ve renklerinden ilham alınarak tasarlanan bu **Çiftli Kol Standı**, oyun setup’ınızın en havalı parçası olacak. 
+
+✨ **Ürünün Öne Çıkan Faydaları:**
+*   **Mükemmel Uyum:** Siyah ve beyaz renk kombinasyonuyla doğrudan PS5 konsolunuzun yanında harika bir bütünlük sağlar.
+*   **Çift Kol Kapasitesi:** Aynı anda iki adet DualSense kontrol cihazınızı güvenle ve şık bir şekilde sergileyebilirsiniz.
+*   **Dağınıklığa Son:** Masanızda veya TV ünitenizde kablo ve kol dağınıklığını ortadan kaldırarak profesyonel bir oyuncu köşesi yaratır.
+*   **Kolay Kurulum (Glaksiz Montaj):** Parçalar birbirine mükemmel uyum sağlar, ekstra yapıştırıcı kullanmanıza gerek kalmadan saniyeler içinde monte edebilirsiniz. (Dilerseniz sabitlemek için yapıştırıcı da kullanabilirsiniz).
+
+---
+
+### 3. Tasarım ve Baskı Detayları (Uzman Gözüyle)
+*   **Orijinal Doku Detayı:** Tasarımcının önerisiyle siyah yan paneller pürüzlü (textured) tabla yüzeyiyle, beyaz ana gövde ise pürüzsüz yüzeyle basılarak tıpkı orijinal PS5 konsol panelleri gibi fütüristik bir doku hissi verir.
+*   **Yüksek Dayanıklılık:** Güçlendirilmiş geometriye sahip yapısı sayesinde uzun ömürlüdür. 
+*   **Malzeme Kalitesi:** Yüksek mukavemetli, ısıya ve darbelere dayanıklı premium filamentler (PETG/PLA) ile üretilir.
+*   **Parça Listesi:** Sağ/Sol siyah yan paneller, siyah PS5 yazısı, ana beyaz gövde ve 2 adet beyaz PS simgesi mükemmel işçilikle bir araya gelir.
+
+---
+
+### 4. Maliyet ve Süre Analizi (Tahmini Veriler)
+*   **Kullanılan Malzeme Miktarı:** Toplamda yaklaşık 220 gram filament (Ana gövde beyaz + yan paneller/yazılar siyah)
+*   **Ortalama Baskı Süresi:** Yaklaşık 9 saat (540 dakika - Kaliteli bir yüzey ve dayanıklılık için 0.2 mm katman yüksekliği ve %15 doluluk oranıyla hesaplanmıştır).
+*   **Enerji ve Amortisman Maliyeti:** Orta seviye 3D yazıcı parkuru baz alınmıştır.
+
+---
+
+[STATS]
+PLA: 0.22
+SURE: 540
+[/STATS]

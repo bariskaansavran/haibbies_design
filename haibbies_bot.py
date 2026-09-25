@@ -46,6 +46,40 @@ async def guncelle_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception as e:
         await update.message.reply_text(f"⚠️ Güncelleme hatası: {str(e)}")
 
+async def rapor_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("📊 Google Sheets verileri analiz ediliyor, lütfen bekle...")
+    try:
+        gc = gspread.service_account(filename=os.path.join(BASE_DIR, 'credentials.json'))
+        sh = gc.open_by_key('11c_nAzyrQfX2cMzyIAPgxTE57oMKLtKA1T-1lVciS8s')
+        worksheets = sh.worksheets()
+        
+        urun_sayisi = 0
+        toplam_fiyat = 0.0
+        
+        for ws in worksheets:
+            # Şablonu atla
+            if ws.title == "ŞABLON":
+                continue
+            urun_sayisi += 1
+            try:
+                # Fiyat genelde D22'de, string olabilir
+                fiyat_str = ws.acell('D22').value
+                if fiyat_str:
+                    # TL sembolü falan varsa temizle
+                    fiyat_clean = str(fiyat_str).replace('TL', '').replace(',', '.').strip()
+                    toplam_fiyat += float(fiyat_clean)
+            except:
+                pass
+                
+        msg = f"📈 **HAIBBIES DURUM RAPORU**\n\n"
+        msg += f"📦 Toplam Eklenen Ürün Sayısı: {urun_sayisi}\n"
+        msg += f"💰 Tüm Ürünlerin Toplam Satış Değeri (Hedef Ciro): {toplam_fiyat:.2f} TL\n"
+        msg += f"\nSatışa devam, harika gidiyorsun! 🚀"
+        
+        await update.message.reply_text(msg, parse_mode='Markdown')
+    except Exception as e:
+        await update.message.reply_text(f"⚠️ Rapor hatası: {str(e)}")
+
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.strip()
     
@@ -102,13 +136,67 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         product_path = os.path.join(PRODUCTS_DIR, folder_name)
         os.makedirs(os.path.join(product_path, "photos"), exist_ok=True)
         
-        # Fotoğrafları kaydet
+        # Fotoğrafları kaydet ve Filigran Ekle
+        from PIL import Image, ImageDraw, ImageFont
         for idx, img_url in enumerate(valid_images):
             try:
                 img_resp = requests.get(img_url)
                 if img_resp.status_code == 200:
-                    with open(os.path.join(product_path, "photos", f"photo_{idx+1}.jpg"), "wb") as f:
+                    img_path = os.path.join(product_path, "photos", f"photo_{idx+1}.jpg")
+                    with open(img_path, "wb") as f:
                         f.write(img_resp.content)
+                        
+                    # Filigran (Watermark) Ekle
+                    try:
+                        with Image.open(img_path) as img:
+                            img = img.convert("RGBA")
+                            width, height = img.size
+                            
+                            logo_path = os.path.join(BASE_DIR, "logo.png")
+                            if os.path.exists(logo_path):
+                                # Logoyu kullan
+                                with Image.open(logo_path) as logo:
+                                    logo = logo.convert("RGBA")
+                                    # Logoyu orantılı küçült (Örn: genişliğin %20'si kadar)
+                                    target_logo_width = int(width * 0.20)
+                                    ratio = target_logo_width / float(logo.size[0])
+                                    target_logo_height = int(float(logo.size[1]) * ratio)
+                                    logo = logo.resize((target_logo_width, target_logo_height), Image.Resampling.LANCZOS)
+                                    
+                                    # Sağ alt köşeye hizala
+                                    margin = 15
+                                    x = width - target_logo_width - margin
+                                    y = height - target_logo_height - margin
+                                    
+                                    # Logoyu ana resmin üzerine yapıştır (transparanlık dikkate alınır)
+                                    img.alpha_composite(logo, (x, y))
+                            else:
+                                # Logo yoksa Yazı kullan (Fallback)
+                                txt_layer = Image.new("RGBA", img.size, (255,255,255,0))
+                                draw = ImageDraw.Draw(txt_layer)
+                                text_wm = "HAIBBIES"
+                                font_size = int(width / 15)
+                                try:
+                                    font = ImageFont.truetype("arial.ttf", font_size)
+                                except:
+                                    font = ImageFont.load_default()
+                                
+                                bbox = draw.textbbox((0,0), text_wm, font=font)
+                                tw = bbox[2] - bbox[0]
+                                th = bbox[3] - bbox[1]
+                                margin = 10
+                                x = width - tw - margin
+                                y = height - th - margin
+                                
+                                draw.rectangle((x-5, y-5, x+tw+5, y+th+5), fill=(0,0,0,128))
+                                draw.text((x, y), text_wm, font=font, fill=(255,255,255,200))
+                                img = Image.alpha_composite(img, txt_layer)
+                                
+                            watermarked = img.convert("RGB")
+                            watermarked.save(img_path, "JPEG", quality=90)
+                    except Exception as wm_err:
+                        logging.error(f"Filigran eklenemedi: {wm_err}")
+                        
                     downloaded_photo_count += 1
             except Exception as img_err:
                 logging.error(f"Foto indirilemedi ({img_url}): {img_err}")
@@ -122,13 +210,22 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             Başlık: {scraped_title}
             Orijinal Açıklama: {scraped_desc}
             
-            Lütfen bu ürün için (yukarıdaki bilgileri kullanarak):
-            1. Çarpıcı, dikkat çekici bir başlık
-            2. Ürünün kullanım alanlarını ve faydalarını anlatan profesyonel bir satış metni (Trendyol/Dolap tarzı, emoji kullan)
-            3. Ürünün tasarım özelliklerini ön plana çıkaran detaylar
-            4. En alta da maliyet ve süre analizi (Eğer metinde veya senin bilgilerinde belirtilmişse kullan, yoksa tahmini bir değer yaz)
+            Lütfen bu ürün için (yukarıdaki bilgileri kullanarak) aşağıdaki 3 ayrı bölümü oluştur:
             
-            ÖNEMLİ: En alta mutlaka şu formatta istatistik ekle (Hesaplama için kullanılacak):
+            🛍️ 1. SHOPIER/DOLAP SATIŞ METNİ (TÜRKÇE)
+            - Çarpıcı, dikkat çekici bir başlık
+            - Ürünün kullanım alanlarını ve faydalarını anlatan profesyonel bir satış metni (emoji kullan)
+            - Ürünün tasarım özelliklerini ön plana çıkaran detaylar
+            
+            📱 2. SOSYAL MEDYA (INSTAGRAM/TIKTOK)
+            - Videolarda veya fotolarda kullanılabilecek, viral olmaya müsait kısa, enerjik bir açıklama
+            - En az 10 adet popüler ve alakalı hashtag
+            
+            🌍 3. ETSY SATIŞ METNİ (İNGİLİZCE)
+            - SEO uyumlu, bol anahtar kelimeli uzun bir başlık (Etsy formatında)
+            - Ürünü anlatan temiz, profesyonel İngilizce açıklama
+            
+            ÖNEMLİ: En alta mutlaka şu formatta istatistik ekle (Hesaplama için kullanılacak, tahmini gram/süre bulamazsan ortalama değer ver):
             [STATS]
             PLA: (sadece sayı, kg cinsinden, örn: 0.15)
             SURE: (sadece sayı, dakika cinsinden, örn: 300)
@@ -230,13 +327,24 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"⚙️ '{folder_name}' açıldı. İlk fotoğraf alındı, AI analizine başlanıyor...")
         try:
             sample_file = client.files.upload(file=photo_filepath)
-            prompt = """Sen profesyonel bir E-ticaret Satış Temsilcisi ve 3D Baskı Uzmanısın. Fotoğraftaki ürün için 'SATIŞ AÇIKLAMASI' ve PLA için 'YAZICI AYARLARI' yaz.
+            prompt = """Sen profesyonel bir E-ticaret Satış Temsilcisi ve 3D Baskı Uzmanısın. Fotoğraftaki ürün için aşağıdaki 3 bölümü hazırla:
+            
+            🛍️ 1. SHOPIER/DOLAP SATIŞ METNİ (TÜRKÇE)
+            - Çarpıcı başlık ve profesyonel satış metni
+            - Tasarım özellikleri
+            
+            📱 2. SOSYAL MEDYA (INSTAGRAM/TIKTOK)
+            - Viral açıklama ve hashtagler
+            
+            🌍 3. ETSY SATIŞ METNİ (İNGİLİZCE)
+            - SEO uyumlu başlık ve İngilizce ürün açıklaması
+            
             Bunun haricinde metnin EN SONUNA sadece hesaplama için, aynen şu formatta tahmini verileri ekle:
             [STATS]
             PLA: 0.15
             SURE: 300
             [/STATS]
-            PLA kg cinsinden (örneğin 150 gram için 0.15), SURE ise dakika cinsinden (örneğin 5 saat için 300) olmalıdır. Başka bir şey yazma."""
+            PLA kg cinsinden, SURE ise dakika cinsinden olmalıdır."""
             
             response = client.models.generate_content(
                 model="gemini-3.5-flash-lite",
@@ -267,20 +375,16 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 safe_name = folder_name[:50]
                 
                 try:
-                    sh.worksheet(safe_name)
-                    sheet_exists = True
+                    ws = sh.worksheet(safe_name)
                 except:
-                    sheet_exists = False
+                    ws = sh.duplicate_sheet(tpl.id, new_sheet_name=safe_name)
                     
-                price_text = "Hesaplanamadı"
-                if not sheet_exists:
-                    new_ws = sh.duplicate_sheet(tpl.id, new_sheet_name=safe_name)
-                    new_ws.update_acell('B2', pla_kg)
-                    new_ws.update_acell('B14', print_time)
-                    price = new_ws.acell('D22').value
-                    price_text = str(price)
-                    result_text += f"\n\n💰 MALIYET HESAPLANDI!\nSatış Fiyatı: {price}"
+                ws.update_acell('B2', pla_kg)
+                ws.update_acell('B14', print_time)
+                price = ws.acell('D22').value
+                price_text = str(price)
             except Exception as sheet_err:
+                price_text = "Hesaplanamadı"
                 result_text += f"\n\n⚠️ Sheets Hatası: {sheet_err}"
             
             with open(os.path.join(product_path, "ai_rapor.txt"), "w", encoding="utf-8") as f:
@@ -296,6 +400,7 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
 if __name__ == '__main__':
     app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
     app.add_handler(CommandHandler("guncelle", guncelle_command))
+    app.add_handler(CommandHandler("rapor", rapor_command))
     app.add_handler(MessageHandler(filters.PHOTO, handle_photo))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
     
