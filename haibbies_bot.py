@@ -107,18 +107,19 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 tpl = sh.worksheet('ŞABLON')
                 safe_name = folder_name[:50]
                 
-                # Check if sheet exists
                 try:
                     sh.worksheet(safe_name)
                     sheet_exists = True
                 except:
                     sheet_exists = False
                     
+                price_text = "Hesaplanamadı"
                 if not sheet_exists:
                     new_ws = sh.duplicate_sheet(tpl.id, new_sheet_name=safe_name)
                     new_ws.update_acell('B2', pla_kg)
                     new_ws.update_acell('B14', print_time)
                     price = new_ws.acell('D22').value
+                    price_text = str(price)
                     result_text += f"\n\n💰 MALIYET HESAPLANDI!\nSatış Fiyatı: {price}"
             except Exception as sheet_err:
                 result_text += f"\n\n⚠️ Sheets Hatası: {sheet_err}"
@@ -126,7 +127,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             with open(os.path.join(product_path, "ai_rapor.txt"), "w", encoding="utf-8") as f:
                 f.write(result_text)
                 
-            await update.message.reply_text(f"✅ Klasör '{folder_name}' olarak açıldı.\n\nAI Açıklamaları Yazıldı:\n\n{result_text[:400]}...\n\n📸 Not: Lütfen bu ürünün fotoğraflarını bana Telegram'dan atarken açıklama kısmına '{folder_name}' yazarak yolla!")
+            await update.message.reply_text(f"✅ Klasör '{folder_name}' açıldı.\n\n💰 Hesaplanan Fiyat: {price_text}\n\n🤖 AI Açıklama Özeti:\n{result_text[:400]}...\n\n📸 Not: Lütfen bu ürünün fotoğraflarını bana Telegram'dan atarken açıklama kısmına '{folder_name}' yazarak yolla!")
             
         except Exception as e:
             error_msg = str(e)
@@ -206,18 +207,19 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 tpl = sh.worksheet('ŞABLON')
                 safe_name = folder_name[:50]
                 
-                # Check if sheet exists
                 try:
                     sh.worksheet(safe_name)
                     sheet_exists = True
                 except:
                     sheet_exists = False
                     
+                price_text = "Hesaplanamadı"
                 if not sheet_exists:
                     new_ws = sh.duplicate_sheet(tpl.id, new_sheet_name=safe_name)
                     new_ws.update_acell('B2', pla_kg)
                     new_ws.update_acell('B14', print_time)
                     price = new_ws.acell('D22').value
+                    price_text = str(price)
                     result_text += f"\n\n💰 MALIYET HESAPLANDI!\nSatış Fiyatı: {price}"
             except Exception as sheet_err:
                 result_text += f"\n\n⚠️ Sheets Hatası: {sheet_err}"
@@ -225,7 +227,7 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
             with open(os.path.join(product_path, "ai_rapor.txt"), "w", encoding="utf-8") as f:
                 f.write(result_text)
                 
-            await update.message.reply_text(f"✅ AI Bitti!\n\n{result_text[:400]}...")
+            await update.message.reply_text(f"✅ AI Bitti!\n\n💰 Hesaplanan Fiyat: {price_text}\n\n🤖 AI Özet:\n{result_text[:400]}...")
         except Exception as e:
             error_msg = str(e)
             await update.message.reply_text(f"⚠️ Hata: {error_msg[:1000]}")
