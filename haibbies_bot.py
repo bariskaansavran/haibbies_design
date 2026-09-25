@@ -38,10 +38,10 @@ async def guncelle_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text("✅ Zaten en güncel sürümdesiniz! Kapatıp açmaya gerek yok.")
             return
             
-        await update.message.reply_text(f"✅ Kodlar başarıyla çekildi. Bot kendini kapatıp YENİ kodlarla tekrar başlatıyor...\n\nSistem Mesajı:\n{result.stdout}")
+        await update.message.reply_text(f"✅ Kodlar başarıyla çekildi. Bot sistemi yeniden başlatılıyor...\n\nSistem Mesajı:\n{result.stdout}")
         
-        # Botu yeniden başlat (kendi kendini öldürüp yeni kodu çalıştırır)
-        os.execv(sys.executable, ['python'] + sys.argv)
+        # Botu öldür. Sunucuda (Render/Railway vb.) veya `baslat.bat` döngüsünde ise otomatik geri açılır.
+        os._exit(0)
         
     except Exception as e:
         await update.message.reply_text(f"⚠️ Güncelleme hatası: {str(e)}")
