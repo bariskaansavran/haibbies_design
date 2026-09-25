@@ -79,12 +79,12 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             PLA kg cinsinden (örneğin 150 gram için 0.15), SURE ise dakika cinsinden (örneğin 5 saat için 300) olmalıdır. Başka bir şey yazma.
             """
             
-            interaction = client.interactions.create(
+            response = client.models.generate_content(
                 model="gemini-3.5-flash-lite",
-                input=prompt
+                contents=prompt
             )
             
-            result_text = interaction.output_text
+            result_text = response.text
             
             # Extract stats
             pla_kg = 0.1
@@ -129,7 +129,8 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text(f"✅ Klasör '{folder_name}' olarak açıldı.\n\nAI Açıklamaları Yazıldı:\n\n{result_text[:400]}...\n\n📸 Not: Lütfen bu ürünün fotoğraflarını bana Telegram'dan atarken açıklama kısmına '{folder_name}' yazarak yolla!")
             
         except Exception as e:
-            await update.message.reply_text(f"⚠️ Hata: {str(e)}")
+            error_msg = str(e)
+            await update.message.reply_text(f"⚠️ Hata: {error_msg[:1000]}")
     else:
         await update.message.reply_text("Bana fotoğraf veya ürün linki (Printables/Makerworld vb.) gönderebilirsin!")
 
@@ -177,12 +178,12 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [/STATS]
             PLA kg cinsinden (örneğin 150 gram için 0.15), SURE ise dakika cinsinden (örneğin 5 saat için 300) olmalıdır. Başka bir şey yazma."""
             
-            interaction = client.interactions.create(
+            response = client.models.generate_content(
                 model="gemini-3.5-flash-lite",
-                input=[prompt, sample_file]
+                contents=[prompt, sample_file]
             )
             
-            result_text = interaction.output_text
+            result_text = response.text
             
             # Extract stats
             pla_kg = 0.1
@@ -226,7 +227,8 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 
             await update.message.reply_text(f"✅ AI Bitti!\n\n{result_text[:400]}...")
         except Exception as e:
-            await update.message.reply_text(f"⚠️ Hata: {str(e)}")
+            error_msg = str(e)
+            await update.message.reply_text(f"⚠️ Hata: {error_msg[:1000]}")
     else:
         await update.message.reply_text(f"📸 {photo_num}. Fotoğraf '{folder_name}' klasörüne başarıyla eklendi!")
 
