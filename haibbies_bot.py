@@ -75,22 +75,35 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         import urllib.parse
         scraped_title = ""
         scraped_desc = ""
-        downloaded_photo = False
+        downloaded_photo_count = 0
         try:
-            api_url = f"https://api.microlink.io/?url={urllib.parse.quote(link_url)}"
+            api_url = f"https://api.microlink.io/?url={urllib.parse.quote(link_url)}&data.images.selectorAll=img&data.images.attr=src"
             resp = requests.get(api_url).json()
             if resp.get("status") == "success":
                 data = resp.get("data", {})
                 scraped_title = data.get("title", "")
                 scraped_desc = data.get("description", "")
-                img_url = data.get("image", {}).get("url")
                 
-                if img_url:
-                    img_resp = requests.get(img_url)
-                    if img_resp.status_code == 200:
-                        with open(os.path.join(product_path, "photos", "photo_1.jpg"), "wb") as f:
-                            f.write(img_resp.content)
-                        downloaded_photo = True
+                images = data.get("images", [])
+                valid_images = []
+                for img_url in images:
+                    if isinstance(img_url, str):
+                        if "makerworld.bblmw.com/makerworld/model" in img_url and ("design" in img_url or "ratings" in img_url or "comment" in img_url):
+                            # Remove x-oss-process parameter to get the original high-resolution image if possible
+                            clean_url = img_url.split("?")[0]
+                            valid_images.append(clean_url)
+                            
+                valid_images = list(set(valid_images))
+                
+                for idx, img_url in enumerate(valid_images):
+                    try:
+                        img_resp = requests.get(img_url)
+                        if img_resp.status_code == 200:
+                            with open(os.path.join(product_path, "photos", f"photo_{idx+1}.jpg"), "wb") as f:
+                                f.write(img_resp.content)
+                            downloaded_photo_count += 1
+                    except Exception as img_err:
+                        logging.error(f"Foto indirilemedi ({img_url}): {img_err}")
         except Exception as e:
             logging.error(f"Microlink hatası: {e}")
         
@@ -165,12 +178,12 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f.write(result_text)
                 
             msg = f"✅ Klasör '{folder_name}' açıldı.\n"
-            if downloaded_photo:
-                msg += "📸 Ürün fotoğrafı BAŞARIYLA indirildi ve kaydedildi!\n"
+            if downloaded_photo_count > 0:
+                msg += f"📸 Tam {downloaded_photo_count} adet ürün/yorum fotoğrafı BAŞARIYLA indirildi ve kaydedildi!\n"
             else:
                 msg += "⚠️ Fotoğraf otomatik indirilemedi, manuel eklemen gerekebilir.\n"
                 
-            msg += f"\n💰 Hesaplanan Fiyat: {price_text}\n\n🤖 AI Açıklama Özeti:\n{result_text[:400]}..."
+            msg += f"\n💰 Hesaplanan Satış Fiyatı: {price_text} TL\n\n(Detaylı AI açıklaması klasördeki 'ai_rapor.txt' içine kaydedildi.)"
             await update.message.reply_text(msg)
             
         except Exception as e:
