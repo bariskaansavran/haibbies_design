@@ -28,14 +28,42 @@ from googleapiclient.discovery import build
 from google.oauth2.service_account import Credentials
 from googleapiclient.http import MediaFileUpload
 
+import json
+import base64
+
+def get_google_credentials():
+    scopes = ['https://www.googleapis.com/auth/drive']
+    if 'GOOGLE_CREDS_B64' in os.environ:
+        try:
+            creds_json = base64.b64decode(os.environ['GOOGLE_CREDS_B64']).decode('utf-8')
+            creds_dict = json.loads(creds_json)
+            return Credentials.from_service_account_info(creds_dict, scopes=scopes)
+        except Exception as e:
+            logging.error(f"Failed to load base64 creds: {e}")
+            
+    # Fallback to file
+    return Credentials.from_service_account_file(
+        os.path.join(BASE_DIR, 'credentials.json'), 
+        scopes=scopes
+    )
+
+def get_gspread_client():
+    if 'GOOGLE_CREDS_B64' in os.environ:
+        try:
+            creds_json = base64.b64decode(os.environ['GOOGLE_CREDS_B64']).decode('utf-8')
+            creds_dict = json.loads(creds_json)
+            return gspread.service_account_from_dict(creds_dict)
+        except Exception as e:
+            logging.error(f"Failed to load base64 creds for gspread: {e}")
+            
+    # Fallback to file
+    return gspread.service_account(filename=os.path.join(BASE_DIR, 'credentials.json'))
+
 DRIVE_FOLDER_ID = "1hn-jXluF3Th-RNkjC5_QxNDjAAY1nc1A"
 
 def upload_to_drive(file_path, parent_id, mime_type='application/octet-stream'):
     try:
-        drive_creds = Credentials.from_service_account_file(
-            os.path.join(BASE_DIR, 'credentials.json'), 
-            scopes=['https://www.googleapis.com/auth/drive']
-        )
+        drive_creds = get_google_credentials()
         service = build('drive', 'v3', credentials=drive_creds)
         file_metadata = {
             'name': os.path.basename(file_path),
@@ -50,10 +78,7 @@ def upload_to_drive(file_path, parent_id, mime_type='application/octet-stream'):
 
 def create_drive_folder(folder_name, parent_id):
     try:
-        drive_creds = Credentials.from_service_account_file(
-            os.path.join(BASE_DIR, 'credentials.json'), 
-            scopes=['https://www.googleapis.com/auth/drive']
-        )
+        drive_creds = get_google_credentials()
         service = build('drive', 'v3', credentials=drive_creds)
         
         # Check if folder already exists
@@ -101,7 +126,7 @@ async def guncelle_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def rapor_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("📊 Google Sheets verileri analiz ediliyor, lütfen bekle...")
     try:
-        gc = gspread.service_account(filename=os.path.join(BASE_DIR, 'credentials.json'))
+        gc = get_gspread_client()
         sh = gc.open_by_key('11c_nAzyrQfX2cMzyIAPgxTE57oMKLtKA1T-1lVciS8s')
         worksheets = sh.worksheets()
         
@@ -257,7 +282,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     
             # Update Google Sheets
             try:
-                gc = gspread.service_account(filename=os.path.join(BASE_DIR, 'credentials.json'))
+                gc = get_gspread_client()
                 sh = gc.open_by_key('11c_nAzyrQfX2cMzyIAPgxTE57oMKLtKA1T-1lVciS8s')
                 tpl = sh.worksheet('ŞABLON')
                 safe_name = folder_name[:50]
@@ -384,7 +409,7 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     
             # Update Google Sheets
             try:
-                gc = gspread.service_account(filename=os.path.join(BASE_DIR, 'credentials.json'))
+                gc = get_gspread_client()
                 sh = gc.open_by_key('11c_nAzyrQfX2cMzyIAPgxTE57oMKLtKA1T-1lVciS8s')
                 tpl = sh.worksheet('ŞABLON')
                 safe_name = folder_name[:50]
