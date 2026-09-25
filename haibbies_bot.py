@@ -238,27 +238,23 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     
                 ws.update_acell('B2', pla_kg)
                 ws.update_acell('B14', print_time)
+                
+                # Arşiv için bilgileri sağ tarafa kaydet
+                ws.update_acell('K1', 'AI Raporu')
+                ws.update_acell('K2', result_text)
+                ws.update_acell('L1', 'Foto Linkleri')
+                ws.update_acell('L2', ",".join(valid_images))
+                ws.update_acell('M1', 'İndirildi Mi?')
+                if not ws.acell('M2').value:
+                    ws.update_acell('M2', 'HAYIR')
+                    
                 price = ws.acell('D22').value
                 price_text = str(price)
             except Exception as sheet_err:
                 price_text = "Hesaplanamadı"
                 result_text += f"\n\n⚠️ Sheets Hatası: {sheet_err}"
             
-            with open(os.path.join(product_path, "ai_rapor.txt"), "w", encoding="utf-8") as f:
-                f.write(result_text)
-            # Telegram'a fotoları geri gönder (Yedekleme amaçlı)
-            try:
-                photos_dir = os.path.join(product_path, "photos")
-                if os.path.exists(photos_dir):
-                    from telegram import InputMediaPhoto
-                    media_group = []
-                    for pf in os.listdir(photos_dir):
-                        if pf.endswith(".jpg") or pf.endswith(".png"):
-                            media_group.append(InputMediaPhoto(open(os.path.join(photos_dir, pf), 'rb')))
-                    if media_group:
-                        await update.message.reply_media_group(media_group[:10], read_timeout=120, write_timeout=120)
-            except Exception as t_err:
-                logging.error(f"Telegram media send error: {t_err}")
+            # Telegram'a fotoları geri gönder kısmı tamamen iptal edildi (Masaüstü indirici kullanılacak).
                 
             msg = f"✅ Klasör '{folder_name}' açıldı.\n"
             if downloaded_photo_count > 0:
@@ -365,6 +361,18 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     
                 ws.update_acell('B2', pla_kg)
                 ws.update_acell('B14', print_time)
+                
+                # Arşiv için bilgileri sağ tarafa kaydet
+                ws.update_acell('K1', 'AI Raporu')
+                ws.update_acell('K2', result_text)
+                ws.update_acell('L1', 'Foto Linkleri')
+                
+                file_id = update.message.photo[-1].file_id
+                ws.update_acell('L2', f"TG:{file_id}")
+                ws.update_acell('M1', 'İndirildi Mi?')
+                if not ws.acell('M2').value:
+                    ws.update_acell('M2', 'HAYIR')
+                    
                 price = ws.acell('D22').value
                 price_text = str(price)
             except Exception as sheet_err:
@@ -381,6 +389,20 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
             error_msg = str(e)
             await update.message.reply_text(f"⚠️ Hata: {error_msg[:1000]}")
     else:
+        # Sonraki fotoğraflar için sadece file_id'yi L2'ye ekle
+        try:
+            gc = get_gspread_client()
+            sh = gc.open_by_key('11c_nAzyrQfX2cMzyIAPgxTE57oMKLtKA1T-1lVciS8s')
+            ws = sh.worksheet(folder_name[:50])
+            mevcut_fotolar = ws.acell('L2').value or ""
+            yeni_file_id = update.message.photo[-1].file_id
+            if mevcut_fotolar:
+                ws.update_acell('L2', f"{mevcut_fotolar},TG:{yeni_file_id}")
+            else:
+                ws.update_acell('L2', f"TG:{yeni_file_id}")
+        except Exception as sheet_err:
+            logging.error(f"Sonraki fotoyu eklerken hata: {sheet_err}")
+            
         await update.message.reply_text(f"📸 {photo_num}. Fotoğraf '{folder_name}' klasörüne başarıyla eklendi!")
         
     # Drive upload iptal edildi
