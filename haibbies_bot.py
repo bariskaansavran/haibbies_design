@@ -59,23 +59,13 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 link_url = word
                 break
                 
-        # Linkten isim oluştur (fallback)
-        product_name = link_url.split("/")[-1].split("?")[0]
-        product_name = re.sub(r'^\d+-', '', product_name).replace('-', '_')
-        if not product_name or len(product_name) < 2:
-            product_name = "yeni_urun_linkten"
-            
-        folder_name = product_name.lower()
-        folder_name = re.sub(r'[^a-z0-9_]', '', folder_name)
-        product_path = os.path.join(PRODUCTS_DIR, folder_name)
-        os.makedirs(os.path.join(product_path, "photos"), exist_ok=True)
-        
         # Microlink ile sayfayı kazı
         import requests
         import urllib.parse
         scraped_title = ""
         scraped_desc = ""
         downloaded_photo_count = 0
+        valid_images = []
         try:
             api_url = f"https://api.microlink.io/?url={urllib.parse.quote(link_url)}&data.images.selectorAll=img&data.images.attr=src"
             resp = requests.get(api_url).json()
@@ -85,7 +75,6 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 scraped_desc = data.get("description", "")
                 
                 images = data.get("images", [])
-                valid_images = []
                 for img_url in images:
                     if isinstance(img_url, str):
                         if "makerworld.bblmw.com/makerworld/model" in img_url and ("design" in img_url or "ratings" in img_url or "comment" in img_url):
@@ -94,18 +83,35 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                             valid_images.append(clean_url)
                             
                 valid_images = list(set(valid_images))
-                
-                for idx, img_url in enumerate(valid_images):
-                    try:
-                        img_resp = requests.get(img_url)
-                        if img_resp.status_code == 200:
-                            with open(os.path.join(product_path, "photos", f"photo_{idx+1}.jpg"), "wb") as f:
-                                f.write(img_resp.content)
-                            downloaded_photo_count += 1
-                    except Exception as img_err:
-                        logging.error(f"Foto indirilemedi ({img_url}): {img_err}")
         except Exception as e:
             logging.error(f"Microlink hatası: {e}")
+            
+        # İsim oluştur (Microlink başarılıysa oradan, değilse linkten)
+        if scraped_title:
+            clean_title = scraped_title.split("- Free 3D")[0].strip()
+            product_name = clean_title
+        else:
+            product_name = link_url.split("/")[-1].split("?")[0]
+            product_name = re.sub(r'^\d+-', '', product_name).replace('-', '_')
+            
+        if not product_name or len(product_name) < 2:
+            product_name = "yeni_urun_linkten"
+            
+        folder_name = product_name.lower()
+        folder_name = re.sub(r'[^a-z0-9_]', '', folder_name.replace(' ', '_').replace('-', '_'))
+        product_path = os.path.join(PRODUCTS_DIR, folder_name)
+        os.makedirs(os.path.join(product_path, "photos"), exist_ok=True)
+        
+        # Fotoğrafları kaydet
+        for idx, img_url in enumerate(valid_images):
+            try:
+                img_resp = requests.get(img_url)
+                if img_resp.status_code == 200:
+                    with open(os.path.join(product_path, "photos", f"photo_{idx+1}.jpg"), "wb") as f:
+                        f.write(img_resp.content)
+                    downloaded_photo_count += 1
+            except Exception as img_err:
+                logging.error(f"Foto indirilemedi ({img_url}): {img_err}")
         
         try:
             prompt = f"""
@@ -158,20 +164,16 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 safe_name = folder_name[:50]
                 
                 try:
-                    sh.worksheet(safe_name)
-                    sheet_exists = True
+                    ws = sh.worksheet(safe_name)
                 except:
-                    sheet_exists = False
+                    ws = sh.duplicate_sheet(tpl.id, new_sheet_name=safe_name)
                     
-                price_text = "Hesaplanamadı"
-                if not sheet_exists:
-                    new_ws = sh.duplicate_sheet(tpl.id, new_sheet_name=safe_name)
-                    new_ws.update_acell('B2', pla_kg)
-                    new_ws.update_acell('B14', print_time)
-                    price = new_ws.acell('D22').value
-                    price_text = str(price)
-                    result_text += f"\n\n💰 MALIYET HESAPLANDI!\nSatış Fiyatı: {price}"
+                ws.update_acell('B2', pla_kg)
+                ws.update_acell('B14', print_time)
+                price = ws.acell('D22').value
+                price_text = str(price)
             except Exception as sheet_err:
+                price_text = "Hesaplanamadı"
                 result_text += f"\n\n⚠️ Sheets Hatası: {sheet_err}"
             
             with open(os.path.join(product_path, "ai_rapor.txt"), "w", encoding="utf-8") as f:
