@@ -256,7 +256,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                         if pf.endswith(".jpg") or pf.endswith(".png"):
                             media_group.append(InputMediaPhoto(open(os.path.join(photos_dir, pf), 'rb')))
                     if media_group:
-                        await update.message.reply_media_group(media_group[:10])
+                        await update.message.reply_media_group(media_group[:10], read_timeout=120, write_timeout=120)
             except Exception as t_err:
                 logging.error(f"Telegram media send error: {t_err}")
                 
