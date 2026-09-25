@@ -152,46 +152,26 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                             img = img.convert("RGBA")
                             width, height = img.size
                             
-                            logo_path = os.path.join(BASE_DIR, "logo.png")
-                            if os.path.exists(logo_path):
-                                # Logoyu kullan
-                                with Image.open(logo_path) as logo:
-                                    logo = logo.convert("RGBA")
-                                    # Logoyu orantılı küçült (Örn: genişliğin %20'si kadar)
-                                    target_logo_width = int(width * 0.20)
-                                    ratio = target_logo_width / float(logo.size[0])
-                                    target_logo_height = int(float(logo.size[1]) * ratio)
-                                    logo = logo.resize((target_logo_width, target_logo_height), Image.Resampling.LANCZOS)
-                                    
-                                    # Sağ alt köşeye hizala
-                                    margin = 15
-                                    x = width - target_logo_width - margin
-                                    y = height - target_logo_height - margin
-                                    
-                                    # Logoyu ana resmin üzerine yapıştır (transparanlık dikkate alınır)
-                                    img.alpha_composite(logo, (x, y))
-                            else:
-                                # Logo yoksa Yazı kullan (Fallback)
-                                txt_layer = Image.new("RGBA", img.size, (255,255,255,0))
-                                draw = ImageDraw.Draw(txt_layer)
-                                text_wm = "HAIBBIES"
-                                font_size = int(width / 15)
-                                try:
-                                    font = ImageFont.truetype("arial.ttf", font_size)
-                                except:
-                                    font = ImageFont.load_default()
-                                
-                                bbox = draw.textbbox((0,0), text_wm, font=font)
-                                tw = bbox[2] - bbox[0]
-                                th = bbox[3] - bbox[1]
-                                margin = 10
-                                x = width - tw - margin
-                                y = height - th - margin
-                                
-                                draw.rectangle((x-5, y-5, x+tw+5, y+th+5), fill=(0,0,0,128))
-                                draw.text((x, y), text_wm, font=font, fill=(255,255,255,200))
-                                img = Image.alpha_composite(img, txt_layer)
-                                
+                            txt_layer = Image.new("RGBA", img.size, (255,255,255,0))
+                            draw = ImageDraw.Draw(txt_layer)
+                            text_wm = "HAIBBIES"
+                            font_size = int(width / 15)
+                            try:
+                                font = ImageFont.truetype("arial.ttf", font_size)
+                            except:
+                                font = ImageFont.load_default()
+                            
+                            bbox = draw.textbbox((0,0), text_wm, font=font)
+                            tw = bbox[2] - bbox[0]
+                            th = bbox[3] - bbox[1]
+                            margin = 10
+                            x = width - tw - margin
+                            y = height - th - margin
+                            
+                            draw.rectangle((x-5, y-5, x+tw+5, y+th+5), fill=(0,0,0,128))
+                            draw.text((x, y), text_wm, font=font, fill=(255,255,255,200))
+                            img = Image.alpha_composite(img, txt_layer)
+                            
                             watermarked = img.convert("RGB")
                             watermarked.save(img_path, "JPEG", quality=90)
                     except Exception as wm_err:
