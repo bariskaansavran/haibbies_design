@@ -137,7 +137,6 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         os.makedirs(os.path.join(product_path, "photos"), exist_ok=True)
         
         # Fotoğrafları kaydet ve Filigran Ekle
-        from PIL import Image, ImageDraw, ImageFont
         for idx, img_url in enumerate(valid_images):
             try:
                 img_resp = requests.get(img_url)
@@ -146,37 +145,8 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     with open(img_path, "wb") as f:
                         f.write(img_resp.content)
                         
-                    # Filigran (Watermark) Ekle
-                    try:
-                        with Image.open(img_path) as img:
-                            img = img.convert("RGBA")
-                            width, height = img.size
-                            
-                            txt_layer = Image.new("RGBA", img.size, (255,255,255,0))
-                            draw = ImageDraw.Draw(txt_layer)
-                            text_wm = "HAIBBIES"
-                            font_size = int(width / 15)
-                            try:
-                                font = ImageFont.truetype("arial.ttf", font_size)
-                            except:
-                                font = ImageFont.load_default()
-                            
-                            bbox = draw.textbbox((0,0), text_wm, font=font)
-                            tw = bbox[2] - bbox[0]
-                            th = bbox[3] - bbox[1]
-                            margin = 10
-                            x = width - tw - margin
-                            y = height - th - margin
-                            
-                            draw.rectangle((x-5, y-5, x+tw+5, y+th+5), fill=(0,0,0,128))
-                            draw.text((x, y), text_wm, font=font, fill=(255,255,255,200))
-                            img = Image.alpha_composite(img, txt_layer)
-                            
-                            watermarked = img.convert("RGB")
-                            watermarked.save(img_path, "JPEG", quality=90)
-                    except Exception as wm_err:
-                        logging.error(f"Filigran eklenemedi: {wm_err}")
                         
+
                     downloaded_photo_count += 1
             except Exception as img_err:
                 logging.error(f"Foto indirilemedi ({img_url}): {img_err}")
