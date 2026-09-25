@@ -50,11 +50,18 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.strip()
     
     if "http" in text:
-        await update.message.reply_text("🔗 Link algılandı! Ürün ismi çıkarılıyor ve AI analizine başlanıyor...")
+        await update.message.reply_text("🔗 Link algılandı! Ürün verileri (fotoğraf, isim, açıklama) çekiliyor...")
         
-        product_name = text.split("/")[-1].split("?")[0]
+        # Linki bul
+        link_url = text
+        for word in text.split():
+            if word.startswith("http"):
+                link_url = word
+                break
+                
+        # Linkten isim oluştur (fallback)
+        product_name = link_url.split("/")[-1].split("?")[0]
         product_name = re.sub(r'^\d+-', '', product_name).replace('-', '_')
-        
         if not product_name or len(product_name) < 2:
             product_name = "yeni_urun_linkten"
             
@@ -63,20 +70,50 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         product_path = os.path.join(PRODUCTS_DIR, folder_name)
         os.makedirs(os.path.join(product_path, "photos"), exist_ok=True)
         
+        # Microlink ile sayfayı kazı
+        import requests
+        import urllib.parse
+        scraped_title = ""
+        scraped_desc = ""
+        downloaded_photo = False
+        try:
+            api_url = f"https://api.microlink.io/?url={urllib.parse.quote(link_url)}"
+            resp = requests.get(api_url).json()
+            if resp.get("status") == "success":
+                data = resp.get("data", {})
+                scraped_title = data.get("title", "")
+                scraped_desc = data.get("description", "")
+                img_url = data.get("image", {}).get("url")
+                
+                if img_url:
+                    img_resp = requests.get(img_url)
+                    if img_resp.status_code == 200:
+                        with open(os.path.join(product_path, "photos", "photo_1.jpg"), "wb") as f:
+                            f.write(img_resp.content)
+                        downloaded_photo = True
+        except Exception as e:
+            logging.error(f"Microlink hatası: {e}")
+        
         try:
             prompt = f"""
             Sen profesyonel bir E-ticaret Satış Temsilcisi ve 3D Baskı Uzmanısın.
             Müşteri şu linkteki 3D modeli satmak istiyor: {text}
-            Ürünün tahmin edilen adı: {product_name}
             
-            Bu ürünün ne olduğunu tahmin ederek, Shopier için vurucu, SEO uyumlu, dikkat çekici bir 'SATIŞ AÇIKLAMASI' yaz.
-            Ayrıca 3D yazıcı (PLA) için katman yüksekliği, dolgu oranı, destek gibi 'YAZICI AYARLARI' öner.
-            Bunun haricinde metnin EN SONUNA sadece hesaplama için, aynen şu formatta tahmini verileri ekle:
+            Sistem bu linkten şu bilgileri çekti:
+            Başlık: {scraped_title}
+            Orijinal Açıklama: {scraped_desc}
+            
+            Lütfen bu ürün için (yukarıdaki bilgileri kullanarak):
+            1. Çarpıcı, dikkat çekici bir başlık
+            2. Ürünün kullanım alanlarını ve faydalarını anlatan profesyonel bir satış metni (Trendyol/Dolap tarzı, emoji kullan)
+            3. Ürünün tasarım özelliklerini ön plana çıkaran detaylar
+            4. En alta da maliyet ve süre analizi (Eğer metinde veya senin bilgilerinde belirtilmişse kullan, yoksa tahmini bir değer yaz)
+            
+            ÖNEMLİ: En alta mutlaka şu formatta istatistik ekle (Hesaplama için kullanılacak):
             [STATS]
-            PLA: 0.15
-            SURE: 300
+            PLA: (sadece sayı, kg cinsinden, örn: 0.15)
+            SURE: (sadece sayı, dakika cinsinden, örn: 300)
             [/STATS]
-            PLA kg cinsinden (örneğin 150 gram için 0.15), SURE ise dakika cinsinden (örneğin 5 saat için 300) olmalıdır. Başka bir şey yazma.
             """
             
             response = client.models.generate_content(
@@ -127,7 +164,14 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             with open(os.path.join(product_path, "ai_rapor.txt"), "w", encoding="utf-8") as f:
                 f.write(result_text)
                 
-            await update.message.reply_text(f"✅ Klasör '{folder_name}' açıldı.\n\n💰 Hesaplanan Fiyat: {price_text}\n\n🤖 AI Açıklama Özeti:\n{result_text[:400]}...\n\n📸 Not: Lütfen bu ürünün fotoğraflarını bana Telegram'dan atarken açıklama kısmına '{folder_name}' yazarak yolla!")
+            msg = f"✅ Klasör '{folder_name}' açıldı.\n"
+            if downloaded_photo:
+                msg += "📸 Ürün fotoğrafı BAŞARIYLA indirildi ve kaydedildi!\n"
+            else:
+                msg += "⚠️ Fotoğraf otomatik indirilemedi, manuel eklemen gerekebilir.\n"
+                
+            msg += f"\n💰 Hesaplanan Fiyat: {price_text}\n\n🤖 AI Açıklama Özeti:\n{result_text[:400]}..."
+            await update.message.reply_text(msg)
             
         except Exception as e:
             error_msg = str(e)
