@@ -24,6 +24,58 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PRODUCTS_DIR = os.path.join(BASE_DIR, "products_ai")
 os.makedirs(PRODUCTS_DIR, exist_ok=True)
 
+from googleapiclient.discovery import build
+from google.oauth2.service_account import Credentials
+from googleapiclient.http import MediaFileUpload
+
+DRIVE_FOLDER_ID = "1hn-jXluF3Th-RNkjC5_QxNDjAAY1nc1A"
+
+def upload_to_drive(file_path, parent_id, mime_type='application/octet-stream'):
+    try:
+        drive_creds = Credentials.from_service_account_file(
+            os.path.join(BASE_DIR, 'credentials.json'), 
+            scopes=['https://www.googleapis.com/auth/drive']
+        )
+        service = build('drive', 'v3', credentials=drive_creds)
+        file_metadata = {
+            'name': os.path.basename(file_path),
+            'parents': [parent_id]
+        }
+        media = MediaFileUpload(file_path, mimetype=mime_type, resumable=True)
+        file = service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+        return file.get('id')
+    except Exception as e:
+        logging.error(f"Drive upload failed: {e}")
+        return None
+
+def create_drive_folder(folder_name, parent_id):
+    try:
+        drive_creds = Credentials.from_service_account_file(
+            os.path.join(BASE_DIR, 'credentials.json'), 
+            scopes=['https://www.googleapis.com/auth/drive']
+        )
+        service = build('drive', 'v3', credentials=drive_creds)
+        
+        # Check if folder already exists
+        query = f"name='{folder_name}' and mimeType='application/vnd.google-apps.folder' and '{parent_id}' in parents and trashed=false"
+        results = service.files().list(q=query, spaces='drive', fields='files(id, name)').execute()
+        items = results.get('files', [])
+        
+        if items:
+            return items[0].get('id')
+            
+        file_metadata = {
+            'name': folder_name,
+            'mimeType': 'application/vnd.google-apps.folder',
+            'parents': [parent_id]
+        }
+        file = service.files().create(body=file_metadata, fields='id').execute()
+        return file.get('id')
+    except Exception as e:
+        logging.error(f"Drive folder creation failed: {e}")
+        return parent_id # Fallback to root folder if it fails
+
+
 # Albüm hafızası (Birkaç saniyeliğine aynı albümdeki fotoğrafların klasörünü hatırlar)
 album_cache = {}
 
@@ -226,6 +278,19 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             with open(os.path.join(product_path, "ai_rapor.txt"), "w", encoding="utf-8") as f:
                 f.write(result_text)
                 
+            # Google Drive Upload
+            try:
+                drive_p_id = create_drive_folder(folder_name, DRIVE_FOLDER_ID)
+                upload_to_drive(os.path.join(product_path, "ai_rapor.txt"), drive_p_id, 'text/plain')
+                
+                photos_dir = os.path.join(product_path, "photos")
+                if os.path.exists(photos_dir):
+                    for pf in os.listdir(photos_dir):
+                        if pf.endswith(".jpg") or pf.endswith(".png"):
+                            upload_to_drive(os.path.join(photos_dir, pf), drive_p_id, 'image/jpeg')
+            except Exception as d_err:
+                logging.error(f"Google Drive Error: {d_err}")
+                
             msg = f"✅ Klasör '{folder_name}' açıldı.\n"
             if downloaded_photo_count > 0:
                 msg += f"📸 Tam {downloaded_photo_count} adet ürün/yorum fotoğrafı BAŞARIYLA indirildi ve kaydedildi!\n"
@@ -340,12 +405,27 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
             with open(os.path.join(product_path, "ai_rapor.txt"), "w", encoding="utf-8") as f:
                 f.write(result_text)
                 
+            # Drive'a raporu yükle
+            try:
+                drive_p_id = create_drive_folder(folder_name, DRIVE_FOLDER_ID)
+                upload_to_drive(os.path.join(product_path, "ai_rapor.txt"), drive_p_id, 'text/plain')
+            except Exception as e:
+                logging.error(f"Drive upload (rapor) hatası: {e}")
+                
             await update.message.reply_text(f"✅ AI Bitti!\n\n💰 Hesaplanan Fiyat: {price_text}\n\n🤖 AI Özet:\n{result_text[:400]}...")
         except Exception as e:
             error_msg = str(e)
             await update.message.reply_text(f"⚠️ Hata: {error_msg[:1000]}")
     else:
         await update.message.reply_text(f"📸 {photo_num}. Fotoğraf '{folder_name}' klasörüne başarıyla eklendi!")
+        
+    # Fotoğrafı her halükarda Drive'a yükle (AI çalışsın ya da çalışmasın)
+    try:
+        drive_p_id = create_drive_folder(folder_name, DRIVE_FOLDER_ID)
+        upload_to_drive(photo_filepath, drive_p_id, 'image/jpeg')
+    except Exception as e:
+        logging.error(f"Drive upload (foto) hatası: {e}")
+
 
 if __name__ == '__main__':
     # Flask sunucusunu başlat (Render.com için)
