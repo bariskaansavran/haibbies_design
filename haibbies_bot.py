@@ -284,7 +284,11 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             else:
                 msg += "⚠️ Fotoğraf otomatik indirilemedi, manuel eklemen gerekebilir.\n"
                 
-            msg += f"\n💰 Hesaplanan Satış Fiyatı: {price_text} TL\n\n(Detaylı AI açıklaması klasördeki 'ai_rapor.txt' içine kaydedildi.)"
+            msg += f"""
+🌐 Site Satış Fiyatı: {price_text} TL
+🤝 Elden Teslim Fiyatı: {elden_text} TL
+
+(Detaylı AI açıklaması klasördeki 'ai_rapor.txt' içine kaydedildi.)"""
             await update.message.reply_text(msg)
             
         except Exception as e:
@@ -413,7 +417,13 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 
             # Drive upload iptal edildi
                 
-            await update.message.reply_text(f"✅ AI Bitti!\n\n💰 Hesaplanan Fiyat: {price_text}\n\n🤖 AI Özet:\n{result_text[:400]}...")
+            await update.message.reply_text(f"""✅ AI Bitti!
+
+🌐 Site Satış Fiyatı: {price_text} TL
+🤝 Elden Teslim Fiyatı: {elden_text} TL
+
+📝 AI Özet:
+{result_text[:400]}...""")
         except Exception as e:
             error_msg = str(e)
             await update.message.reply_text(f"⚠️ Hata: {error_msg[:1000]}")
