@@ -1,4 +1,4 @@
-import os
+﻿import os
 import sys
 import subprocess
 import re
@@ -185,8 +185,12 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             
             🛍️ 1. SHOPIER/DOLAP SATIŞ METNİ (TÜRKÇE)
             - Çarpıcı, dikkat çekici bir başlık
-            - Ürünün kullanım alanlarını ve faydalarını anlatan profesyonel bir satış metni (emoji kullan)
-            - Ürünün tasarım özelliklerini ön plana çıkaran detaylar
+            - Ürünün kullanım alanlarını ve faydalarını anlatan profesyonel bir satış metni (KESİNLİKLE EMOJİ KULLANMA)
+            - Ürünün Tasarım özellikleri
+            - En az 5 adet alakalı hashtag ekle
+            - Metin çok kısa, öz ve net olsun. Toplam 1000 karakteri GEÇMESİN.ni ön plana çıkaran detaylar
+            - En az 5 adet alakalı hashtag ekle
+            - Metin çok kısa, öz ve net olsun. Toplam 1000 karakteri GEÇMESİN.
             
             📱 2. SOSYAL MEDYA (INSTAGRAM/TIKTOK)
             - Videolarda veya fotolarda kullanılabilecek, viral olmaya müsait kısa, enerjik bir açıklama
@@ -310,8 +314,10 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
             prompt = """Sen profesyonel bir E-ticaret Satış Temsilcisi ve 3D Baskı Uzmanısın. Fotoğraftaki ürün için aşağıdaki 3 bölümü hazırla:
             
             🛍️ 1. SHOPIER/DOLAP SATIŞ METNİ (TÜRKÇE)
-            - Çarpıcı başlık ve profesyonel satış metni
+            - Çarpıcı başlık ve profesyonel satış metni (KESİNLİKLE EMOJİ KULLANMA)
             - Tasarım özellikleri
+            - En az 5 adet alakalı hashtag ekle
+            - Metin çok kısa, öz ve net olsun. Toplam 1000 karakteri GEÇMESİN.
             
             📱 2. SOSYAL MEDYA (INSTAGRAM/TIKTOK)
             - Viral açıklama ve hashtagler
@@ -422,3 +428,4 @@ if __name__ == '__main__':
     print("HAIBBIES DARK FACTORY BOTU CALISIYOR...")
     print("Telegramdan foto veya link gonderebilirsin.")
     app.run_polling()
+
