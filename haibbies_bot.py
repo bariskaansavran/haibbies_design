@@ -267,6 +267,11 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     
                 price = ws.acell('D22').value
                 price_text = str(price)
+                try:
+                    elden_price = ws.acell('D24').value
+                    elden_text = str(elden_price)
+                except:
+                    elden_text = "Hesaplanamadı"
             except Exception as sheet_err:
                 price_text = "Hesaplanamadı"
                 result_text += f"\n\n⚠️ Sheets Hatası: {sheet_err}"
@@ -394,6 +399,11 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     
                 price = ws.acell('D22').value
                 price_text = str(price)
+                try:
+                    elden_price = ws.acell('D24').value
+                    elden_text = str(elden_price)
+                except:
+                    elden_text = "Hesaplanamadı"
             except Exception as sheet_err:
                 price_text = "Hesaplanamadı"
                 result_text += f"\n\n⚠️ Sheets Hatası: {sheet_err}"
