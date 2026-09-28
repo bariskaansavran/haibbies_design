@@ -213,7 +213,8 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             - SEO uyumlu, bol anahtar kelimeli uzun bir başlık (Etsy formatında)
             - Ürünü anlatan temiz, profesyonel İngilizce açıklama
             
-            ÖNEMLİ: En alta mutlaka şu formatta istatistik ekle (Hesaplama için kullanılacak, tahmini gram/süre bulamazsan ortalama değer ver):
+            ÖNEMLİ: En alta mutlaka şu formatta istatistik ekle (Hesaplama için kullanılacak).
+              EĞER kullanıcı linkin yanında '150g' veya '3 saat' gibi gram/süre belirttiyse KESİNLİKLE onları kullan! Eğer vermediyse tahmini değer ver:
             [STATS]
             PLA: (sadece sayı, kg cinsinden, örn: 0.15)
             SURE: (sadece sayı, dakika cinsinden, örn: 300)
@@ -347,7 +348,8 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
             🌍 3. ETSY SATIŞ METNİ (İNGİLİZCE)
             - SEO uyumlu başlık ve İngilizce ürün açıklaması
             
-            Bunun haricinde metnin EN SONUNA sadece hesaplama için, aynen şu formatta tahmini verileri ekle:
+            Bunun haricinde metnin EN SONUNA sadece hesaplama için, aynen şu formatta tahmini verileri ekle.
+              ÖNEMLİ: Eğer kullanıcı fotoğrafın açıklamasında '150g' veya '3 saat' gibi gram/süre belirttiyse KESİNLİKLE o değerleri kullan! Yoksa sen tahmin et:
             [STATS]
             PLA: 0.15
             SURE: 300
