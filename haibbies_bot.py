@@ -114,6 +114,24 @@ async def rapor_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception as e:
         await update.message.reply_text(f"⚠️ Rapor hatası: {str(e)}")
 
+
+async def cmd_update_margin(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("⏳ Tüm Google Sheet sekmeleri %50 kar marjı için güncelleniyor, lütfen bekle...")
+    try:
+        doc = client.open_by_key(SHEET_ID)
+        formula = "=ROUNDUP( ((D21-D16)/((1+D17)*(1+D18)) - E11 - E12) * (1+D17) * 1.50 ; 0 )"
+        updated_count = 0
+        for ws in doc.worksheets():
+            try:
+                if ws.acell("C24").value == "Elden Teslim Fiyatı:":
+                    ws.update_acell("D24", formula)
+                    updated_count += 1
+            except:
+                pass
+        await update.message.reply_text(f"✅ Başarılı! ŞABLON ve diğer toplam {updated_count} sayfanın Elden Teslim kar marjı %50 olarak güncellendi.")
+    except Exception as e:
+        await update.message.reply_text(f"❌ Hata oluştu: {e}")
+
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.strip()
     
