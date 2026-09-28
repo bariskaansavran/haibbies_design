@@ -135,6 +135,24 @@ async def cmd_update_margin(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception as e:
         await update.message.reply_text(f"❌ Hata oluştu: {e}")
 
+
+async def cmd_fix_excel(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("⏳ Şablon sayfasındaki -1 hatası düzeltiliyor ve Excel optimize ediliyor...")
+    try:
+        doc = client.open_by_key(SHEET_ID)
+        formula = "=YUKARIYUVARLA( MAK(0; ((D21-D16)/((1+D17)*(1+D18)) - E11 - E12)) * (1+D17) * (1+G20) ; 0 )"
+        updated_count = 0
+        for ws in doc.worksheets():
+            try:
+                if ws.acell("C24").value == "Elden Teslim Fiyatı:":
+                    ws.update_acell("D24", formula)
+                    updated_count += 1
+            except:
+                pass
+        await update.message.reply_text(f"✅ Excel Mükemmelleştirildi! Şablon ve diğer {updated_count} sayfadaki '-1' (negatif tutar) sorunu düzeltildi.")
+    except Exception as e:
+        await update.message.reply_text(f"❌ Hata: {e}")
+
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.strip()
     
