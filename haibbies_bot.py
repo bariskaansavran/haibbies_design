@@ -67,6 +67,19 @@ async def guncelle_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception as e:
         await update.message.reply_text(f"⚠️ Güncelleme hatası: {str(e)}")
 
+async def start_command(update, context):
+    welcome_msg = """
+    👋 Merhaba! Ben Haibbies 3D Satış Asistanı.
+    
+    Bana bir Makerworld veya Printables linki atarsan (veya doğrudan fotoğraf gönderirsen):
+    1. Ürünün maliyetini ve önerilen satış fiyatını çıkarırım.
+    2. Shopier/Dolap/Instagram/Etsy için yapay zeka ile profesyonel satış açıklamaları yazarım.
+    3. Fotoğrafları analiz edip senin için hazırlarım.
+    
+    Hadi, bana bir link gönder ve başlayalım! 🚀
+    """
+    await update.message.reply_text(welcome_msg)
+
 async def rapor_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("📊 Google Sheets verileri analiz ediliyor, lütfen bekle...")
     try:
@@ -420,6 +433,7 @@ if __name__ == '__main__':
     keep_alive()
 
     app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
+    app.add_handler(CommandHandler("start", start_command))
     app.add_handler(CommandHandler("guncelle", guncelle_command))
     app.add_handler(CommandHandler("rapor", rapor_command))
     app.add_handler(MessageHandler(filters.PHOTO, handle_photo))
